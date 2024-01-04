@@ -1,0 +1,92 @@
+[
+ {
+  "name": "Striped T-shirt",
+  "category": "Men's Fashion",
+  "price": 29.99,
+  "date_added": "2024-01-04",
+  "available_sizes": ["S", "M", "L", "XL"],
+  "description": "Comfortable striped t-shirt for a casual look.",
+  "image": ""
+ },
+ {
+  "name": "Denim Jeans",
+  "category": "Women's Fashion",
+  "price": 49.99,
+  "date_added": "2024-01-04",
+  "available_sizes": ["XS", "S", "M", "L"],
+  "description": "Classic denim jeans for a trendy style.",
+  "image": ""
+ },
+ {
+  "name": "Leather Jacket",
+  "category": "Men's Fashion",
+  "price": 99.99,
+  "date_added": "2024-01-03",
+  "available_sizes": ["M", "L", "XL"],
+  "description": "Stylish leather jacket to stay warm in style.",
+  "image": ""
+ },
+ {
+  "name": "Floral Dress",
+  "category": "Women's Fashion",
+  "price": 79.99,
+  "date_added": "2024-01-03",
+  "available_sizes": ["S", "M", "L"],
+  "description": "Elegant floral dress for a chic and feminine look.",
+  "image": ""
+ },
+ {
+  "name": "Running Shoes",
+  "category": "Sports & Activewear",
+  "price": 69.99,
+  "date_added": "2024-01-02",
+  "available_sizes": ["7", "8", "9", "10"],
+  "description": "Comfortable running shoes for your active lifestyle.",
+  "image": ""
+ },
+ {
+  "name": "Hooded Sweatshirt",
+  "category": "Men's Fashion",
+  "price": 39.99,
+  "date_added": "2024-01-02",
+  "available_sizes": ["S", "M", "L", "XL"],
+  "description": "Casual hooded sweatshirt for a laid-back style.",
+  "image": ""
+ },
+ {
+  "name": "Pleated Skirt",
+  "category": "Women's Fashion",
+  "price": 59.99,
+  "date_added": "2024-01-01",
+  "available_sizes": ["XS", "S", "M"],
+  "description": "Fashionable pleated skirt for a trendy outfit.",
+  "image": ""
+ },
+ {
+  "name": "Formal Suit",
+  "category": "Men's Fashion",
+  "price": 129.99,
+  "date_added": "2024-01-01",
+  "available_sizes": ["M", "L", "XL"],
+  "description": "Classic formal suit for special occasions.",
+  "image": ""
+ },
+ {
+  "name": "High Heels",
+  "category": "Women's Fashion",
+  "price": 89.99,
+  "date_added": "2023-12-31",
+  "available_sizes": ["6", "7", "8", "9"],
+  "description": "Elegant high heels to complete your stylish look.",
+  "image": ""
+ },
+ {
+  "name": "Casual Sneakers",
+  "category": "Men's Fashion",
+  "price": 54.99,
+  "date_added": "2023-12-31",
+  "available_sizes": ["8", "9", "10", "11"],
+  "description": "Versatile casual sneakers for everyday wear.",
+  "image": ""
+ }
+]
