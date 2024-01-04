@@ -1,0 +1,23 @@
+@import "../../styles/colors";
+
+.banner {
+ height: clamp(200px, 50vw, 500px);
+ background-color: grey;
+}
+
+.main {
+ padding: 16px;
+}
+
+.section {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+ gap: 16px;
+}
+
+.title {
+ font-weight: 600;
+ color: $black;
+ margin: 0;
+ padding: 32px 0 16px 0;
+}
