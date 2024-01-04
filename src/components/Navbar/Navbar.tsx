@@ -2,55 +2,93 @@ import "./styles.scss";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/24/solid";
+import { useEffect, useRef, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = () => {
+ const [showSearchInput, setShowSearchInput] = useState<boolean>(false);
+ const searchSwitchRef = useRef<HTMLDivElement>(null);
+ const searchInputRef = useRef<HTMLInputElement>(null);
+ const navigate = useNavigate();
+
+ const toggleSearchInput = () => {
+  setShowSearchInput(!showSearchInput);
+ };
+
+ const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  navigate("/search");
+  setShowSearchInput(false);
+ };
+
+ useEffect(() => {
+  if (showSearchInput && searchInputRef.current) {
+   searchInputRef.current.focus();
+  }
+ }, [showSearchInput]);
+
  return (
   <nav className="navbar">
+   {showSearchInput && (
+    <div
+     className="navbar__shadow"
+     onClick={toggleSearchInput}
+    />
+   )}
    <div className="navbar__content">
     <div className="navbar__logoWrapper">
      <Bars3Icon className="navbar__bars" />
-     <a
-      href="/"
+     <NavLink
+      to="/"
       className="navbar__logo"
      >
       <h1>BuyMe!</h1>
-     </a>
+     </NavLink>
     </div>
-    <input
-     className="navbar__menu--searchInput"
-     type="text"
-     placeholder="Search"
-    />
-    <div className="navbar__menu--links">
-     {["Home", "Shop", "About", "Contact"].map((link, index) => (
-      <a
-       key={index}
-       href="/"
-       className="navbar__menu--link"
-      >
-       {link}
-      </a>
-     ))}
-    </div>
-    <div className="navbar__menu--buttons">
-     <div className="navbar__menu--button">
-      <MagnifyingGlassIcon />
+    {showSearchInput ? (
+     <form
+      className="navbar__menu--form"
+      onSubmit={onFormSubmit}
+     >
+      <input
+       className="navbar__menu--searchInput"
+       type="text"
+       placeholder="Search"
+       ref={searchInputRef}
+      />
+     </form>
+    ) : (
+     <div className="navbar__menu--links">
+      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/shop">Shop</NavLink>
+      <NavLink to="/about">About</NavLink>
+      <NavLink to="/contact">Contact</NavLink>
      </div>
-     <a
-      href="/"
+    )}
+    <div className="navbar__menu--buttons">
+     <div
       className="navbar__menu--button"
+      ref={searchSwitchRef}
+      onClick={toggleSearchInput}
+     >
+      {showSearchInput ? <XMarkIcon /> : <MagnifyingGlassIcon />}
+     </div>
+     <NavLink
+      className="navbar__menu--button"
+      to="/favourites"
      >
       <HeartIcon />
-     </a>
-     <a
-      href="/"
+     </NavLink>
+     <NavLink
       className="navbar__menu--button"
+      to="/cart"
      >
       <ShoppingCartIcon />
-     </a>
+     </NavLink>
     </div>
    </div>
   </nav>
