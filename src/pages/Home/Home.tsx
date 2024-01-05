@@ -3,13 +3,17 @@ import "./styles.scss";
 import Tile from "../../components/Tile/Tile";
 
 export interface Product {
+ id: number;
  name: string;
- category: string;
+ categories: Array<string>;
  price: number;
  date_added: string;
  available_sizes: Array<string>;
  description: string;
  image?: string;
+ popularity: number;
+ rating: number;
+ number_of_bought: number;
 }
 
 export default function Home() {
@@ -47,27 +51,42 @@ export default function Home() {
      className="section"
      id="newest"
     >
-     {products.map((product) => (
-      <Tile product={product} />
-     ))}
+     {products
+      .filter((product) => product?.date_added.includes("2024"))
+      .map((product) => (
+       <Tile
+        key={product.id}
+        product={product}
+       />
+      ))}
     </section>
     <h2 className="title">Most popular</h2>
     <section
      className="section"
      id="most_popular"
     >
-     {products.map((product) => (
-      <Tile product={product} />
-     ))}
+     {products
+      .filter((product) => product?.popularity > 80)
+      .map((product) => (
+       <Tile
+        key={product.id}
+        product={product}
+       />
+      ))}
     </section>
     <h2 className="title">Winter collection</h2>
     <section
      className="section"
      id="winter_collection"
     >
-     {products.map((product) => (
-      <Tile product={product} />
-     ))}
+     {products
+      .filter((product) => product?.categories?.includes("winter"))
+      .map((product) => (
+       <Tile
+        key={product.id}
+        product={product}
+       />
+      ))}
     </section>
    </main>
   </div>
