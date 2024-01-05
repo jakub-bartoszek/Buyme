@@ -1,4 +1,8 @@
 import "./styles.scss";
+import { FacebookIcon } from "../../assets/icons/facebook";
+import { InstagramIcon } from "../../assets/icons/instagram";
+import { TwitterIcon } from "../../assets/icons/twitter";
+import { LinkedinIcon } from "../../assets/icons/linkedin";
 
 export default function Footer() {
  return (
@@ -13,6 +17,13 @@ export default function Footer() {
        necessitatibus minus laborum magni eveniet similique nesciunt natus
        minima, veniam optio odit.
       </p>
+      <div>
+       <FacebookIcon />
+       <InstagramIcon />
+       <TwitterIcon />
+       <LinkedinIcon />
+      </div>
+      <div></div>
      </div>
      <div>
       <h3>Explore</h3>
