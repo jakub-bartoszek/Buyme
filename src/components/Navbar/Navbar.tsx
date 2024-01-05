@@ -33,12 +33,6 @@ const Navbar: React.FC<NavbarProps> = () => {
 
  return (
   <nav className="navbar">
-   {showSearchInput && (
-    <div
-     className="navbar__shadow"
-     onClick={toggleSearchInput}
-    />
-   )}
    <div className="navbar__content">
     <div className="navbar__logoWrapper">
      <Bars3Icon className="navbar__bars" />
@@ -90,6 +84,12 @@ const Navbar: React.FC<NavbarProps> = () => {
       <ShoppingCartIcon />
      </NavLink>
     </div>
+    {showSearchInput && (
+     <div
+      className="navbar__shadow"
+      onClick={toggleSearchInput}
+     />
+    )}
    </div>
   </nav>
  );
