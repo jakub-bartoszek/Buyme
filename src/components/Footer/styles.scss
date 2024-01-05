@@ -1,0 +1,53 @@
+@import "../../styles/colors";
+
+.footer {
+ background-color: rgb(40, 40, 40);
+ color: white;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+
+ &__container {
+  max-width: 1400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 16px;
+  gap: 64px;
+  font-size: 1rem;
+ }
+
+ &__main {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 32px;
+ }
+
+ &__additional {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &--links {
+   display: flex;
+   gap: 16px;
+  }
+ }
+
+ li {
+  list-style-type: none;
+  color: $muted;
+ }
+
+ p {
+  color: $muted;
+ }
+
+ a {
+  &:hover {
+   color: $white;
+   cursor: pointer;
+  }
+ }
+}

@@ -8,6 +8,7 @@ import Contact from "./pages/Contact/Contact";
 import Cart from "./pages/Cart/Cart";
 import Favourites from "./pages/Favourites/Favourites";
 import Search from "./pages/Search.tsx/Search";
+import Footer from "./components/Footer/Footer";
 
 function App() {
  return (
@@ -49,8 +50,8 @@ function App() {
        element={<Navigate to="/home" />}
       />
      </Routes>
-     <footer></footer>
     </div>
+    <Footer />
    </HashRouter>
   </div>
  );
