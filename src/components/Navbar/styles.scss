@@ -21,6 +21,7 @@ $navbar-logo-color: $black;
  top: 0;
  display: flex;
  justify-content: center;
+ z-index: 10;
 
  a {
   text-decoration: none;
