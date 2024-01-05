@@ -44,7 +44,9 @@ export default function Home() {
 
  return (
   <div>
-   <header className="banner"></header>
+   <header className="banner">
+    <img src="https://pbs.twimg.com/media/Fzb3Zq9aMAIRwex?format=jpg&name=large" />
+   </header>
    <main className="main">
     <h2 className="title">Newest</h2>
     <section
