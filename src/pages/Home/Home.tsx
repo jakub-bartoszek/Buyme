@@ -10,7 +10,7 @@ export interface Product {
  date_added: string;
  available_sizes: Array<string>;
  description: string;
- image?: string;
+ images?: Array<string>;
  popularity: number;
  rating: number;
  number_of_bought: number;

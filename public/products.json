@@ -7,7 +7,11 @@
   "date_added": "2024-01-04",
   "available_sizes": ["S", "M", "L", "XL"],
   "description": "Comfortable striped t-shirt for a casual look.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 75,
   "rating": 4.5,
   "number_of_people_bought": 120
@@ -20,7 +24,9 @@
   "date_added": "2024-01-04",
   "available_sizes": ["XS", "S", "M", "L"],
   "description": "Classic denim jeans for a trendy style.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/a91c4bf6dde54352a4405732f94b26ac/dafb368812ed40fd908a48f352a0f4bf.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/a91c4bf6dde54352a4405732f94b26ac/dafb368812ed40fd908a48f352a0f4bf.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 68,
   "rating": 4.2,
   "number_of_people_bought": 95
@@ -33,7 +39,9 @@
   "date_added": "2024-01-03",
   "available_sizes": ["M", "L", "XL"],
   "description": "Stylish leather jacket to stay warm in style.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/773e78d6f92e3c72839e433ef871491d/6e5daece2c624aa0ae4ff69531771b95.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/773e78d6f92e3c72839e433ef871491d/6e5daece2c624aa0ae4ff69531771b95.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 82,
   "rating": 4.8,
   "number_of_people_bought": 150
@@ -46,7 +54,9 @@
   "date_added": "2024-01-03",
   "available_sizes": ["S", "M", "L"],
   "description": "Elegant floral dress for a chic and feminine look.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/fefef2fca7da4cf4946549270ff779a1/9b0939b8e6664131a218c5be387dd0af.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/fefef2fca7da4cf4946549270ff779a1/9b0939b8e6664131a218c5be387dd0af.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 90,
   "rating": 4.9,
   "number_of_people_bought": 200
@@ -59,7 +69,9 @@
   "date_added": "2024-01-02",
   "available_sizes": ["7", "8", "9", "10"],
   "description": "Comfortable running shoes for your active lifestyle.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/71d52ce5f98d40d6aaf3e14f377b5fba/f1f8d270551b43128066e97ccaad61c2.jpg?imwidth=1800&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/71d52ce5f98d40d6aaf3e14f377b5fba/f1f8d270551b43128066e97ccaad61c2.jpg?imwidth=1800&filter=packshot"
+  ],
   "popularity": 88,
   "rating": 4.7,
   "number_of_people_bought": 180
@@ -72,7 +84,9 @@
   "date_added": "2024-01-02",
   "available_sizes": ["S", "M", "L", "XL"],
   "description": "Casual hooded sweatshirt for a laid-back style.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/329c3b61f573409390afda733d8fc289/1e72f00b7ac04a4ba04c7cfc5f6f832a.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/329c3b61f573409390afda733d8fc289/1e72f00b7ac04a4ba04c7cfc5f6f832a.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 72,
   "rating": 4.4,
   "number_of_people_bought": 110
@@ -85,7 +99,9 @@
   "date_added": "2024-01-01",
   "available_sizes": ["XS", "S", "M"],
   "description": "Fashionable pleated skirt for a trendy outfit.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/068a6eb278c54385926893a7db2e5e5d/ade068aaf72545efb91e93b55588b2a4.jpg?imwidth=762",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/068a6eb278c54385926893a7db2e5e5d/ade068aaf72545efb91e93b55588b2a4.jpg?imwidth=762"
+  ],
   "popularity": 80,
   "rating": 4.6,
   "number_of_people_bought": 160
@@ -98,7 +114,9 @@
   "date_added": "2024-01-01",
   "available_sizes": ["M", "L", "XL"],
   "description": "Classic formal suit for special occasions.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/58451a5aff7e4822bbb9fe971ef407fe/29475ff6d7a647759f2d2eeef5fa117c.jpg?imwidth=1800&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/58451a5aff7e4822bbb9fe971ef407fe/29475ff6d7a647759f2d2eeef5fa117c.jpg?imwidth=1800&filter=packshot"
+  ],
   "popularity": 95,
   "rating": 5.0,
   "number_of_people_bought": 220
@@ -111,7 +129,9 @@
   "date_added": "2023-12-31",
   "available_sizes": ["6", "7", "8", "9"],
   "description": "Elegant high heels to complete your stylish look.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/3e2f3e7cff574399a670f43d69b1190d/dab8dbce1f474b1c8ad725487ec49edb.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/3e2f3e7cff574399a670f43d69b1190d/dab8dbce1f474b1c8ad725487ec49edb.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 87,
   "rating": 4.8,
   "number_of_people_bought": 190
@@ -124,7 +144,9 @@
   "date_added": "2023-12-31",
   "available_sizes": ["8", "9", "10", "11"],
   "description": "Versatile casual sneakers for everyday wear.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/f27c4d938a6344c68c55c9f4c0920d5c/fe7dfd07a8754f12b228a271781595db.jpg?imwidth=1800&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/f27c4d938a6344c68c55c9f4c0920d5c/fe7dfd07a8754f12b228a271781595db.jpg?imwidth=1800&filter=packshot"
+  ],
   "popularity": 78,
   "rating": 4.5,
   "number_of_people_bought": 130
@@ -137,7 +159,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["S", "M", "L", "XL"],
   "description": "Stylish graphic print t-shirt for a trendy casual look.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/43c11aa667af4408a6b3188971df5e48/0ad2f0836e3341a1a6a62eec64a19b5e.jpg?imwidth=1800&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/43c11aa667af4408a6b3188971df5e48/0ad2f0836e3341a1a6a62eec64a19b5e.jpg?imwidth=1800&filter=packshot"
+  ],
   "popularity": 65,
   "rating": 4.3,
   "number_of_people_bought": 100
@@ -150,7 +174,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["XS", "S", "M", "L"],
   "description": "Comfortable cargo pants for a functional and fashionable style.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/49019c1495224226b0b87c7914616eb2/b451ad34f461468c8c266c6c37072cdc.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/49019c1495224226b0b87c7914616eb2/b451ad34f461468c8c266c6c37072cdc.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 70,
   "rating": 4.4,
   "number_of_people_bought": 110
@@ -163,7 +189,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["M", "L", "XL"],
   "description": "Warm quilted jacket for a stylish winter look.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/a181c356516e4f75a32b9f3e2e867c33/378958af19e647bebcccd2175d476a71.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/a181c356516e4f75a32b9f3e2e867c33/378958af19e647bebcccd2175d476a71.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 85,
   "rating": 4.7,
   "number_of_people_bought": 170
@@ -176,7 +204,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["S", "M", "L"],
   "description": "Cozy knit sweater for a comfortable and warm winter outfit.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/107f2a77f99131fca092a0a1d0a6f4c6/321c212987294c81835b7f687723f890.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/107f2a77f99131fca092a0a1d0a6f4c6/321c212987294c81835b7f687723f890.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 75,
   "rating": 4.5,
   "number_of_people_bought": 120
@@ -189,7 +219,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["S", "M", "L", "XL"],
   "description": "Athletic track pants for your active lifestyle.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/6daad58ce0724c9faf6315f46edff7ac/3efe0ff0ce044fa2be7e4e5cb841f47a.jpg?imwidth=762",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/6daad58ce0724c9faf6315f46edff7ac/3efe0ff0ce044fa2be7e4e5cb841f47a.jpg?imwidth=762"
+  ],
   "popularity": 60,
   "rating": 4.0,
   "number_of_people_bought": 90
@@ -202,7 +234,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["XS", "S", "M", "L"],
   "description": "Flexible yoga leggings for comfortable workout sessions.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/c9c5d135f1c0370795bac70f77662087/a32db0125cd046a191b4076e3a2886ef.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/c9c5d135f1c0370795bac70f77662087/a32db0125cd046a191b4076e3a2886ef.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 55,
   "rating": 3.8,
   "number_of_people_bought": 80
@@ -215,7 +249,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["M", "L", "XL"],
   "description": "Stylish hooded parka for maximum warmth in cold weather.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/1193012f31d34eb791ae114c1a0eb6ce/a100e3cb688e4ef685779296e92c28e6.jpg?imwidth=762&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/1193012f31d34eb791ae114c1a0eb6ce/a100e3cb688e4ef685779296e92c28e6.jpg?imwidth=762&filter=packshot"
+  ],
   "popularity": 95,
   "rating": 5.0,
   "number_of_bought": 170
@@ -228,7 +264,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["S", "M", "L"],
   "description": "Fashionable puffer coat to brave the winter chill with style.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/b13f6a9140c449c482923d24b385538f/db328703c4564af9a05cdf1a89db8969.jpg?imwidth=1800&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/b13f6a9140c449c482923d24b385538f/db328703c4564af9a05cdf1a89db8969.jpg?imwidth=1800&filter=packshot"
+  ],
   "popularity": 75,
   "rating": 4.5,
   "number_of_bought": 120
@@ -241,7 +279,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["2T", "3T", "4T", "5T"],
   "description": "Adorable cartoon-themed t-shirt for the little ones.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/3fde07dc6a01466ea69dc1fe9437d487/5d576269439e47be90be4619a51d1afa.jpg?imwidth=1800&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/3fde07dc6a01466ea69dc1fe9437d487/5d576269439e47be90be4619a51d1afa.jpg?imwidth=1800&filter=packshot"
+  ],
   "popularity": 90,
   "rating": 4.8,
   "number_of_bought": 200
@@ -254,7 +294,9 @@
   "date_added": "2024-01-05",
   "available_sizes": ["2T", "3T", "4T", "5T"],
   "description": "Warm and cozy winter jacket for kids' outdoor adventures.",
-  "image": "https://img01.ztat.net/article/spp-media-p1/8316add2daa74dd29ac7c5bed29053c2/88c3a0fcf4704679ab4cd7fa1cdc8146.jpg?imwidth=1800&filter=packshot",
+  "images": [
+   "https://img01.ztat.net/article/spp-media-p1/8316add2daa74dd29ac7c5bed29053c2/88c3a0fcf4704679ab4cd7fa1cdc8146.jpg?imwidth=1800&filter=packshot"
+  ],
   "popularity": 80,
   "rating": 4.6,
   "number_of_bought": 150
