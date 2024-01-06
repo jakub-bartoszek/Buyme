@@ -81,20 +81,15 @@ export default function ProductPage() {
       ))}
      </div>
      <div className="product-info__amount">
-      <button>-</button>
-      <div>0</div>
-      <button>+</button>
-      <div>
-       <button>Dodaj do koszyka</button>
-      </div>
+      <button className="product-info__amount--button">-</button>
+      <div className="product-info__amount--number">0</div>
+      <button className="product-info__amount--button">+</button>
+     </div>
+     <div>
+      <button className="product-info__buy-button">ADD TO CART</button>
      </div>
     </div>
-    <div className="product-description">
-     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi reiciendis
-     illum hic assumenda rem. Magnam saepe sint suscipit repudiandae facilis,
-     sed praesentium molestias aliquam perferendis, numquam veniam, aperiam
-     nisi! Quia.
-    </div>
+    <div className="product-description">{product?.description}</div>
    </div>
   </main>
  );
