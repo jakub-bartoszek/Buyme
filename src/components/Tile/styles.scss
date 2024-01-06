@@ -1,15 +1,19 @@
+@import "../../styles/colors";
+
 .tile {
  background-color: white;
  padding: 8px;
  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
  transition: all 0.3s;
  cursor: pointer;
+ text-decoration: none;
+ color: $black;
 
  &:hover {
   transform: scale(102%);
  }
 
- &__imageWrapper {
+ &__image-wrapper {
   width: 100%;
   aspect-ratio: 2/3;
   background-color: grey;

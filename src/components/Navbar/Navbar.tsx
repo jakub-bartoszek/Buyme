@@ -34,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = () => {
  return (
   <nav className="navbar">
    <div className="navbar__content">
-    <div className="navbar__logoWrapper">
+    <div className="navbar__logo-rapper">
      <Bars3Icon className="navbar__bars" />
      <NavLink
       to="/"

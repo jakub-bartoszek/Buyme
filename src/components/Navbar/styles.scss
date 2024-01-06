@@ -47,7 +47,7 @@ $navbar-logo-color: $black;
   width: $navbar-content-width;
  }
 
- &__logoWrapper {
+ &__logo-wrapper {
   @extend %align-center;
   gap: 8px;
  }
