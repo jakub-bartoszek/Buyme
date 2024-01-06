@@ -9,6 +9,7 @@ import Cart from "./pages/Cart/Cart";
 import Favourites from "./pages/Favourites/Favourites";
 import Search from "./pages/Search.tsx/Search";
 import Footer from "./components/Footer/Footer";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 function App() {
  return (
@@ -44,6 +45,10 @@ function App() {
       <Route
        path="/cart"
        element={<Cart />}
+      />
+      <Route
+       path="/product/:id"
+       element={<ProductPage />}
       />
       <Route
        path="/"
