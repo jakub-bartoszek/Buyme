@@ -55,59 +55,60 @@ const ProductPage = () => {
   <main className="product">
    {showGallery && product.images && (
     <div className="product-fullscreen-gallery">
-     <div className="product-fullscreen-gallery__image-main">
-      <div className="product-fullscreen-gallery__close-button">
-       <XMarkIcon onClick={() => setShowGallery(false)} />
-      </div>
-      {activeFsGalleryImageIndex !== null && (
-       <img
-        src={product.images[activeFsGalleryImageIndex]}
-        alt="Fullscreen Product"
-       />
-      )}
+     <div className="product-fullscreen-gallery__close-button">
+      <XMarkIcon onClick={() => setShowGallery(false)} />
      </div>
-     <div className="product-fullscreen-gallery__images-small">
+     <div className="product-fullscreen-gallery__main-image-wrapper">
+      <div className="product-fullscreen-gallery__main-image">
+       {activeFsGalleryImageIndex !== null && (
+        <img
+         src={product.images[activeFsGalleryImageIndex]}
+         alt="Fullscreen Product"
+        />
+       )}
+      </div>
+     </div>
+     <div className="product-fullscreen-gallery__small-images">
       {product.images.map((image, index) => (
-       <img
+       <div
+        className={`product-fullscreen-gallery__small-image ${
+         index === activeFsGalleryImageIndex && "active"
+        }`}
         key={index}
-        src={image}
-        onClick={() => handleFsGalleryImageClick(index)}
-        alt={`Small Product Image ${index}`}
-       />
+       >
+        <img
+         src={image}
+         onClick={() => handleFsGalleryImageClick(index)}
+         alt={`Small Product Image ${index}`}
+        />
+       </div>
       ))}
      </div>
     </div>
    )}
    <div className="product-gallery">
-    <div className="product-gallery__images-small">
+    <div className="product-gallery__small-images">
      {product.images &&
-      product.images.slice(0, 3).map((image, index) => (
+      product.images.map((image, index) => (
        <div
-        className="product-gallery__image-small"
+        className={`product-gallery__small-image ${
+         index === activeImageIndex && "active"
+        }`}
         key={index}
        >
         <img
-         className={`${index === activeImageIndex ? "active" : ""}`}
          src={image}
          onClick={() => handleGalleryImageClick(index)}
          alt={`Product Image ${index}`}
         />
-        {index === 2 && product.images && (
-         <div
-          className="product-gallery__show-more"
-          onClick={() => {
-           setShowGallery(true);
-           setActiveFsGalleryImageIndex(0);
-          }}
-         >
-          +{product.images?.length - 3}
-         </div>
-        )}
        </div>
       ))}
     </div>
     {activeImageIndex !== null && product.images && (
-     <div className="product-gallery__image-main">
+     <div
+      className="product-gallery__main-image"
+      onClick={() => setShowGallery(true)}
+     >
       <img
        src={product.images[activeImageIndex]}
        alt="Main Product Image"
