@@ -9,7 +9,7 @@ export default function Footer() {
   <div className="footer">
    <div className="footer__container">
     <div className="footer__main">
-     <div>
+     <div className="footer__main--section-description">
       <h3>BuyMe!</h3>
       <p>
        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus quis
@@ -25,7 +25,7 @@ export default function Footer() {
       </div>
       <div></div>
      </div>
-     <div>
+     <div className="footer__main--section">
       <h3>Explore</h3>
       <ul>
        <li>
@@ -39,7 +39,7 @@ export default function Footer() {
        </li>
       </ul>
      </div>
-     <div>
+     <div className="footer__main--section">
       <h3>
        <a>Help</a>
       </h3>
@@ -49,7 +49,7 @@ export default function Footer() {
        </li>
       </ul>
      </div>
-     <div>
+     <div className="footer__main--section">
       <h3>Company</h3>
       <ul>
        <li>

@@ -17,12 +17,26 @@
   padding: 32px 16px 16px 16px;
   gap: 64px;
   font-size: 1rem;
+
+  @media (max-width: 768px) {
+   justify-content: center;
+  }
  }
 
  &__main {
   display: grid;
   grid-template-columns: 1fr auto auto auto;
   gap: 32px;
+
+  @media (max-width: 768px) {
+   grid-template-columns: 1fr 1fr 1fr;
+  }
+ }
+
+ &__main--section-description {
+  @media (max-width: 768px) {
+   grid-column: 1 / span 3;
+  }
  }
 
  &__additional {
