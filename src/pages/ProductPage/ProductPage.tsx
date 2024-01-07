@@ -31,6 +31,7 @@ const ProductPage = () => {
 
    if (selectedProduct.images) {
     setActiveImageIndex(selectedProduct.images.length > 0 ? 0 : null);
+    setActiveFsGalleryImageIndex(selectedProduct.images.length > 0 ? 0 : null);
    }
   } catch (error) {
    console.error("Error fetching product:", error);
@@ -53,6 +54,38 @@ const ProductPage = () => {
 
  return (
   <main className="product">
+   <div className="product-gallery">
+    <div className="product-gallery__small-images">
+     {product.images &&
+      product.images.map((image, index) => (
+       <div
+        className={`product-gallery__small-image ${
+         index === activeImageIndex && "active"
+        }`}
+        key={index}
+       >
+        <img
+         src={image}
+         onClick={() => handleGalleryImageClick(index)}
+         alt={`Product Image ${index}`}
+        />
+       </div>
+      ))}
+    </div>
+    {activeImageIndex !== null && product.images && (
+     <div className="product-gallery__main-image-wrapper">
+      <div
+       className="product-gallery__main-image"
+       onClick={() => setShowGallery(true)}
+      >
+       <img
+        src={product.images[activeImageIndex]}
+        alt="Main Product Image"
+       />
+      </div>
+     </div>
+    )}
+   </div>
    {showGallery && product.images && (
     <div className="product-fullscreen-gallery">
      <div className="product-fullscreen-gallery__close-button">
@@ -86,36 +119,6 @@ const ProductPage = () => {
      </div>
     </div>
    )}
-   <div className="product-gallery">
-    <div className="product-gallery__small-images">
-     {product.images &&
-      product.images.map((image, index) => (
-       <div
-        className={`product-gallery__small-image ${
-         index === activeImageIndex && "active"
-        }`}
-        key={index}
-       >
-        <img
-         src={image}
-         onClick={() => handleGalleryImageClick(index)}
-         alt={`Product Image ${index}`}
-        />
-       </div>
-      ))}
-    </div>
-    {activeImageIndex !== null && product.images && (
-     <div
-      className="product-gallery__main-image"
-      onClick={() => setShowGallery(true)}
-     >
-      <img
-       src={product.images[activeImageIndex]}
-       alt="Main Product Image"
-      />
-     </div>
-    )}
-   </div>
    <div className="product-info">
     <h2 className="product-info__name">{product.name}</h2>
     <div className="product-info__rating">
