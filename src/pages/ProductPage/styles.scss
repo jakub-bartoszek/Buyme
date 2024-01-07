@@ -5,6 +5,57 @@
  padding: 32px 16px 64px 16px;
  grid-template-columns: 2fr 1fr;
  gap: 16px;
+ position: relative;
+
+ .product-fullscreen-gallery {
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  padding-top: 60px;
+  top: 0;
+  left: 0;
+
+  img {
+   height: 100%;
+  }
+
+  &__image-main {
+   padding: 32px;
+   width: 100%;
+   height: 80%;
+   min-height: 300px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 2;
+  }
+
+  &__close-button {
+   position: absolute;
+   top: 60px;
+   right: 0px;
+   padding: 8px;
+
+   svg {
+    height: 30px;
+    cursor: pointer;
+   }
+  }
+
+  &__images-small {
+   height: 20%;
+   width: 100%;
+   padding: 16px;
+   min-height: 100px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 2;
+   gap: 16px;
+  }
+ }
 
  .product-gallery {
   width: 100%;
@@ -19,16 +70,37 @@
   }
 
   &__image-small {
-   aspect-ratio: 2/3;
+   position: relative;
    gap: 16px;
    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-   filter: brightness(75%);
    transition: all 0.3s;
    cursor: pointer;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 
-   &:hover,
-   &.active {
-    filter: brightness(100%);
+   img {
+    filter: brightness(80%);
+
+    &:hover,
+    &.active {
+     filter: brightness(100%);
+    }
+   }
+  }
+
+  &__show-more {
+   position: absolute;
+   color: white;
+   font-weight: 700;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-shadow: 0 0 20px black;
+   font-size: 32px;
+
+   &:hover {
+    transform: scale(110%);
    }
   }
 
@@ -47,11 +119,20 @@
  .product-info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+
+  &__name {
+   margin-bottom: 8px;
+  }
+
+  &__rating,
+  &__price {
+   margin-bottom: 8px;
+  }
 
   &__sizes {
    display: flex;
    gap: 8px;
+   margin-bottom: 16px;
   }
 
   &__size {
@@ -74,6 +155,7 @@
 
   &__amount {
    display: flex;
+   margin-bottom: 16px;
 
    &--button {
     min-width: 32px;
