@@ -13,7 +13,7 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 
 function App() {
  return (
-  <div>
+  <>
    <HashRouter>
     <Navbar />
     <div className="wrapper">
@@ -58,7 +58,7 @@ function App() {
     </div>
     <Footer />
    </HashRouter>
-  </div>
+  </>
  );
 }
 
