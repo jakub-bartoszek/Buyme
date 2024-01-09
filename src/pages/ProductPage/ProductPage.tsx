@@ -88,16 +88,18 @@ const ProductPage = () => {
    </div>
    {showGallery && product.images && (
     <div className="product-fullscreen-gallery">
-     <div className="product-fullscreen-gallery__close-button">
-      <XMarkIcon onClick={() => setShowGallery(false)} />
-     </div>
      <div className="product-fullscreen-gallery__main-image-wrapper">
       <div className="product-fullscreen-gallery__main-image">
        {activeFsGalleryImageIndex !== null && (
-        <img
-         src={product.images[activeFsGalleryImageIndex]}
-         alt="Fullscreen Product"
-        />
+        <>
+         <img
+          src={product.images[activeFsGalleryImageIndex]}
+          alt="Fullscreen Product"
+         />
+         <div className="product-fullscreen-gallery__close-button">
+          <XMarkIcon onClick={() => setShowGallery(false)} />
+         </div>
+        </>
        )}
       </div>
      </div>
