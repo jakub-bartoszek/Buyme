@@ -1,24 +1,50 @@
 .cart {
  width: 100%;
+ display: grid;
+ grid-template-columns: 2fr 1fr;
 
  .products {
   display: flex;
   flex-direction: column;
-  padding: 32px 16px;
+  padding: 32px;
   gap: 16px;
 
   &__tile {
-   width: 300px;
+   width: 100%;
    display: flex;
+   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+   padding: 16px;
+   gap: 16px;
   }
 
   &__tile--image {
-   width: 100px;
+   width: 20%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 
    img {
-    height: 100%;
     width: 100%;
    }
+  }
+
+  table {
+   width: 80%;
+   text-align: left;
+  }
+
+  tr {
+   display: grid;
+   grid-template-columns: 1fr auto auto;
+   gap: 32px;
+  }
+
+  th {
+   height: 20px;
+  }
+
+  td {
+   vertical-align: text-top;
   }
  }
 }
