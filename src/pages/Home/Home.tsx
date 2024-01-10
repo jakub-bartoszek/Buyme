@@ -1,42 +1,11 @@
-import { useEffect, useState } from "react";
 import "./styles.scss";
 import Tile from "../../components/Tile/Tile";
-
-export interface Product {
- id: number;
- name: string;
- categories: Array<string>;
- price: number;
- date_added: string;
- available_sizes: Array<string>;
- description: string;
- images?: Array<string>;
- popularity: number;
- rating: number;
- number_of_bought: number;
-}
+import { useSelector } from "react-redux";
+import { selectProducts } from "../../redux/productsSlice";
+import { Product } from "../../App";
 
 export default function Home() {
- const [products, setProducts] = useState<Product[]>([]);
-
- const fetchProducts = async () => {
-  try {
-   const response = await fetch("./products.json", {
-    headers: {
-     "Content-Type": "application/json",
-     Accept: "application/json"
-    }
-   });
-   const fetchedProducts = await response.json();
-   setProducts(fetchedProducts);
-  } catch (error) {
-   console.error("Error fetching products:", error);
-  }
- };
-
- useEffect(() => {
-  fetchProducts();
- }, []);
+ const products: Product[] = useSelector(selectProducts);
 
  if (!products) {
   return <div>Loading...</div>;
