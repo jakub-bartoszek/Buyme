@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Product } from "../../pages/Home/Home";
 import { Rating } from "../../components/Rating/Rating";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import "./styles.scss";
+import { selectProducts } from "../../redux/productsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Product } from "../../App";
+import { addToCart } from "../../redux/cartSlice";
 
 const ProductPage = () => {
  const { id } = useParams();
- const [product, setProduct] = useState<Product | null>(null);
+ const products: Product[] = useSelector(selectProducts);
+ const product = products.find((p) => p.id === parseInt(id || "0"));
  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
  const [activeFsGalleryImageIndex, setActiveFsGalleryImageIndex] = useState<
   number | null
@@ -15,32 +19,14 @@ const ProductPage = () => {
  const [chosenSize, setChosenSize] = useState<string | null>(null);
  const [amount, setAmount] = useState<number>(0);
  const [showGallery, setShowGallery] = useState<boolean>(false);
-
- const fetchProduct = async () => {
-  try {
-   const response = await fetch("./products.json");
-   const fetchedProducts: Product[] = await response.json();
-   const selectedProduct = fetchedProducts.find((p) => p.id.toString() === id);
-
-   if (!selectedProduct) {
-    console.error("Product not found");
-    return;
-   }
-
-   setProduct(selectedProduct);
-
-   if (selectedProduct.images) {
-    setActiveImageIndex(selectedProduct.images.length > 0 ? 0 : null);
-    setActiveFsGalleryImageIndex(selectedProduct.images.length > 0 ? 0 : null);
-   }
-  } catch (error) {
-   console.error("Error fetching product:", error);
-  }
- };
+ const dispatch = useDispatch();
 
  useEffect(() => {
-  fetchProduct();
- }, [id]);
+  if (product && product.images) {
+   setActiveImageIndex(product.images.length > 0 ? 0 : null);
+   setActiveFsGalleryImageIndex(product.images.length > 0 ? 0 : null);
+  }
+ }, [product]);
 
  const handleGalleryImageClick = (index: number) => {
   setActiveImageIndex(index);
@@ -48,6 +34,14 @@ const ProductPage = () => {
 
  const handleFsGalleryImageClick = (index: number) => {
   setActiveFsGalleryImageIndex(index);
+ };
+
+ const handleAddToCart = () => {
+  if (chosenSize && amount > 0) {
+   // Dispatch the addToCart action
+   dispatch(addToCart({ id: product?.id || 0, size: chosenSize, amount }));
+   // Redirect to the cart page
+  }
  };
 
  if (!product) return <div>Error</div>;
@@ -159,6 +153,7 @@ const ProductPage = () => {
      <button
       disabled={chosenSize == null || amount === 0}
       className="product-info__buy-button"
+      onClick={handleAddToCart}
      >
       ADD TO CART
      </button>
