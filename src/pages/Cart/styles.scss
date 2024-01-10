@@ -1,0 +1,24 @@
+.cart {
+ width: 100%;
+
+ .products {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 16px;
+  gap: 16px;
+
+  &__tile {
+   width: 300px;
+   display: flex;
+  }
+
+  &__tile--image {
+   width: 100px;
+
+   img {
+    height: 100%;
+    width: 100%;
+   }
+  }
+ }
+}
