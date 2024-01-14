@@ -1,22 +1,22 @@
 import { Product } from "../../App";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectProducts } from "../../redux/productsSlice";
 import "./styles.scss";
+import { changeAmount, selectCart } from "../../redux/cartSlice";
 export interface CartItem {
  id: number;
  sizes: { name: string; amount: number }[];
 }
 
 export default function Cart() {
- const storedCart = localStorage.getItem("cart");
- const cart: CartItem[] = storedCart ? JSON.parse(storedCart) : [];
+ const cart = useSelector(selectCart);
  const products: Product[] = useSelector(selectProducts);
+ const dispatch = useDispatch();
 
- console.log(
-  cart[2].sizes
-   .map((size) => size.amount)
-   .reduce((partialSum, a) => partialSum + a, 0)
- );
+ const onChangeHandler = (e, id: number, name: string) => {
+  const amount = parseInt(e.target.value, 10);
+  dispatch(changeAmount({ id: id, size: name, amount: amount }));
+ };
 
  return (
   <div className="cart">
@@ -32,36 +32,42 @@ export default function Cart() {
         <div className="products__tile--image">
          {product.images && <img src={product.images[0]} />}
         </div>
-        <table className="products__tile--table">
-         <thead>
-          <tr>
-           <th>{product.name}</th>
-           <th>Each</th>
-           <th>Total</th>
-          </tr>
-         </thead>
-         <tbody>
-          <tr>
-           <td>
-            {item.sizes.map((size) => (
-             <p
-              key={size.name}
-              className="products__tile--sizes"
+        <p className="products__tile--name">{product.name}</p>
+        <p className="products__tile--price">{product.price} $</p>
+        <div className="products__tile--sizes">
+         {item.sizes.map((size) => (
+          <div
+           key={size.name}
+           className="products__tile--size"
+          >
+           <span className="products__tile--size-name">{size.name}</span>
+           <select
+            className="products__tile--amount"
+            defaultValue={size.amount}
+            onChange={(e) => onChangeHandler(e, product.id, size.name)}
+           >
+            {[...Array(21).keys()].map((num) => (
+             <option
+              key={num}
+              value={num}
              >
-              {size.name}: {size.amount}
-             </p>
+              {num}
+             </option>
             ))}
-           </td>
-           <td>{product.price}</td>
-           <td>
-            {product.price *
-             item.sizes
-              .map((size) => size.amount)
-              .reduce((partialSum, a) => partialSum + a, 0)}
-           </td>
-          </tr>
-         </tbody>
-        </table>
+           </select>
+          </div>
+         ))}
+        </div>
+        <p>
+         <span>Total: </span>
+         {(
+          product.price *
+          item.sizes
+           .map((size) => size.amount)
+           .reduce((partialSum, a) => partialSum + a, 0)
+         ).toFixed(2)}
+         <span> $</span>
+        </p>
        </div>
       ))
     )}

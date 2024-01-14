@@ -90,6 +90,27 @@ $navbar-logo-color: $black;
   @extend %align-center;
   gap: 16px;
   cursor: pointer;
+  position: relative;
+
+  .cart-icon {
+   // Styles for the cart icon
+  }
+
+  .cart-item-count {
+   // Styles for the cart item count
+   background-color: red;
+   color: white;
+   font-size: 10px;
+   height: 14px;
+   width: 14px;
+   display: flex;
+   justify-content: center;
+   border-radius: 50%;
+   align-items: center;
+   position: absolute;
+   top: -5px;
+   right: -5px;
+  }
  }
 
  &__menu--button {

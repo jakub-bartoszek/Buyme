@@ -6,6 +6,8 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCart } from "../../redux/cartSlice";
 
 interface NavbarProps {}
 
@@ -14,6 +16,7 @@ const Navbar: React.FC<NavbarProps> = () => {
  const searchSwitchRef = useRef<HTMLDivElement>(null);
  const searchInputRef = useRef<HTMLInputElement>(null);
  const navigate = useNavigate();
+ const cart = useSelector(selectCart);
 
  const toggleSearchInput = () => {
   setShowSearchInput(!showSearchInput);
@@ -81,7 +84,8 @@ const Navbar: React.FC<NavbarProps> = () => {
       className="navbar__menu--button"
       to="/cart"
      >
-      <ShoppingCartIcon />
+      <ShoppingCartIcon className="cart-icon" />
+      {cart.length > 0 && <div className="cart-item-count">{cart.length}</div>}
      </NavLink>
     </div>
     {showSearchInput && (

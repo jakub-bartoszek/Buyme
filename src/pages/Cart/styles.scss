@@ -12,13 +12,13 @@
   &__tile {
    width: 100%;
    display: flex;
+   flex-direction: column;
    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    padding: 16px;
-   gap: 16px;
   }
 
   &__tile--image {
-   width: 20%;
+   width: 100px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -28,23 +28,30 @@
    }
   }
 
-  table {
-   width: 80%;
-   text-align: left;
+  &__tile--name {
+   font-weight: 600;
   }
 
-  tr {
-   display: grid;
-   grid-template-columns: 1fr auto auto;
-   gap: 32px;
+  &__tile--price {
+   font-weight: 500;
   }
 
-  th {
-   height: 20px;
+  &__tile--sizes {
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+   padding: 8px 0;
   }
 
-  td {
-   vertical-align: text-top;
+  &__tile--size {
+   font-size: 18px;
+   display: flex;
+   gap: 8px;
+  }
+
+  &__tile--size-name {
+   display: flex;
+   width: 24px;
   }
  }
 }
