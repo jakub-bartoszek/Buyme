@@ -6,6 +6,24 @@ const getInitialCartState = (): CartItem[] => {
  return storedCart ? JSON.parse(storedCart) : [];
 };
 
+const updateLocalStorage = (cart: CartItem[]) => {
+ localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+const findProductIndex = (cart: CartItem[], productId: number) =>
+ cart.findIndex((item) => item.id === productId);
+
+const findSizeIndex = (
+ sizes: { name: string; amount: number }[],
+ size: string
+) => sizes.findIndex((s) => s.name === size);
+
+interface CartState {
+ cartSlice: {
+  cart: CartItem[];
+ };
+}
+
 const cartSlice = createSlice({
  name: "cart",
  initialState: { cart: getInitialCartState() },
@@ -15,57 +33,57 @@ const cartSlice = createSlice({
    action: PayloadAction<{ id: number; size: string; amount: number }>
   ) => {
    const { id, size, amount } = action.payload;
-   const existingProductIndex = state.cart.findIndex((item) => item.id === id);
+   const productIndex = findProductIndex(state.cart, id);
 
-   if (existingProductIndex !== -1) {
-    // Product already in cart
-    const existingSizeIndex = state.cart[existingProductIndex].sizes.findIndex(
-     (s) => s.name === size
-    );
+   if (productIndex !== -1) {
+    const sizeIndex = findSizeIndex(state.cart[productIndex].sizes, size);
 
-    if (existingSizeIndex !== -1) {
-     // Size already exists for the product, update the amount
-     state.cart[existingProductIndex].sizes[existingSizeIndex].amount += amount;
+    if (sizeIndex !== -1) {
+     state.cart[productIndex].sizes[sizeIndex].amount += amount;
     } else {
-     // Size not found for the product, add a new size entry
-     state.cart[existingProductIndex].sizes.push({ name: size, amount });
+     state.cart[productIndex].sizes.push({ name: size, amount });
     }
    } else {
-    // Product not in cart, add it with the size
     state.cart.push({ id, sizes: [{ name: size, amount }] });
    }
 
-   // Save to local storage
-   localStorage.setItem("cart", JSON.stringify(state.cart));
+   updateLocalStorage(state.cart);
   },
   changeAmount: (
    state,
    action: PayloadAction<{ id: number; size: string; amount: number }>
   ) => {
    const { id, size, amount } = action.payload;
-   const existingProductIndex = state.cart.findIndex((item) => item.id === id);
+   const productIndex = findProductIndex(state.cart, id);
 
-   // Product already in cart
-   const existingSizeIndex = state.cart[existingProductIndex].sizes.findIndex(
-    (s) => s.name === size
-   );
+   const sizeIndex = findSizeIndex(state.cart[productIndex].sizes, size);
 
-   if (existingSizeIndex !== -1) {
-    // Size already exists for the product, update the amount
-    state.cart[existingProductIndex].sizes[existingSizeIndex].amount = amount;
+   if (amount === 0) {
+    if (sizeIndex !== -1) {
+     state.cart[productIndex].sizes.splice(sizeIndex, 1);
+    }
    } else {
-    // Size not found for the product, add a new size entry
-    state.cart[existingProductIndex].sizes.push({ name: size, amount });
+    if (sizeIndex !== -1) {
+     state.cart[productIndex].sizes[sizeIndex].amount = amount;
+    } else {
+     state.cart[productIndex].sizes.push({ name: size, amount });
+    }
    }
 
-   // Save to local storage
-   localStorage.setItem("cart", JSON.stringify(state.cart));
+   updateLocalStorage(state.cart);
+  },
+  removeItem: (state, action: PayloadAction<{ id: number }>) => {
+   const { id } = action.payload;
+   const index = findProductIndex(state.cart, id);
+
+   state.cart.splice(index, 1);
+   updateLocalStorage(state.cart);
   }
  }
 });
 
-export const { addToCart, changeAmount } = cartSlice.actions;
+export const { addToCart, changeAmount, removeItem } = cartSlice.actions;
 
-export const selectCart = (state) => state.cartSlice.cart;
+export const selectCart = (state: CartState) => state.cartSlice.cart;
 
 export default cartSlice.reducer;
