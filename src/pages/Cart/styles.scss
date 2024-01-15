@@ -1,20 +1,33 @@
 .cart {
  width: 100%;
  display: grid;
- grid-template-columns: 2fr 1fr;
+ grid-template-columns: 1.5fr 1fr;
+ padding: 16px;
+ gap: 16px;
 
  .products {
   display: flex;
   flex-direction: column;
-  padding: 32px;
   gap: 16px;
 
   &__tile {
    width: 100%;
    display: flex;
    flex-direction: column;
-   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
    padding: 16px;
+   position: relative;
+  }
+
+  &__tile--remove-button {
+   width: 24px;
+   position: absolute;
+   top: 16px;
+   right: 16px;
+
+   svg {
+    cursor: pointer;
+   }
   }
 
   &__tile--image {
@@ -52,6 +65,66 @@
   &__tile--size-name {
    display: flex;
    width: 24px;
+  }
+
+  &__tile--amount {
+   border: 1px solid black;
+  }
+
+  &__tile--total {
+   span {
+    &:nth-child(2) {
+     font-weight: 600;
+    }
+   }
+  }
+ }
+
+ .summation {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  height: max-content;
+
+  &__subsection {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   padding: 8px 0;
+
+   &:nth-child(2) {
+    margin-bottom: 16px;
+    border-bottom: 1px solid grey;
+   }
+
+   span {
+    &:nth-child(2) {
+     font-weight: 600;
+    }
+   }
+  }
+
+  &__buttons {
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+   gap: 8px;
+  }
+
+  &__button {
+   background-color: black;
+   color: white;
+   padding: 8px;
+   font-weight: 500;
+   border: none;
+   cursor: pointer;
+
+   &:nth-child(2) {
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+   }
   }
  }
 }
