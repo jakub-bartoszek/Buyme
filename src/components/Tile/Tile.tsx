@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Product } from "../../pages/Home/Home";
+import { Product } from "../../App";
 import "./styles.scss";
 
 interface TileProps {
