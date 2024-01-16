@@ -3,8 +3,9 @@ import { Product } from "../../App";
 import "./styles.scss";
 import { changeAmount, removeItem, selectCart } from "../../redux/cartSlice";
 import { selectProducts } from "../../redux/productsSlice";
-import { TrashIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import CartTile from "../../components/CartTile/CartTile";
+import AlertWindow from "../../components/AlertWindow/AlertWindow";
 
 export interface CartItem {
  id: number;
@@ -16,6 +17,9 @@ const Cart: React.FC = () => {
  const products: Product[] = useSelector(selectProducts);
  const dispatch = useDispatch();
  const shipPrice = 10.0;
+ const [showRemoveItemAlert, setShowRemoveItemAlert] = useState(false);
+ const [showRemoveSizeAlert, setShowRemoveSizeAlert] = useState(false);
+ const [removeItemId, setRemoveItemId] = useState<number | null>(null);
 
  const onChangeHandler = (
   e: React.ChangeEvent<HTMLSelectElement>,
@@ -23,7 +27,17 @@ const Cart: React.FC = () => {
   name: string
  ) => {
   const amount = parseInt(e.target.value, 10);
-  dispatch(changeAmount({ id: id, size: name, amount: amount }));
+  const productIndex = cart.findIndex((item) => item.id === id);
+  const sizeIndex = cart[productIndex].sizes.findIndex((s) => s.name === name);
+
+  if (amount === 0) {
+   openRemoveSizeAlert(id);
+  } else {
+   const updatedCart = [...cart];
+   updatedCart[productIndex].sizes[sizeIndex].amount = amount;
+
+   dispatch(changeAmount({ id, size: name, amount }));
+  }
  };
 
  const calculateItemTotal = (product: Product, item: CartItem): number =>
@@ -38,67 +52,68 @@ const Cart: React.FC = () => {
    return product ? total + calculateItemTotal(product, item) : total;
   }, 0);
 
+ const openRemoveItemAlert = (id: number) => {
+  setRemoveItemId(id);
+ };
+
+ const onConfirmRemoveItem = () => {
+  if (removeItemId) {
+   dispatch(removeItem({ id: removeItemId }));
+   setShowRemoveItemAlert(false);
+  }
+ };
+
+ const onCancelRemoveItem = () => {
+  setShowRemoveItemAlert(false);
+ };
+
+ const openRemoveSizeAlert = (id: number) => {
+  setRemoveItemId(id);
+  setShowRemoveSizeAlert(true);
+ };
+
+ const onConfirmRemoveSize = () => {
+  if (removeItemId) {
+   dispatch(removeItem({ id: removeItemId }));
+   setShowRemoveSizeAlert(false);
+  }
+ };
+
+ const onCancelRemoveSize = () => {
+  setShowRemoveSizeAlert(false);
+ };
+
  return (
   <div className="cart">
+   {showRemoveItemAlert && (
+    <AlertWindow
+     title="Are you sure you want to remove this item?"
+     confirmFunction={onConfirmRemoveItem}
+     cancelFunction={onCancelRemoveItem}
+    />
+   )}
+   {showRemoveSizeAlert && (
+    <AlertWindow
+     title="Are you sure you want to remove this size?"
+     confirmFunction={onConfirmRemoveSize}
+     cancelFunction={onCancelRemoveSize}
+    />
+   )}
    <div className="products">
     {cart.map((item: CartItem) =>
      products
       .filter((product) => product.id === item.id)
       .map((product) => (
-       <div
-        className="products__tile"
+       <CartTile
         key={product.id}
-       >
-        <div
-         className="products__tile--remove-button"
-         onClick={() => {
-          dispatch(removeItem({ id: item.id }));
-         }}
-        >
-         <TrashIcon />
-        </div>
-        <Link
-         to={`/product/${product.id}`}
-         className="products__tile--image"
-        >
-         {product.images && (
-          <img
-           src={product.images[0]}
-           alt={product.name}
-          />
-         )}
-        </Link>
-        <p className="products__tile--name">{product.name}</p>
-        <p className="products__tile--price">{product.price} $</p>
-        <div className="products__tile--sizes">
-         {item.sizes.map((size) => (
-          <div
-           key={size.name}
-           className="products__tile--size"
-          >
-           <span className="products__tile--size-name">{size.name}</span>
-           <select
-            className="products__tile--amount"
-            defaultValue={size.amount}
-            onChange={(e) => onChangeHandler(e, product.id, size.name)}
-           >
-            {[...Array(21).keys()].map((num) => (
-             <option
-              key={num}
-              value={num}
-             >
-              {num}
-             </option>
-            ))}
-           </select>
-          </div>
-         ))}
-        </div>
-        <p className="products__tile--total">
-         <span>Total: </span>
-         <span>{calculateItemTotal(product, item).toFixed(2)} $</span>
-        </p>
-       </div>
+        product={product}
+        item={item}
+        setShowRemoveItemAlert={setShowRemoveItemAlert}
+        openRemoveItemAlert={openRemoveItemAlert}
+        openRemoveSizeAlert={openRemoveSizeAlert}
+        onChangeHandler={onChangeHandler}
+        calculateItemTotal={calculateItemTotal}
+       />
       ))
     )}
    </div>
