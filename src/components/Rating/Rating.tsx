@@ -1,12 +1,6 @@
-import { Star } from "./Star/Star";
+import Star from "./Star/Star";
 
-export const Rating = ({
- rating,
- max = 5
-}: {
- rating: number;
- max?: number;
-}) => {
+const Rating = ({ rating, max = 5 }: { rating: number; max?: number }) => {
  return (
   <div className="flex items-center bg-white">
    {Array.from({ length: Math.floor(rating) }, (_, i) => (
@@ -25,3 +19,5 @@ export const Rating = ({
   </div>
  );
 };
+
+export default Rating;

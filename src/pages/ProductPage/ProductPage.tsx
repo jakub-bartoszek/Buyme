@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Rating } from "../../components/Rating/Rating";
+import Rating from "../../components/Rating/Rating";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import "./styles.scss";
 import { selectProducts } from "../../redux/productsSlice";
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Product } from "../../App";
 import { addToCart } from "../../redux/cartSlice";
 
-const ProductPage = () => {
+const ProductPage: React.FC = () => {
  const { id } = useParams();
  const products: Product[] = useSelector(selectProducts);
  const product = products.find((p) => p.id === parseInt(id || "0"));

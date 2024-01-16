@@ -4,7 +4,7 @@ import { InstagramIcon } from "../../assets/icons/instagram";
 import { TwitterIcon } from "../../assets/icons/twitter";
 import { LinkedinIcon } from "../../assets/icons/linkedin";
 
-export default function Footer() {
+const Footer: React.FC = () => {
  return (
   <div className="footer">
    <div className="footer__container">
@@ -89,4 +89,6 @@ export default function Footer() {
    </div>
   </div>
  );
-}
+};
+
+export default Footer;

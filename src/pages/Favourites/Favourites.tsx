@@ -1,3 +1,5 @@
-export default function Favourites() {
+const Favourites: React.FC  = () => {
  return <div>Favourites</div>;
-}
+};
+
+export default Favourites;

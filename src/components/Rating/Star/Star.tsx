@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-export const Star = ({ variant }: { variant: "filled" | "empty" | "half" }) => {
+const Star = ({ variant }: { variant: "filled" | "empty" | "half" }) => {
  const id = useId();
 
  let c1, c2;
@@ -42,3 +42,5 @@ export const Star = ({ variant }: { variant: "filled" | "empty" | "half" }) => {
   </svg>
  );
 };
+
+export default Star;

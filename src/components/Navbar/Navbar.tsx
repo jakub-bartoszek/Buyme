@@ -9,9 +9,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/cartSlice";
 
-interface NavbarProps {}
-
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC = () => {
  const [showSearchInput, setShowSearchInput] = useState<boolean>(false);
  const searchSwitchRef = useRef<HTMLDivElement>(null);
  const searchInputRef = useRef<HTMLInputElement>(null);
