@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { selectProducts } from "../../redux/productsSlice";
 import { Product } from "../../App";
 
-export default function Home() {
+const Home: React.FC = () => {
  const products: Product[] = useSelector(selectProducts);
 
  if (!products) {
@@ -62,4 +62,6 @@ export default function Home() {
    </main>
   </div>
  );
-}
+};
+
+export default Home;
