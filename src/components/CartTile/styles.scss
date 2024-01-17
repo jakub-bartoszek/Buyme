@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 .cart-tile {
  width: 100%;
  display: flex;
@@ -55,7 +57,7 @@
  }
 
  &__amount {
-  border: 1px solid black;
+  border: 1px solid $pureBlack;
  }
 
  &__total {
