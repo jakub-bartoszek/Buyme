@@ -61,6 +61,7 @@ const CartTile = ({
      <select
       className="cart-tile__amount"
       defaultValue={size.amount}
+      value={size.amount}
       onChange={(e) => {
        onChangeHandler(e, product.id, size.name);
        if (parseInt(e.target.value, 10) === 0) {
