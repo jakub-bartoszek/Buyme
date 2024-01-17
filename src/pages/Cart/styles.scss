@@ -69,13 +69,14 @@
    transition: all 0.3s;
 
    &:first-child {
+    &:hover {
+     transform: scale(103%);
+    }
+
     &:disabled {
      opacity: 50%;
      cursor: not-allowed;
-    }
-
-    &:hover {
-     transform: scale(103%);
+     transform: none;
     }
    }
 
