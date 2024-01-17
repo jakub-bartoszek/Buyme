@@ -1,19 +1,16 @@
 @import "../../styles/colors";
 
-// Mixins
 %align-center {
  display: flex;
  align-items: center;
 }
 
-// Variables
 $navbar-background: $white;
 $navbar-height: 60px;
 $navbar-content-width: 1400px;
 $navbar-max-width: 800px;
 $navbar-logo-color: $black;
 
-// Navbar Styles
 .navbar {
  background-color: $navbar-background;
  height: $navbar-height;
@@ -23,7 +20,7 @@ $navbar-logo-color: $black;
  justify-content: center;
  z-index: 10;
  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
- 
+
  a {
   text-decoration: none;
   color: $black;
@@ -31,7 +28,7 @@ $navbar-logo-color: $black;
 
  &__shadow {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 60px);
   background-color: #00000050;
   backdrop-filter: blur(2px);
   position: absolute;
@@ -93,14 +90,9 @@ $navbar-logo-color: $black;
   cursor: pointer;
   position: relative;
 
-  .cart-icon {
-   // Styles for the cart icon
-  }
-
   .cart-item-count {
-   // Styles for the cart item count
    background-color: red;
-   color: white;
+   color: $pureWhite;
    font-size: 10px;
    height: 14px;
    width: 14px;
