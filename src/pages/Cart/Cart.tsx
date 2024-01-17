@@ -6,6 +6,8 @@ import { selectProducts } from "../../redux/productsSlice";
 import { useState } from "react";
 import CartTile from "../../components/CartTile/CartTile";
 import AlertWindow from "../../components/AlertWindow/AlertWindow";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router";
 
 export interface CartItem {
  id: number;
@@ -20,6 +22,7 @@ const Cart: React.FC = () => {
  const [showRemoveItemAlert, setShowRemoveItemAlert] = useState(false);
  const [showRemoveSizeAlert, setShowRemoveSizeAlert] = useState(false);
  const [removeItemId, setRemoveItemId] = useState<number | null>(null);
+ const navigate = useNavigate();
 
  const onChangeHandler = (
   e: React.ChangeEvent<HTMLSelectElement>,
@@ -27,15 +30,10 @@ const Cart: React.FC = () => {
   name: string
  ) => {
   const amount = parseInt(e.target.value, 10);
-  const productIndex = cart.findIndex((item) => item.id === id);
-  const sizeIndex = cart[productIndex].sizes.findIndex((s) => s.name === name);
 
   if (amount === 0) {
    openRemoveSizeAlert(id);
   } else {
-   const updatedCart = [...cart];
-   updatedCart[productIndex].sizes[sizeIndex].amount = amount;
-
    dispatch(changeAmount({ id, size: name, amount }));
   }
  };
@@ -99,40 +97,60 @@ const Cart: React.FC = () => {
      cancelFunction={onCancelRemoveSize}
     />
    )}
-   <div className="products">
-    {cart.map((item: CartItem) =>
-     products
-      .filter((product) => product.id === item.id)
-      .map((product) => (
-       <CartTile
-        key={product.id}
-        product={product}
-        item={item}
-        setShowRemoveItemAlert={setShowRemoveItemAlert}
-        openRemoveItemAlert={openRemoveItemAlert}
-        openRemoveSizeAlert={openRemoveSizeAlert}
-        onChangeHandler={onChangeHandler}
-        calculateItemTotal={calculateItemTotal}
-       />
-      ))
-    )}
-   </div>
+   {cart.length > 0 ? (
+    <div className="products">
+     {cart.map((item: CartItem) =>
+      products
+       .filter((product) => product.id === item.id)
+       .map((product) => (
+        <CartTile
+         key={product.id}
+         product={product}
+         item={item}
+         setShowRemoveItemAlert={setShowRemoveItemAlert}
+         openRemoveItemAlert={openRemoveItemAlert}
+         openRemoveSizeAlert={openRemoveSizeAlert}
+         onChangeHandler={onChangeHandler}
+         calculateItemTotal={calculateItemTotal}
+        />
+       ))
+     )}
+    </div>
+   ) : (
+    <div className="empty-cart-message">
+     <ShoppingCartIcon />
+     Your cart is empty
+    </div>
+   )}
    <div className="summation">
     <p className="summation__subsection">
      <span>Value of products: </span>
      <span>{calculateTotalPrice().toFixed(2)} $</span>
     </p>
-    <p className="summation__subsection">
-     <span>Ship: </span>
-     <span>{shipPrice} $</span>
-    </p>
-    <p className="summation__subsection">
-     <span>Total: </span>
-     <span>{(calculateTotalPrice() + shipPrice).toFixed(2)} $</span>
-    </p>
+    {cart.length > 0 && (
+     <>
+      <p className="summation__subsection">
+       <span>Ship: </span>
+       <span>{shipPrice} $</span>
+      </p>
+      <p className="summation__subsection">
+       <span>Total: </span>
+       <span>{(calculateTotalPrice() + shipPrice).toFixed(2)} $</span>
+      </p>
+     </>
+    )}
     <div className="summation__buttons">
-     <button className="summation__button">Pay</button>
-     <button className="summation__button">Continue shopping</button>
+     <button
+      className="summation__button"
+      disabled={cart.length === 0}
+      onClick={() => navigate("/payment")}
+     >Pay</button>
+     <button
+      className="summation__button"
+      onClick={() => navigate("/home")}
+     >
+      Continue shopping
+     </button>
     </div>
    </div>
   </div>
