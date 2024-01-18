@@ -75,7 +75,7 @@ function App() {
        element={<Search />}
       />
       <Route
-       path="/favorites"
+       path="/favourites"
        element={<Favourites />}
       />
       <Route

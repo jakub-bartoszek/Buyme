@@ -7,11 +7,15 @@ import { selectProducts } from "../../redux/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Product } from "../../App";
 import { addToCart } from "../../redux/cartSlice";
+import { HeartIcon } from "@heroicons/react/24/solid";
+import { addToFavourites, selectFavourites } from "../../redux/favouritesSlice";
 
 const ProductPage: React.FC = () => {
  const { id } = useParams();
+ const productId = parseInt(id || "0", 10); // Parse id as integer
+
  const products: Product[] = useSelector(selectProducts);
- const product = products.find((p) => p.id === parseInt(id || "0"));
+ const product = products.find((p) => p.id === productId);
  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
  const [activeFsGalleryImageIndex, setActiveFsGalleryImageIndex] = useState<
   number | null
@@ -19,6 +23,7 @@ const ProductPage: React.FC = () => {
  const [chosenSize, setChosenSize] = useState<string | null>(null);
  const [amount, setAmount] = useState<number>(0);
  const [showGallery, setShowGallery] = useState<boolean>(false);
+ const favourites = useSelector(selectFavourites);
  const dispatch = useDispatch();
 
  useEffect(() => {
@@ -38,9 +43,7 @@ const ProductPage: React.FC = () => {
 
  const handleAddToCart = () => {
   if (chosenSize && amount > 0) {
-   // Dispatch the addToCart action
    dispatch(addToCart({ id: product?.id || 0, size: chosenSize, amount }));
-   // Redirect to the cart page
   }
  };
 
@@ -149,13 +152,24 @@ const ProductPage: React.FC = () => {
       +
      </button>
     </div>
-    <div>
+    <div className="product-info__buttons">
      <button
       disabled={chosenSize == null || amount === 0}
       className="product-info__buy-button"
       onClick={handleAddToCart}
      >
       ADD TO CART
+     </button>
+     <button
+      className="product-info__favourite-button"
+      onClick={() => dispatch(addToFavourites({ id: product.id }))}
+     >
+      <HeartIcon
+       className={`${
+        favourites.findIndex((product) => product.id === productId) !== -1 &&
+        "added"
+       }`}
+      />
      </button>
     </div>
    </div>

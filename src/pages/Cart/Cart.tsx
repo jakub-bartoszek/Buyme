@@ -144,7 +144,9 @@ const Cart: React.FC = () => {
       className="summation__button"
       disabled={cart.length === 0}
       onClick={() => navigate("/payment")}
-     >Pay</button>
+     >
+      Pay
+     </button>
      <button
       className="summation__button"
       onClick={() => navigate("/home")}

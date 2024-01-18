@@ -183,11 +183,41 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    }
   }
 
+  &__buttons {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 16px;
+  }
+
   &__buy-button {
    @include buttonStyles;
    background-color: $black;
    color: $white;
    padding: 8px;
+  }
+
+  &__favourite-button {
+   background-color: $pureWhite;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 4px;
+   border-radius: 50%;
+   border: none;
+   box-shadow: $common-box-shadow;
+   cursor: pointer;
+   
+   svg {
+    color: $pureWhite;
+    stroke: $pureBlack;
+    width: 24px;
+    height: 24px;
+   }
+
+   .added {
+    color: $pureBlack;
+   }
   }
  }
 
