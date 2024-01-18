@@ -1,4 +1,4 @@
-# Moviero [IN DEVELOPMENT]
+# Buyme [IN DEVELOPMENT]
 
 [App is live here.](https://jakub-bartoszek.github.io/Buyme/)
 
