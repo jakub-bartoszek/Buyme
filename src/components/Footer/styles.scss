@@ -1,4 +1,5 @@
 @import "../../styles/colors";
+@import "../../styles/breakpoints";
 
 .footer {
  background-color: $darkGrey;
@@ -14,12 +15,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 32px 16px 16px 16px;
+  padding: 16px;
   gap: 64px;
-  font-size: 1rem;
+  font-size: 16px;
 
-  @media (max-width: 768px) {
+  @media (max-width: $mobileHorizontal) {
    justify-content: center;
+   font-size: 14px;
+   gap: 32px;
+  }
+
+  @media (max-width: $mobileVertical) {
+   font-size: 12px;
   }
  }
 
@@ -28,13 +35,13 @@
   grid-template-columns: 1fr auto auto auto;
   gap: 32px;
 
-  @media (max-width: 768px) {
+  @media (max-width: $mobileHorizontal) {
    grid-template-columns: 1fr 1fr 1fr;
   }
  }
 
  &__main--section-description {
-  @media (max-width: 768px) {
+  @media (max-width: $mobileHorizontal) {
    grid-column: 1 / span 3;
   }
  }
@@ -54,11 +61,16 @@
   height: 24px;
   width: 24px;
   color: $grey;
-  margin: 8px;
+  margin: 8px 8px 0 0;
 
   &:hover {
    color: $white;
    cursor: pointer;
+  }
+
+  @media (max-width: $mobileVertical) {
+   height: 18px;
+   width: 18px;
   }
  }
 

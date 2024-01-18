@@ -1,4 +1,5 @@
 @import "../../styles/colors";
+@import "../../styles/breakpoints";
 
 .cart {
  width: 100%;
@@ -6,6 +7,10 @@
  grid-template-columns: 1.5fr 1fr;
  padding: 16px;
  gap: 16px;
+
+ @media (max-width: $mobileHorizontal) {
+  grid-template-columns: 1fr 1fr;
+ }
 
  .products {
   display: flex;
@@ -22,8 +27,20 @@
   color: $grey;
   text-align: center;
 
+  @media (max-width: $mobileVertical) {
+   font-size: 16px;
+
+   svg {
+    height: 36px;
+   }
+  }
+
   svg {
    height: 72px;
+
+   @media (max-width: $mobileVertical) {
+    height: 36px;
+   }
   }
  }
 
@@ -32,13 +49,23 @@
   background-color: $pureWhite;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   padding: 16px;
+  font-size: 16px;
   height: max-content;
+
+  @media (max-width: $mobileVertical) {
+   padding: 8px;
+   font-size: 12px;
+  }
 
   &__subsection {
    width: 100%;
    display: flex;
    justify-content: space-between;
    padding: 8px 0;
+
+   @media (max-width: $mobileVertical) {
+    padding: 4px 0;
+   }
 
    &:nth-child(2) {
     margin-bottom: 16px;
@@ -67,6 +94,11 @@
    border: none;
    cursor: pointer;
    transition: all 0.3s;
+
+   @media (max-width: $mobileVertical) {
+    padding: 4px;
+    font-size: 12px;
+   }
 
    &:first-child {
     &:hover {

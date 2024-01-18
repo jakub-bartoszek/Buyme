@@ -1,4 +1,5 @@
 @import "../../styles/colors";
+@import "../../styles//breakpoints";
 
 .cart-tile {
  width: 100%;
@@ -8,11 +9,22 @@
  padding: 16px;
  position: relative;
 
+ @media (max-width: $mobileVertical) {
+  padding: 8px;
+  font-size: 14px;
+ }
+
  &__remove-button {
   width: 24px;
   position: absolute;
   top: 16px;
   right: 16px;
+
+  @media (max-width: $mobileVertical) {
+   width: 16px;
+   top: 8px;
+   right: 8px;
+  }
 
   svg {
    cursor: pointer;
@@ -24,6 +36,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: $mobileVertical) {
+   width: 72px;
+  }
 
   img {
    width: 100%;
@@ -46,9 +62,12 @@
  }
 
  &__size {
-  font-size: 18px;
   display: flex;
   gap: 8px;
+
+  @media (max-width: $mobileVertical) {
+   gap: 0;
+  }
  }
 
  &__size-name {
