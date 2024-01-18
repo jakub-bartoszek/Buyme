@@ -124,7 +124,7 @@ const Cart: React.FC = () => {
    )}
    <div className="summation">
     <p className="summation__subsection">
-     <span>Value of products: </span>
+     <span>Value: </span>
      <span>{calculateTotalPrice().toFixed(2)} $</span>
     </p>
     {cart.length > 0 && (
