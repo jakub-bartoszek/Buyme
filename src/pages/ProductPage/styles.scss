@@ -2,7 +2,6 @@
 @import "../../styles/breakpoints";
 @import "../../styles/shadows";
 
-// Mixin for small image styles
 @mixin smallImageStyles {
  aspect-ratio: 2/3;
  display: flex;
@@ -19,7 +18,6 @@
  }
 }
 
-// Mixin for button styles
 @mixin buttonStyles {
  min-width: 32px;
  height: 32px;
@@ -39,7 +37,6 @@
  }
 }
 
-// Main product styles
 .product {
  display: grid;
  padding: 32px 16px 64px 16px;
@@ -52,7 +49,6 @@
   padding: 8px;
  }
 
- // Product Gallery
  .product-gallery {
   width: 100%;
   display: grid;
@@ -63,7 +59,6 @@
    grid-template-columns: auto 1fr;
   }
 
-  // Small Images Section
   &__small-images {
    display: flex;
    flex-direction: column;
@@ -77,7 +72,6 @@
    }
   }
 
-  // Small Image Styles
   &__small-image {
    @include smallImageStyles;
    aspect-ratio: 2/3;
@@ -92,14 +86,12 @@
    }
   }
 
-  // Main Image Wrapper
   &__main-image-wrapper {
    min-height: 300px;
    max-height: 800px;
    padding: 8px;
   }
 
-  // Main Image Styles
   &__main-image {
    aspect-ratio: 2/3;
    height: 100%;
@@ -113,7 +105,6 @@
    }
   }
 
-  // Scrollbar Styles
   ::-webkit-scrollbar {
    width: 8px;
   }
@@ -132,7 +123,6 @@
   }
  }
 
- // Product Information Section
  .product-info {
   display: flex;
   flex-direction: column;
@@ -146,14 +136,12 @@
    margin-bottom: 8px;
   }
 
-  // Product Sizes Section
   &__sizes {
    display: flex;
    gap: 8px;
    margin-bottom: 16px;
   }
 
-  // Size Button Styles
   &__size {
    height: 24px;
    width: 24px;
@@ -172,19 +160,16 @@
    }
   }
 
-  // Product Amount Section
   &__amount {
    display: flex;
    margin-bottom: 16px;
 
-   // Amount Button Styles
    &--button {
     @include buttonStyles;
     background-color: $black;
     color: $white;
    }
 
-   // Amount Display Styles
    &--number {
     border: 1px solid $black;
     background-color: $pureWhite;
@@ -197,7 +182,6 @@
    }
   }
 
-  // Action Buttons Section
   &__buttons {
    display: flex;
    flex-direction: column;
@@ -205,7 +189,6 @@
    gap: 16px;
   }
 
-  // Buy Button Styles
   &__buy-button {
    @include buttonStyles;
    background-color: $black;
@@ -213,7 +196,6 @@
    padding: 8px;
   }
 
-  // Favourite Button Styles
   &__favourite-button {
    background-color: $pureWhite;
    display: flex;
@@ -238,13 +220,11 @@
   }
  }
 
- // Product Description Section
  .product-description {
   grid-column: 1 / span 2;
  }
 }
 
-// Fullscreen Gallery Styles
 .product-fullscreen-gallery {
  background-color: rgba(0, 0, 0, 0.2);
  backdrop-filter: blur(2px);
@@ -257,7 +237,6 @@
  left: 0;
  padding-bottom: 16px;
 
- // Main Image Wrapper
  &__main-image-wrapper {
   padding: 32px;
   height: 80%;
@@ -268,7 +247,6 @@
   z-index: 2;
  }
 
- // Main Image Styles
  &__main-image {
   aspect-ratio: 2/3;
   position: relative;
@@ -279,7 +257,6 @@
   box-shadow: $small-box-shadow;
  }
 
- // Close Button Styles
  &__close-button {
   position: absolute;
   top: 0px;
@@ -292,7 +269,6 @@
   }
  }
 
- // Small Images Section
  &__small-images {
   overflow-x: scroll;
   height: 20%;
@@ -306,7 +282,6 @@
   gap: 16px;
  }
 
- // Small Image Styles
  &__small-image {
   @include smallImageStyles;
   height: 100%;
@@ -317,7 +292,6 @@
   width: 100%;
  }
 
- // Scrollbar Styles
  ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

@@ -2,7 +2,6 @@
 @import "../../styles/breakpoints";
 @import "../../styles/shadows";
 
-// Main container styling for the shopping cart
 .cart {
  width: 100%;
  display: grid;
@@ -10,19 +9,16 @@
  padding: 16px;
  gap: 16px;
 
- // Responsive layout adjustment for mobile screens
  @media (max-width: $mobileHorizontal) {
   grid-template-columns: 1fr 1fr;
  }
 
- // Styling for the list of products in the cart
  .products {
   display: flex;
   flex-direction: column;
   gap: 16px;
  }
 
- // Styling for the message when the cart is empty
  .empty-cart-message {
   display: flex;
   flex-direction: column;
@@ -32,11 +28,9 @@
   color: $grey;
   text-align: center;
 
-  // Responsive adjustment for smaller screens
   @media (max-width: $mobileVertical) {
    font-size: 16px;
 
-   // Adjusting the height of the shopping cart icon
    svg {
     height: 36px;
    }
@@ -45,14 +39,12 @@
   svg {
    height: 72px;
 
-   // Responsive adjustment for smaller screens
    @media (max-width: $mobileVertical) {
     height: 36px;
    }
   }
  }
 
- // Styling for the summary section of the cart
  .summation {
   width: 100%;
   background-color: $pureWhite;
@@ -61,39 +53,33 @@
   font-size: 16px;
   height: max-content;
 
-  // Responsive adjustment for smaller screens
   @media (max-width: $mobileVertical) {
    padding: 8px;
    font-size: 12px;
   }
 
-  // Subsection styles within the summary
   &__subsection {
    width: 100%;
    display: flex;
    justify-content: space-between;
    padding: 8px 0;
 
-   // Responsive adjustment for smaller screens
    @media (max-width: $mobileVertical) {
     padding: 4px 0;
    }
 
-   // Styling for the second subsection with a border
    &:nth-child(2) {
     margin-bottom: 16px;
     border-bottom: 1px solid grey;
    }
 
    span {
-    // Styling for the second span (e.g., total price)
     &:nth-child(2) {
      font-weight: 600;
     }
    }
   }
 
-  // Styling for the buttons within the summary
   &__buttons {
    display: flex;
    width: 100%;
@@ -101,7 +87,6 @@
    gap: 8px;
   }
 
-  // Styling for individual buttons in the summary
   &__button {
    background-color: $pureBlack;
    color: $pureWhite;
@@ -115,13 +100,12 @@
     padding: 4px;
     font-size: 12px;
    }
-   // Styling for the "Pay" button
+
    &:first-child {
     &:hover {
      transform: scale(103%);
     }
 
-    // Styling for the disabled state
     &:disabled {
      opacity: 50%;
      cursor: not-allowed;
@@ -129,7 +113,6 @@
     }
    }
 
-   // Styling for the "Continue Shopping" button
    &:nth-child(2) {
     background-color: transparent;
     border: 1px solid $pureBlack;

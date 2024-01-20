@@ -6,21 +6,17 @@ import { selectProducts } from "../../redux/productsSlice";
 import { Product } from "../../App";
 
 const Home: React.FC = () => {
- // Retrieve products from the Redux store
  const products: Product[] = useSelector(selectProducts);
 
  return (
   <div>
-   {/* Banner Section */}
    <header className="banner">
     <img
      src="https://pbs.twimg.com/media/Fzb3Zq9aMAIRwex?format=jpg&name=large"
      alt="Banner"
     />
    </header>
-   {/* Main Content */}
    <main className="main">
-    {/* Newest Section */}
     <h2 className="section-title">Newest</h2>
     <section
      className="section"
@@ -35,7 +31,6 @@ const Home: React.FC = () => {
        />
       ))}
     </section>
-    {/* Most Popular Section */}
     <h2 className="section-title">Most popular</h2>
     <section
      className="section"
@@ -50,7 +45,6 @@ const Home: React.FC = () => {
        />
       ))}
     </section>
-    {/* Winter Collection Section */}
     <h2 className="section-title">Winter collection</h2>
     <section
      className="section"
