@@ -28,6 +28,15 @@
   }
  }
 
+ &__name {
+  font-weight: 600;
+  font-size: 18px;
+ }
+
+ &__price {
+  font-weight: 500;
+ }
+
  &__favourite-button {
   background-color: $pureWhite;
   display: flex;

@@ -37,7 +37,7 @@ const Favourites: React.FC = () => {
          </div>
          <div>
           <p className="favourites-tile__name">{product.name}</p>
-          <p className="favourites-tile__price">{product.price}</p>
+          <p className="favourites-tile__price">{product.price} $</p>
          </div>
          <button
           className="favourites-tile__favourite-button"
