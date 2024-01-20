@@ -12,8 +12,7 @@ import { addToFavourites, selectFavourites } from "../../redux/favouritesSlice";
 
 const ProductPage: React.FC = () => {
  const { id } = useParams();
- const productId = parseInt(id || "0", 10); // Parse id as integer
-
+ const productId = parseInt(id || "0", 10);
  const products: Product[] = useSelector(selectProducts);
  const product = products.find((p) => p.id === productId);
  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);

@@ -1,8 +1,9 @@
-import { useSelector } from "react-redux";
-import { selectFavourites } from "../../redux/favouritesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavourites, selectFavourites } from "../../redux/favouritesSlice";
 import { Product } from "../../App";
 import { selectProducts } from "../../redux/productsSlice";
 import "./styles.scss";
+import { HeartIcon } from "@heroicons/react/24/solid";
 
 export interface FavouriteItem {
  id: number;
@@ -11,6 +12,8 @@ export interface FavouriteItem {
 const Favourites: React.FC = () => {
  const favorites = useSelector(selectFavourites);
  const products: Product[] = useSelector(selectProducts);
+ const dispatch = useDispatch();
+
  return (
   <div className="favourites">
    {favorites.length > 0 ? (
@@ -19,14 +22,23 @@ const Favourites: React.FC = () => {
       products
        .filter((product) => product.id === item.id)
        .map((product) => (
-        <div className="favourites-tile">
+        <div
+         className="favourites-tile"
+         key={product.id}
+        >
          <div className="favourites-tile__image-wrapper">
           {product && product.images && <img src={product.images[0]} />}
          </div>
          <div>
-          <p>{product.name}</p>
-          <p>{product.price}</p>
+          <p className="favourites-tile__name">{product.name}</p>
+          <p className="favourites-tile__price">{product.price}</p>
          </div>
+         <button
+          className="favourites-tile__favourite-button"
+          onClick={() => dispatch(addToFavourites({ id: product.id }))}
+         >
+          <HeartIcon />
+         </button>
         </div>
        ))
      )}

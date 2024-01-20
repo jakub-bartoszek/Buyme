@@ -1,6 +1,8 @@
 @import "../../styles/colors";
 @import "../../styles/breakpoints";
 
+$common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
 .favourites {
  width: 100%;
  height: 100%;
@@ -16,6 +18,7 @@
  display: flex;
  gap: 8px;
  padding: 8px;
+ position: relative;
 
  &__image-wrapper {
   width: 72px;
@@ -23,6 +26,30 @@
   img {
    width: 100%;
    height: 100%;
+  }
+ }
+
+ &__favourite-button {
+  background-color: $pureWhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  svg {
+   width: 24px;
+   height: 24px;
+   color: $pureBlack;
+   transition: all 0.3s;
+
+   &:hover {
+    stroke: $pureBlack;
+    color: $pureWhite;
+   }
   }
  }
 }
