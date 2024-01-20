@@ -1,8 +1,8 @@
 @import "../../styles/colors";
 @import "../../styles/breakpoints";
+@import "../../styles/shadows";
 
-$common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-
+// Mixin for small image styles
 @mixin smallImageStyles {
  aspect-ratio: 2/3;
  display: flex;
@@ -10,7 +10,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
  align-items: center;
  cursor: pointer;
  filter: brightness(80%);
- box-shadow: $common-box-shadow;
+ box-shadow: $small-box-shadow;
  transition: all 0.3s;
 
  &:hover,
@@ -19,6 +19,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
  }
 }
 
+// Mixin for button styles
 @mixin buttonStyles {
  min-width: 32px;
  height: 32px;
@@ -38,6 +39,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
  }
 }
 
+// Main product styles
 .product {
  display: grid;
  padding: 32px 16px 64px 16px;
@@ -50,6 +52,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   padding: 8px;
  }
 
+ // Product Gallery
  .product-gallery {
   width: 100%;
   display: grid;
@@ -60,6 +63,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    grid-template-columns: auto 1fr;
   }
 
+  // Small Images Section
   &__small-images {
    display: flex;
    flex-direction: column;
@@ -73,11 +77,12 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    }
   }
 
+  // Small Image Styles
   &__small-image {
    @include smallImageStyles;
    aspect-ratio: 2/3;
    width: 100%;
-   box-shadow: $common-box-shadow;
+   box-shadow: $small-box-shadow;
    cursor: pointer;
 
    img {
@@ -87,16 +92,18 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    }
   }
 
+  // Main Image Wrapper
   &__main-image-wrapper {
    min-height: 300px;
    max-height: 800px;
    padding: 8px;
   }
 
+  // Main Image Styles
   &__main-image {
    aspect-ratio: 2/3;
    height: 100%;
-   box-shadow: $common-box-shadow;
+   box-shadow: $small-box-shadow;
    cursor: pointer;
 
    img {
@@ -106,6 +113,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    }
   }
 
+  // Scrollbar Styles
   ::-webkit-scrollbar {
    width: 8px;
   }
@@ -124,6 +132,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   }
  }
 
+ // Product Information Section
  .product-info {
   display: flex;
   flex-direction: column;
@@ -137,12 +146,14 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    margin-bottom: 8px;
   }
 
+  // Product Sizes Section
   &__sizes {
    display: flex;
    gap: 8px;
    margin-bottom: 16px;
   }
 
+  // Size Button Styles
   &__size {
    height: 24px;
    width: 24px;
@@ -161,16 +172,19 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    }
   }
 
+  // Product Amount Section
   &__amount {
    display: flex;
    margin-bottom: 16px;
 
+   // Amount Button Styles
    &--button {
     @include buttonStyles;
     background-color: $black;
     color: $white;
    }
 
+   // Amount Display Styles
    &--number {
     border: 1px solid $black;
     background-color: $pureWhite;
@@ -183,6 +197,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    }
   }
 
+  // Action Buttons Section
   &__buttons {
    display: flex;
    flex-direction: column;
@@ -190,6 +205,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    gap: 16px;
   }
 
+  // Buy Button Styles
   &__buy-button {
    @include buttonStyles;
    background-color: $black;
@@ -197,6 +213,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    padding: 8px;
   }
 
+  // Favourite Button Styles
   &__favourite-button {
    background-color: $pureWhite;
    display: flex;
@@ -205,9 +222,9 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
    padding: 4px;
    border-radius: 50%;
    border: none;
-   box-shadow: $common-box-shadow;
+   box-shadow: $small-box-shadow;
    cursor: pointer;
-   
+
    svg {
     color: $pureWhite;
     stroke: $pureBlack;
@@ -221,11 +238,13 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   }
  }
 
+ // Product Description Section
  .product-description {
   grid-column: 1 / span 2;
  }
 }
 
+// Fullscreen Gallery Styles
 .product-fullscreen-gallery {
  background-color: rgba(0, 0, 0, 0.2);
  backdrop-filter: blur(2px);
@@ -238,6 +257,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
  left: 0;
  padding-bottom: 16px;
 
+ // Main Image Wrapper
  &__main-image-wrapper {
   padding: 32px;
   height: 80%;
@@ -248,6 +268,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   z-index: 2;
  }
 
+ // Main Image Styles
  &__main-image {
   aspect-ratio: 2/3;
   position: relative;
@@ -255,9 +276,10 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: $common-box-shadow;
+  box-shadow: $small-box-shadow;
  }
 
+ // Close Button Styles
  &__close-button {
   position: absolute;
   top: 0px;
@@ -270,6 +292,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   }
  }
 
+ // Small Images Section
  &__small-images {
   overflow-x: scroll;
   height: 20%;
@@ -283,6 +306,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   gap: 16px;
  }
 
+ // Small Image Styles
  &__small-image {
   @include smallImageStyles;
   height: 100%;
@@ -293,6 +317,7 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
  }
 
+ // Scrollbar Styles
  ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

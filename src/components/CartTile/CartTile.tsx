@@ -10,7 +10,7 @@ const CartTile = ({
  setShowRemoveItemAlert,
  openRemoveItemAlert,
  openRemoveSizeAlert,
- onChangeHandler,
+ onAmountChange,
  calculateItemTotal
 }: {
  product: Product;
@@ -18,7 +18,7 @@ const CartTile = ({
  setShowRemoveItemAlert: React.Dispatch<React.SetStateAction<boolean>>;
  openRemoveItemAlert: (id: number) => void;
  openRemoveSizeAlert: (id: number) => void;
- onChangeHandler: (
+ onAmountChange: (
   e: React.ChangeEvent<HTMLSelectElement>,
   id: number,
   name: string
@@ -63,7 +63,7 @@ const CartTile = ({
       defaultValue={size.amount}
       value={size.amount}
       onChange={(e) => {
-       onChangeHandler(e, product.id, size.name);
+       onAmountChange(e, product.id, size.name);
        if (parseInt(e.target.value, 10) === 0) {
         openRemoveSizeAlert(product.id);
        }

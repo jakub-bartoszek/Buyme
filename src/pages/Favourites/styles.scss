@@ -1,8 +1,8 @@
 @import "../../styles/colors";
 @import "../../styles/breakpoints";
+@import "../../styles/shadows";
 
-$common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-
+// Favourites component styling
 .favourites {
  width: 100%;
  height: 100%;
@@ -12,23 +12,27 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
  gap: 16px;
 }
 
+// Styling for individual favourite tiles
 .favourites-tile {
  background-color: $pureWhite;
- box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+ box-shadow: $small-box-shadow;
  display: flex;
  gap: 8px;
  padding: 8px;
  position: relative;
 
+ // Styling for the image wrapper
  &__image-wrapper {
   width: 72px;
 
+  // Styling for the image within the wrapper
   img {
    width: 100%;
    height: 100%;
   }
  }
 
+ // Styling for the favourite button
  &__favourite-button {
   background-color: $pureWhite;
   display: flex;
@@ -40,12 +44,14 @@ $common-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   top: 8px;
   right: 8px;
 
+  // Styling for the heart icon
   svg {
    width: 24px;
    height: 24px;
    color: $pureBlack;
    transition: all 0.3s;
 
+   // Hover effect
    &:hover {
     stroke: $pureBlack;
     color: $pureWhite;

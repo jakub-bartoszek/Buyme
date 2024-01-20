@@ -1,3 +1,4 @@
+import React from "react";
 import "./styles.scss";
 import Tile from "../../components/Tile/Tile";
 import { useSelector } from "react-redux";
@@ -5,19 +6,22 @@ import { selectProducts } from "../../redux/productsSlice";
 import { Product } from "../../App";
 
 const Home: React.FC = () => {
+ // Retrieve products from the Redux store
  const products: Product[] = useSelector(selectProducts);
-
- if (!products) {
-  return <div>Loading...</div>;
- }
 
  return (
   <div>
+   {/* Banner Section */}
    <header className="banner">
-    <img src="https://pbs.twimg.com/media/Fzb3Zq9aMAIRwex?format=jpg&name=large" />
+    <img
+     src="https://pbs.twimg.com/media/Fzb3Zq9aMAIRwex?format=jpg&name=large"
+     alt="Banner"
+    />
    </header>
+   {/* Main Content */}
    <main className="main">
-    <h2 className="title">Newest</h2>
+    {/* Newest Section */}
+    <h2 className="section-title">Newest</h2>
     <section
      className="section"
      id="newest"
@@ -31,7 +35,8 @@ const Home: React.FC = () => {
        />
       ))}
     </section>
-    <h2 className="title">Most popular</h2>
+    {/* Most Popular Section */}
+    <h2 className="section-title">Most popular</h2>
     <section
      className="section"
      id="most_popular"
@@ -45,7 +50,8 @@ const Home: React.FC = () => {
        />
       ))}
     </section>
-    <h2 className="title">Winter collection</h2>
+    {/* Winter Collection Section */}
+    <h2 className="section-title">Winter collection</h2>
     <section
      className="section"
      id="winter_collection"

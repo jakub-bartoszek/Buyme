@@ -1,12 +1,14 @@
 @import "../../styles/colors";
 
+/* Banner styling */
 .banner {
  height: clamp(200px, 50vw, 500px);
- background-color: grey;
+ background-color: $grey;
  display: flex;
  align-items: center;
  justify-content: center;
 
+ /* Ensure images cover the entire banner */
  img {
   object-fit: cover;
   height: 100%;
@@ -14,19 +16,23 @@
  }
 }
 
+/* Main content styling */
 .main {
  padding: 16px;
 }
 
-.section {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(162px, 1fr));
- gap: 16px;
-}
-
-.title {
+/* Section title styling */
+.section-title {
  font-weight: 600;
  color: $black;
  margin: 0;
  padding: 32px 0 16px 0;
+ width: 100%;
+}
+
+/* Section grid layout */
+.section {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(162px, 1fr));
+ gap: 16px;
 }
