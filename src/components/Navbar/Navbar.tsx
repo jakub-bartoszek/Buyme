@@ -38,70 +38,72 @@ const Navbar: React.FC = () => {
  }, [showSearchInput]);
 
  return (
-  <nav className="navbar">
-   <div className="navbar__content">
-    <div className="navbar__logo-wrapper">
-     <Bars3Icon className="navbar__bars" />
-     <NavLink
-      to="/"
-      className="navbar__logo"
-     >
-      <h1>BuyMe!</h1>
-     </NavLink>
-    </div>
-    {showSearchInput ? (
-     <form
-      className="navbar__menu--form"
-      onSubmit={onFormSubmit}
-     >
-      <input
-       className="navbar__menu--search-input"
-       type="text"
-       placeholder="Search"
-       ref={searchInputRef}
-      />
-     </form>
-    ) : (
-     <div className="navbar__menu--links">
-      <NavLink to="/home">Home</NavLink>
-      <NavLink to="/shop">Shop</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
+  <>
+   {showSearchInput && (
+    <div
+     className="navbar__shadow"
+     onClick={toggleSearchInput}
+    />
+   )}
+   <nav className="navbar">
+    <div className="navbar__content">
+     <div className="navbar__logo-wrapper">
+      <Bars3Icon className="navbar__bars" />
+      <NavLink
+       to="/"
+       className="navbar__logo"
+      >
+       <h1>BuyMe!</h1>
+      </NavLink>
      </div>
-    )}
-    <div className="navbar__menu--buttons">
-     <div
-      className="navbar__menu--button"
-      ref={searchSwitchRef}
-      onClick={toggleSearchInput}
-     >
-      {showSearchInput ? <XMarkIcon /> : <MagnifyingGlassIcon />}
+     {showSearchInput ? (
+      <form
+       className="navbar__menu--form"
+       onSubmit={onFormSubmit}
+      >
+       <input
+        className="navbar__menu--search-input"
+        type="text"
+        placeholder="Search"
+        ref={searchInputRef}
+       />
+      </form>
+     ) : (
+      <div className="navbar__menu--links">
+       <NavLink to="/home">Home</NavLink>
+       <NavLink to="/shop">Shop</NavLink>
+       <NavLink to="/about">About</NavLink>
+       <NavLink to="/contact">Contact</NavLink>
+      </div>
+     )}
+     <div className="navbar__menu--buttons">
+      <div
+       className="navbar__menu--button"
+       ref={searchSwitchRef}
+       onClick={toggleSearchInput}
+      >
+       {showSearchInput ? <XMarkIcon /> : <MagnifyingGlassIcon />}
+      </div>
+      <NavLink
+       className="navbar__menu--button"
+       to="/favourites"
+      >
+       <HeartIcon />
+       {favourites.length > 0 && (
+        <div className="item-count">{favourites.length}</div>
+       )}
+      </NavLink>
+      <NavLink
+       className="navbar__menu--button"
+       to="/cart"
+      >
+       <ShoppingCartIcon />
+       {cart.length > 0 && <div className="item-count">{cart.length}</div>}
+      </NavLink>
      </div>
-     <NavLink
-      className="navbar__menu--button"
-      to="/favourites"
-     >
-      <HeartIcon />
-      {favourites.length > 0 && (
-       <div className="item-count">{favourites.length}</div>
-      )}
-     </NavLink>
-     <NavLink
-      className="navbar__menu--button"
-      to="/cart"
-     >
-      <ShoppingCartIcon />
-      {cart.length > 0 && <div className="item-count">{cart.length}</div>}
-     </NavLink>
     </div>
-    {showSearchInput && (
-     <div
-      className="navbar__shadow"
-      onClick={toggleSearchInput}
-     />
-    )}
-   </div>
-  </nav>
+   </nav>
+  </>
  );
 };
 
