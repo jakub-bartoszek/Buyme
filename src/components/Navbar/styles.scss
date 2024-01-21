@@ -68,7 +68,7 @@ $navbar-logo-color: $black;
   width: 100%;
  }
 
- &__menu--searchInput {
+ &__menu--search-input {
   width: 100%;
   border-radius: 15px;
   padding: 2px 8px;
@@ -83,15 +83,24 @@ $navbar-logo-color: $black;
   @media (max-width: $mobileHorizontal) {
    display: none;
   }
+
+  .active {
+   border-bottom: 1px solid black;
+  }
  }
 
  &__menu--buttons {
   @extend %align-center;
   gap: 16px;
   cursor: pointer;
+ }
+
+ &__menu--button {
+  @extend %align-center;
+  width: 20px;
   position: relative;
 
-  .cart-item-count {
+  .item-count {
    background-color: red;
    color: $pureWhite;
    font-size: 10px;
@@ -105,10 +114,5 @@ $navbar-logo-color: $black;
    top: -5px;
    right: -5px;
   }
- }
-
- &__menu--button {
-  @extend %align-center;
-  width: 20px;
  }
 }
