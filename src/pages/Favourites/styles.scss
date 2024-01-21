@@ -9,6 +9,33 @@
  display: flex;
  flex-direction: column;
  gap: 16px;
+
+ .no-favourites-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  color: $grey;
+  text-align: center;
+  height: 100%;
+
+  @media (max-width: $mobileVertical) {
+   font-size: 16px;
+
+   svg {
+    height: 36px;
+   }
+  }
+
+  svg {
+   height: 72px;
+
+   @media (max-width: $mobileVertical) {
+    height: 36px;
+   }
+  }
+ }
 }
 
 .favourites-tile {
@@ -31,6 +58,8 @@
  &__name {
   font-weight: 600;
   font-size: 18px;
+  text-decoration: none;
+  color: $pureBlack;
  }
 
  &__price {
