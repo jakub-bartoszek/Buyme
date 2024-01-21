@@ -4,10 +4,11 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/cartSlice";
+import { selectFavourites } from "../../redux/favouritesSlice";
 
 const Navbar: React.FC = () => {
  const [showSearchInput, setShowSearchInput] = useState<boolean>(false);
@@ -15,16 +16,20 @@ const Navbar: React.FC = () => {
  const searchInputRef = useRef<HTMLInputElement>(null);
  const navigate = useNavigate();
  const cart = useSelector(selectCart);
+ const favourites = useSelector(selectFavourites);
 
  const toggleSearchInput = () => {
   setShowSearchInput(!showSearchInput);
  };
 
- const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  navigate("/search");
-  setShowSearchInput(false);
- };
+ const onFormSubmit = useCallback(
+  (e: React.FormEvent<HTMLFormElement>) => {
+   e.preventDefault();
+   navigate("/search");
+   setShowSearchInput(false);
+  },
+  [navigate]
+ );
 
  useEffect(() => {
   if (showSearchInput && searchInputRef.current) {
@@ -50,7 +55,7 @@ const Navbar: React.FC = () => {
       onSubmit={onFormSubmit}
      >
       <input
-       className="navbar__menu--searchInput"
+       className="navbar__menu--search-input"
        type="text"
        placeholder="Search"
        ref={searchInputRef}
@@ -77,13 +82,16 @@ const Navbar: React.FC = () => {
       to="/favourites"
      >
       <HeartIcon />
+      {favourites.length > 0 && (
+       <div className="item-count">{favourites.length}</div>
+      )}
      </NavLink>
      <NavLink
       className="navbar__menu--button"
       to="/cart"
      >
-      <ShoppingCartIcon className="cart-icon" />
-      {cart.length > 0 && <div className="cart-item-count">{cart.length}</div>}
+      <ShoppingCartIcon />
+      {cart.length > 0 && <div className="item-count">{cart.length}</div>}
      </NavLink>
     </div>
     {showSearchInput && (
