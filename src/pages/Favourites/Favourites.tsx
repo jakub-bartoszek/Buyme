@@ -5,6 +5,7 @@ import { Product } from "../../App";
 import { selectProducts } from "../../redux/productsSlice";
 import "./styles.scss";
 import { HeartIcon } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 export interface FavouriteItem {
  id: number;
@@ -27,16 +28,24 @@ const Favourites: React.FC = () => {
          className="favourites-tile"
          key={product.id}
         >
-         <div className="favourites-tile__image-wrapper">
+         <Link
+          to={`/product/${product.id}`}
+          className="favourites-tile__image-wrapper"
+         >
           {product && product.images && (
            <img
             src={product.images[0]}
             alt={product.name}
            />
           )}
-         </div>
+         </Link>
          <div>
-          <p className="favourites-tile__name">{product.name}</p>
+          <Link
+           to={`/product/${product.id}`}
+           className="favourites-tile__name"
+          >
+           {product.name}
+          </Link>
           <p className="favourites-tile__price">{product.price} $</p>
          </div>
          <button
@@ -51,6 +60,7 @@ const Favourites: React.FC = () => {
     </>
    ) : (
     <div className="no-favourites-message">
+     <HeartIcon />
      You don't have favourite products
     </div>
    )}
