@@ -1,0 +1,44 @@
+@import "../../styles/colors";
+
+.sidebar {
+ position: fixed;
+ top: 0;
+ left: -50vw;
+ width: 50vw;
+ height: 100vh;
+ z-index: 3;
+ background-color: $pureWhite;
+ padding: 0 8px;
+ transition: all 0.3s;
+
+ &.shown {
+  left: 0;
+ }
+
+ a {
+  color: $pureBlack;
+  text-decoration: none;
+ }
+
+ &__logo {
+  height: 60px;
+  display: flex;
+  align-items: center;
+ }
+
+ &__menu-links {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  gap: 8px;
+ }
+}
+
+.sidebar-shadow {
+ position: fixed;
+ width: 100vw;
+ height: 100vh;
+ background-color: #00000050;
+ backdrop-filter: blur(2px);
+ z-index: 3;
+}

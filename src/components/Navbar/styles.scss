@@ -27,18 +27,6 @@ $navbar-logo-color: $black;
   color: $black;
  }
 
- &__shadow {
-  width: 100%;
-  height: 100vh;
-  background-color: #00000050;
-  backdrop-filter: blur(2px);
-  position: fixed;
-  top: 0;
-  left: 0px;
-  transition: all 0.3s;
-  z-index: 1;
- }
-
  &__content {
   @extend %align-center;
   justify-content: space-between;
@@ -76,7 +64,7 @@ $navbar-logo-color: $black;
   border: 1px solid $black;
  }
 
- &__menu--links {
+ &__menu-links {
   @extend %align-center;
   gap: 32px;
   cursor: pointer;
@@ -116,4 +104,16 @@ $navbar-logo-color: $black;
    right: -5px;
   }
  }
+}
+
+.navbar-shadow {
+ width: 100%;
+ height: 100vh;
+ background-color: #00000050;
+ backdrop-filter: blur(2px);
+ position: fixed;
+ top: 0;
+ left: 0px;
+ transition: all 0.3s;
+ z-index: 1;
 }

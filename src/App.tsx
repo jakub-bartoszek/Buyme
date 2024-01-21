@@ -13,6 +13,7 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import { useEffect } from "react";
 import { setProducts } from "./redux/productsSlice";
 import { useDispatch } from "react-redux";
+
 export interface Product {
  id: number;
  name: string;

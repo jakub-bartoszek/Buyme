@@ -9,9 +9,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/cartSlice";
 import { selectFavourites } from "../../redux/favouritesSlice";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Navbar: React.FC = () => {
  const [showSearchInput, setShowSearchInput] = useState<boolean>(false);
+ const [showSidebar, setShowSidebar] = useState<boolean>(false);
  const searchSwitchRef = useRef<HTMLDivElement>(null);
  const searchInputRef = useRef<HTMLInputElement>(null);
  const navigate = useNavigate();
@@ -20,6 +22,10 @@ const Navbar: React.FC = () => {
 
  const toggleSearchInput = () => {
   setShowSearchInput(!showSearchInput);
+ };
+
+ const toggleSidebar = () => {
+  setShowSidebar(!showSidebar);
  };
 
  const onFormSubmit = useCallback(
@@ -41,14 +47,17 @@ const Navbar: React.FC = () => {
   <>
    {showSearchInput && (
     <div
-     className="navbar__shadow"
+     className="navbar-shadow"
      onClick={toggleSearchInput}
     />
    )}
    <nav className="navbar">
     <div className="navbar__content">
      <div className="navbar__logo-wrapper">
-      <Bars3Icon className="navbar__bars" />
+      <Bars3Icon
+       className="navbar__bars"
+       onClick={toggleSidebar}
+      />
       <NavLink
        to="/"
        className="navbar__logo"
@@ -69,7 +78,7 @@ const Navbar: React.FC = () => {
        />
       </form>
      ) : (
-      <div className="navbar__menu--links">
+      <div className="navbar__menu-links">
        <NavLink to="/home">Home</NavLink>
        <NavLink to="/shop">Shop</NavLink>
        <NavLink to="/about">About</NavLink>
@@ -103,6 +112,10 @@ const Navbar: React.FC = () => {
      </div>
     </div>
    </nav>
+   <Sidebar
+    showSidebar={showSidebar}
+    setShowSidebar={setShowSidebar}
+   />
   </>
  );
 };
