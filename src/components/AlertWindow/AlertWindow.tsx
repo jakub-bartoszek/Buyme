@@ -17,7 +17,7 @@ const AlertWindow = ({
  confirmText?: string;
  cancelText?: string;
  product?: Product;
- chosenSize?: number;
+ chosenSize?: string;
  amount?: number;
 }) => (
  <div className="alert-window-shadow">

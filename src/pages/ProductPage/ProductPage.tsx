@@ -22,7 +22,7 @@ const ProductPage: React.FC = () => {
  const [activeFsGalleryImageIndex, setActiveFsGalleryImageIndex] = useState<
   number | null
  >(1);
- const [chosenSize, setChosenSize] = useState<string | null>(null);
+ const [chosenSize, setChosenSize] = useState<string>("");
  const [amount, setAmount] = useState<number>(0);
  const [showGallery, setShowGallery] = useState<boolean>(false);
  const [showAlertWindow, setShowAlertWindow] = useState<boolean>(false);
