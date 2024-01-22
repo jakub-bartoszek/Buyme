@@ -4,26 +4,24 @@ import { Product } from "../../App";
 import { CartItem } from "../../pages/Cart/Cart";
 import "./styles.scss";
 
-const CartTile = ({
- product,
- item,
- setShowRemoveItemAlert,
- openRemoveItemAlert,
- openRemoveSizeAlert,
- onAmountChange,
- calculateItemTotal
-}: {
+interface CartTileProps {
  product: Product;
  item: CartItem;
- setShowRemoveItemAlert: React.Dispatch<React.SetStateAction<boolean>>;
- openRemoveItemAlert: (id: number) => void;
- openRemoveSizeAlert: (id: number) => void;
+ openRemoveItemAlert: (id: number, isItemAlert: boolean) => void;
  onAmountChange: (
   e: React.ChangeEvent<HTMLSelectElement>,
   id: number,
   name: string
  ) => void;
  calculateItemTotal: (product: Product, item: CartItem) => number;
+}
+
+const CartTile: React.FC<CartTileProps> = ({
+ product,
+ item,
+ openRemoveItemAlert,
+ onAmountChange,
+ calculateItemTotal
 }) => (
  <div
   className="cart-tile"
@@ -31,10 +29,7 @@ const CartTile = ({
  >
   <div
    className="cart-tile__remove-button"
-   onClick={() => {
-    setShowRemoveItemAlert(true);
-    openRemoveItemAlert(item.id);
-   }}
+   onClick={() => openRemoveItemAlert(item.id, true)}
   >
    <TrashIcon />
   </div>
@@ -64,9 +59,6 @@ const CartTile = ({
       value={size.amount}
       onChange={(e) => {
        onAmountChange(e, product.id, size.name);
-       if (parseInt(e.target.value, 10) === 0) {
-        openRemoveSizeAlert(product.id);
-       }
       }}
      >
       {[...Array(21).keys()].map((num) => (

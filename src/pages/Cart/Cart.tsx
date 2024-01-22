@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Product } from "../../App";
-import "./styles.scss";
-import { changeAmount, removeItem, selectCart } from "../../redux/cartSlice";
-import { selectProducts } from "../../redux/productsSlice";
 import { useNavigate } from "react-router";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { Product } from "../../App";
 import CartTile from "../../components/CartTile/CartTile";
 import AlertWindow from "../../components/AlertWindow/AlertWindow";
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { changeAmount, removeItem, selectCart } from "../../redux/cartSlice";
+import { selectProducts } from "../../redux/productsSlice";
+import "./styles.scss";
 
 export interface CartItem {
  id: number;
@@ -24,21 +24,10 @@ const Cart: React.FC = () => {
 
  const [showRemoveItemAlert, setShowRemoveItemAlert] = useState(false);
  const [showRemoveSizeAlert, setShowRemoveSizeAlert] = useState(false);
- const [removeItemId, setRemoveItemId] = useState<number | null>(null);
-
- const onAmountChange = (
-  e: React.ChangeEvent<HTMLSelectElement>,
-  id: number,
-  name: string
- ) => {
-  const amount = parseInt(e.target.value, 10);
-
-  if (amount === 0) {
-   openRemoveSizeAlert(id);
-  } else {
-   dispatch(changeAmount({ id, size: name, amount }));
-  }
- };
+ const [selectedProductId, setSelectedProductId] = useState<number | null>(
+  null
+ );
+ const [selectedSizeName, setSelectedSizeName] = useState<string | null>(null);
 
  const calculateItemTotal = (product: Product, item: CartItem): number =>
   item.sizes.reduce(
@@ -52,13 +41,39 @@ const Cart: React.FC = () => {
    return product ? total + calculateItemTotal(product, item) : total;
   }, 0);
 
+ const onAmountChange = (
+  e: React.ChangeEvent<HTMLSelectElement>,
+  productId: number,
+  sizeName: string
+ ) => {
+  const amount = parseInt(e.target.value, 10);
+
+  const productIndex = cart.findIndex((item) => item.id === productId);
+
+  if (amount === 0) {
+   const isLastSize = cart[productIndex].sizes.length === 1;
+
+   if (isLastSize) {
+    openRemoveItemAlert(productId);
+   } else {
+    openRemoveSizeAlert(productId);
+   }
+
+   setSelectedProductId(productId);
+   setSelectedSizeName(sizeName);
+  } else {
+   dispatch(changeAmount({ id: productId, size: sizeName, amount }));
+  }
+ };
+
  const openRemoveItemAlert = (id: number) => {
-  setRemoveItemId(id);
+  setSelectedProductId(id);
+  setShowRemoveItemAlert(true);
  };
 
  const onConfirmRemoveItem = () => {
-  if (removeItemId) {
-   dispatch(removeItem({ id: removeItemId }));
+  if (selectedProductId) {
+   dispatch(removeItem({ id: selectedProductId }));
    setShowRemoveItemAlert(false);
   }
  };
@@ -68,13 +83,15 @@ const Cart: React.FC = () => {
  };
 
  const openRemoveSizeAlert = (id: number) => {
-  setRemoveItemId(id);
+  setSelectedProductId(id);
   setShowRemoveSizeAlert(true);
  };
 
  const onConfirmRemoveSize = () => {
-  if (removeItemId) {
-   dispatch(removeItem({ id: removeItemId }));
+  if (selectedProductId && selectedSizeName) {
+   dispatch(
+    changeAmount({ id: selectedProductId, size: selectedSizeName, amount: 0 })
+   );
    setShowRemoveSizeAlert(false);
   }
  };
@@ -109,9 +126,7 @@ const Cart: React.FC = () => {
          key={product.id}
          product={product}
          item={item}
-         setShowRemoveItemAlert={setShowRemoveItemAlert}
          openRemoveItemAlert={openRemoveItemAlert}
-         openRemoveSizeAlert={openRemoveSizeAlert}
          onAmountChange={onAmountChange}
          calculateItemTotal={calculateItemTotal}
         />
