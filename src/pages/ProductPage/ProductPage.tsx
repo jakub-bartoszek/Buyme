@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Rating from "../../components/Rating/Rating";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import "./styles.scss";
@@ -9,12 +9,14 @@ import { Product } from "../../App";
 import { addToCart } from "../../redux/cartSlice";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { addToFavourites, selectFavourites } from "../../redux/favouritesSlice";
+import AlertWindow from "../../components/AlertWindow/AlertWindow";
 
 const ProductPage: React.FC = () => {
  const { id } = useParams();
  const productId = parseInt(id || "0", 10);
  const products: Product[] = useSelector(selectProducts);
  const product = products.find((p) => p.id === productId);
+ const navigate = useNavigate();
 
  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
  const [activeFsGalleryImageIndex, setActiveFsGalleryImageIndex] = useState<
@@ -23,6 +25,7 @@ const ProductPage: React.FC = () => {
  const [chosenSize, setChosenSize] = useState<string | null>(null);
  const [amount, setAmount] = useState<number>(0);
  const [showGallery, setShowGallery] = useState<boolean>(false);
+ const [showAlertWindow, setShowAlertWindow] = useState<boolean>(false);
 
  const favourites = useSelector(selectFavourites);
  const dispatch = useDispatch();
@@ -45,7 +48,18 @@ const ProductPage: React.FC = () => {
  const handleAddToCart = () => {
   if (chosenSize && amount > 0) {
    dispatch(addToCart({ id: product?.id || 0, size: chosenSize, amount }));
+
+   setShowAlertWindow(true);
   }
+ };
+
+ const onAlertConfirm = () => {
+  navigate("/cart");
+  setShowAlertWindow(false);
+ };
+
+ const onAlertCancel = () => {
+  setShowAlertWindow(false);
  };
 
  if (!product) {
@@ -54,6 +68,15 @@ const ProductPage: React.FC = () => {
 
  return (
   <main className="product">
+   {showAlertWindow && (
+    <AlertWindow
+     title="You added this to cart"
+     confirmFunction={onAlertConfirm}
+     cancelFunction={onAlertCancel}
+     confirmText="Go to cart"
+     cancelText="Continue shopping"
+    />
+   )}
    <div className="product-gallery">
     <div className="product-gallery__small-images">
      {product.images &&
