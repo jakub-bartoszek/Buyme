@@ -30,10 +30,7 @@
 
  &:disabled {
   opacity: 50%;
- }
-
- &:hover {
-  transform: scale(103%);
+  cursor: not-allowed;
  }
 }
 
