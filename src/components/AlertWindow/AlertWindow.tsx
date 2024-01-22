@@ -3,11 +3,15 @@ import "./styles.scss";
 const AlertWindow = ({
  title,
  confirmFunction,
- cancelFunction
+ cancelFunction,
+ confirmText,
+ cancelText,
 }: {
  title: string;
  confirmFunction: () => void;
  cancelFunction: () => void;
+ confirmText?: string;
+ cancelText?: string;
 }) => (
  <div className="alert-window-shadow">
   <div className="alert-window">
@@ -17,13 +21,13 @@ const AlertWindow = ({
      className="alert-window__button"
      onClick={() => cancelFunction()}
     >
-     Cancel
+     {cancelText ? cancelText : "Cancel"}
     </button>
     <button
      className="alert-window__button"
      onClick={() => confirmFunction()}
     >
-     Yes
+     {confirmText ? confirmText : "Yes"}
     </button>
    </div>
   </div>
