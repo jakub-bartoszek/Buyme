@@ -70,11 +70,14 @@ const ProductPage: React.FC = () => {
   <main className="product">
    {showAlertWindow && (
     <AlertWindow
-     title="You added this to cart"
+     title="You added this product to cart"
      confirmFunction={onAlertConfirm}
      cancelFunction={onAlertCancel}
      confirmText="Go to cart"
      cancelText="Continue shopping"
+     product={product}
+     chosenSize={chosenSize}
+     amount={amount}
     />
    )}
    <div className="product-gallery">
