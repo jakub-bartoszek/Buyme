@@ -7,7 +7,7 @@ import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Cart from "./pages/Cart/Cart";
 import Favourites from "./pages/Favourites/Favourites";
-import Search from "./pages/Search.tsx/Search";
+import Search from "./pages/Search/Search";
 import Footer from "./components/Footer/Footer";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import { useEffect } from "react";
