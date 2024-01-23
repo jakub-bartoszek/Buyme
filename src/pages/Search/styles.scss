@@ -1,0 +1,15 @@
+.search {
+ .main {
+  padding: 16px;
+ }
+
+ .query {
+  margin-bottom: 20px;
+ }
+
+ .section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(162px, 1fr));
+  gap: 16px;
+ }
+}

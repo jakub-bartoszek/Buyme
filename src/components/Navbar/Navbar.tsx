@@ -34,6 +34,7 @@ const Navbar: React.FC = () => {
   if (searchQuery.trim()) {
    navigate(`/search?q=${searchQuery.trim()}`);
    setShowSearchInput(false);
+   setSearchQuery("");
   }
  };
 

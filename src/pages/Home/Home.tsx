@@ -9,7 +9,7 @@ const Home: React.FC = () => {
  const products: Product[] = useSelector(selectProducts);
 
  return (
-  <div>
+  <div className="home">
    <header className="banner">
     <img
      src="https://pbs.twimg.com/media/Fzb3Zq9aMAIRwex?format=jpg&name=large"
