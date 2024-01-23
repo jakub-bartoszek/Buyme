@@ -4,7 +4,7 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/cartSlice";
@@ -19,6 +19,7 @@ const Navbar: React.FC = () => {
  const navigate = useNavigate();
  const cart = useSelector(selectCart);
  const favourites = useSelector(selectFavourites);
+ const [searchQuery, setSearchQuery] = useState<string>("");
 
  const toggleSearchInput = () => {
   setShowSearchInput(!showSearchInput);
@@ -28,14 +29,13 @@ const Navbar: React.FC = () => {
   setShowSidebar(!showSidebar);
  };
 
- const onFormSubmit = useCallback(
-  (e: React.FormEvent<HTMLFormElement>) => {
-   e.preventDefault();
-   navigate("/search");
+ const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  if (searchQuery.trim()) {
+   navigate(`/search?q=${searchQuery.trim()}`);
    setShowSearchInput(false);
-  },
-  [navigate]
- );
+  }
+ };
 
  useEffect(() => {
   if (showSearchInput && searchInputRef.current) {
@@ -75,6 +75,8 @@ const Navbar: React.FC = () => {
         type="text"
         placeholder="Search"
         ref={searchInputRef}
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
        />
       </form>
      ) : (
