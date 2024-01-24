@@ -1,3 +1,7 @@
+@import "../../styles/colors";
+@import "../../styles/shadows";
+@import "../../styles/breakpoints";
+
 .search {
  .main {
   padding: 16px;
@@ -5,6 +9,38 @@
 
  .query {
   margin-bottom: 20px;
+ }
+
+ .filters {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: $pureWhite;
+  box-shadow: $small-box-shadow;
+  padding: 16px;
+
+  &__field {
+   max-width: 50px;
+  }
+
+  &__submit-button {
+   background-color: $pureBlack;
+   color: $pureWhite;
+   border: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 8px 16px;
+   width: max-content;
+   align-self: flex-end;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+
+   &:hover {
+    background-color: darken($pureBlack, 10%);
+   }
+  }
  }
 
  .section {
