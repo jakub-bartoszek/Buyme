@@ -3,16 +3,17 @@
 @import "../../styles/breakpoints";
 
 .search {
- .main {
-  padding: 16px;
- }
+ padding: 16px;
+ display: grid;
+ grid-template-columns: 1fr 3fr;
+
+ gap: 16px;
 
  .query {
-  margin-bottom: 20px;
+  grid-column: 1 / 2 span;
  }
 
  .filters {
-  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -20,8 +21,37 @@
   box-shadow: $small-box-shadow;
   padding: 16px;
 
-  &__field {
-   max-width: 50px;
+  &__price {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+  }
+
+  &__price--values-container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+  }
+
+  &__price--field {
+   display: flex;
+   gap: 8px;
+   padding: 4px 8px;
+   border: 1px solid grey;
+   border-radius: 5px;
+
+   &:focus-within {
+    outline: 1px solid black;
+   }
+
+   input {
+    width: 40px;
+    border: none;
+
+    &:focus {
+     outline: none;
+    }
+   }
   }
 
   &__submit-button {
