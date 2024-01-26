@@ -5,8 +5,8 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Product } from "../../App";
 import CartTile from "../../components/CartTile/CartTile";
 import AlertWindow from "../../components/AlertWindow/AlertWindow";
-import { changeAmount, removeItem, selectCart } from "../../redux/cartSlice";
-import { selectProducts } from "../../redux/productsSlice";
+import { changeAmount, removeItem, selectCart } from "../../utils/redux/cartSlice";
+import { selectProducts } from "../../utils/redux/productsSlice";
 import "./styles.scss";
 
 export interface CartItem {

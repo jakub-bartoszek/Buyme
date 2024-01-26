@@ -7,8 +7,8 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectCart } from "../../redux/cartSlice";
-import { selectFavourites } from "../../redux/favouritesSlice";
+import { selectCart } from "../../utils/redux/cartSlice";
+import { selectFavourites } from "../../utils/redux/favouritesSlice";
 import Sidebar from "../Sidebar/Sidebar";
 
 const Navbar: React.FC = () => {

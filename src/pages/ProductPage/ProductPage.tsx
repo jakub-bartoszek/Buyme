@@ -3,12 +3,12 @@ import { useNavigate, useParams } from "react-router";
 import Rating from "../../components/Rating/Rating";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import "./styles.scss";
-import { selectProducts } from "../../redux/productsSlice";
+import { selectProducts } from "../../utils/redux/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Product } from "../../App";
-import { addToCart } from "../../redux/cartSlice";
+import { addToCart } from "../../utils/redux/cartSlice";
 import { HeartIcon } from "@heroicons/react/24/solid";
-import { addToFavourites, selectFavourites } from "../../redux/favouritesSlice";
+import { addToFavourites, selectFavourites } from "../../utils/redux/favouritesSlice";
 import AlertWindow from "../../components/AlertWindow/AlertWindow";
 
 const ProductPage: React.FC = () => {
