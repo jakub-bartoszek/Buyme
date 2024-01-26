@@ -3,10 +3,23 @@ import { Product } from "../../App";
 import "./styles.scss";
 
 interface TileProps {
- product: Product;
+ product?: Product;
+ loading?: boolean;
 }
 
-const Tile: React.FC<TileProps> = ({ product }) => {
+const Tile: React.FC<TileProps> = ({ product, loading }) => {
+ if (!product) {
+  return (
+   <div className={`tile ${loading && "loading"}`}>
+    <div className="tile__image-wrapper">
+     <div className="tile__image" />
+    </div>
+    <p className="tile__name"></p>
+    <p className="tile__price"></p>
+   </div>
+  );
+ }
+
  return (
   <Link
    to={`/product/${product.id}`}
