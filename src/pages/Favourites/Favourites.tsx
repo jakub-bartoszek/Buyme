@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToFavourites, selectFavourites } from "../../redux/favouritesSlice";
+import { addToFavourites, selectFavourites } from "../../utils/redux/favouritesSlice";
 import { Product } from "../../App";
-import { selectProducts } from "../../redux/productsSlice";
+import { selectProducts } from "../../utils/redux/productsSlice";
 import "./styles.scss";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
