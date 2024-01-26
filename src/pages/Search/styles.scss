@@ -5,8 +5,7 @@
 .search {
  padding: 16px;
  display: grid;
- grid-template-columns: 1fr 3fr;
-
+ grid-template-columns: 0.5fr 3fr;
  gap: 16px;
 
  .query {
@@ -14,29 +13,67 @@
  }
 
  .filters {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
   background-color: $pureWhite;
   box-shadow: $small-box-shadow;
-  padding: 16px;
 
-  &__price {
+  &__filter {
    display: flex;
    flex-direction: column;
-   gap: 16px;
   }
 
-  &__price--values-container {
+  &__filter--header {
+   padding: 16px;
+   font-weight: 600;
+   display: flex;
+   justify-content: space-between;
+   box-shadow: $small-box-shadow;
+  }
+
+  &__filter--show-icon {
+   width: 20px;
+   transition: all 0.3s;
+   display: flex;
+   cursor: pointer;
+
+   &.rotated {
+    transform-origin: center;
+    transform: rotate(-180deg);
+   }
+  }
+
+  &__filter--content {
+   padding: 0 16px;
+   gap: 16px;
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+   height: 0;
+   transition: all 0.3s;
+
+   &.shown {
+    height: min-content;
+   }
+  }
+
+  &__filter--range-slider-container {
+   padding: 16px 0 16px 0;
+  }
+
+  &__filter--values-container {
+   padding: 16px 0 16px 0;
+   gap: 16px;
    display: flex;
    justify-content: space-between;
    align-items: center;
   }
 
-  &__price--field {
+  &__filter--field {
    display: flex;
-   gap: 8px;
-   padding: 4px 8px;
+   gap: 16px;
+   padding: 8px;
    border: 1px solid grey;
    border-radius: 5px;
 
@@ -45,13 +82,25 @@
    }
 
    input {
-    width: 40px;
+    width: min-content;
     border: none;
 
     &:focus {
      outline: none;
     }
    }
+  }
+
+  &__category-list {
+   list-style: none;
+   padding: 16px 0;
+  }
+
+  &__category-item {
+   display: flex;
+   align-items: center;
+   padding: 0;
+   gap: 16px;
   }
 
   &__submit-button {
@@ -61,9 +110,9 @@
    display: flex;
    align-items: center;
    justify-content: center;
-   padding: 8px 16px;
-   width: max-content;
-   align-self: flex-end;
+   padding: 16px 16px;
+   width: 100%;
+   align-self: center;
    cursor: pointer;
    transition: background-color 0.3s ease;
 
