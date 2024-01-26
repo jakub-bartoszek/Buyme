@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartItem } from "../pages/Cart/Cart";
+import { CartItem } from "../../pages/Cart/Cart";
 
 const getInitialCartState = (): CartItem[] => {
  const storedCart = localStorage.getItem("cart");

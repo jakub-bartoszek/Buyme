@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { FavouriteItem } from "../pages/Favourites/Favourites";
+import { FavouriteItem } from "../../pages/Favourites/Favourites";
 
 const getInitialFavouritesState = (): FavouriteItem[] => {
  const storedFavourites = localStorage.getItem("favourites");
