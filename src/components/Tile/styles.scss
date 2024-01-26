@@ -9,6 +9,10 @@
  text-decoration: none;
  color: $black;
 
+ &.loading {
+  animation: loading 1s infinite;
+ }
+
  &:hover {
   transform: scale(102%);
  }
@@ -16,7 +20,6 @@
  &__image-wrapper {
   width: 100%;
   aspect-ratio: 2/3;
-  background-color: grey;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,5 +33,17 @@
 
  &__name {
   font-weight: 500;
+ }
+}
+
+@keyframes loading {
+ 0% {
+  opacity: 0%;
+ }
+ 50% {
+  opacity: 100%;
+ }
+ 100% {
+  opacity: 0%;
  }
 }
