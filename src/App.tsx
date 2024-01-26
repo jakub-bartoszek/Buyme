@@ -11,7 +11,7 @@ import Search from "./pages/Search/Search";
 import Footer from "./components/Footer/Footer";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import { useEffect } from "react";
-import { setProducts } from "./redux/productsSlice";
+import { fetchProducts } from "./utils/redux/productsSlice";
 import { useDispatch } from "react-redux";
 
 export interface Product {
@@ -30,23 +30,9 @@ export interface Product {
 
 function App() {
  const dispatch = useDispatch();
- const fetchProducts = async () => {
-  try {
-   const response = await fetch("./products.json", {
-    headers: {
-     "Content-Type": "application/json",
-     Accept: "application/json"
-    }
-   });
-   const fetchedProducts = await response.json();
-   dispatch(setProducts(fetchedProducts));
-  } catch (error) {
-   console.error("Error fetching products:", error);
-  }
- };
 
  useEffect(() => {
-  fetchProducts();
+  dispatch(fetchProducts());
  }, []);
 
  return (
