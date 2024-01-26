@@ -68,8 +68,10 @@ const Search: React.FC = () => {
  };
 
  const handleInput = (e: ChangeResult) => {
-  setMinPrice(e.minValue);
-  setMaxPrice(e.maxValue);
+  if (e.minValue <= e.maxValue) {
+    setMinPrice(e.minValue);
+    setMaxPrice(e.maxValue);
+  }
  };
 
  const filteredProducts = query
