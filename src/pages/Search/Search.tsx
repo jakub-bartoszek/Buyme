@@ -1,5 +1,5 @@
 import "./styles.scss";
-import "./multirangeslider.css";
+import "./multirangeslider.scss";
 import { useSearchParams } from "react-router-dom";
 import { Product } from "../../App";
 import { useSelector } from "react-redux";
@@ -24,11 +24,12 @@ const Search: React.FC = () => {
  const query = searchParams.get("q");
  const minPriceParam = parseInt(searchParams.get("minPrice") || "", 10);
  const maxPriceParam = parseInt(searchParams.get("maxPrice") || "", 10);
-
  const products: Product[] = useSelector(selectProducts);
 
- const [minPrice, setMinPrice] = useState<number | null>(null);
- const [maxPrice, setMaxPrice] = useState<number | null>(null);
+ const [minPrice, setMinPrice] = useState<number>(0);
+ const [maxPrice, setMaxPrice] = useState<number>(500);
+ const [minPriceSlider, setMinPriceSlider] = useState<number>(0);
+ const [maxPriceSlider, setMaxPriceSlider] = useState<number>(500);
 
  const [filterStates, setFilterStates] = useState<FilterStates>({
   price: { visible: false, rotated: false },
@@ -36,11 +37,17 @@ const Search: React.FC = () => {
  });
 
  useEffect(() => {
-  if (!searchParams.has("minPrice")) setMinPrice(null);
-  if (!searchParams.has("maxPrice")) setMaxPrice(null);
+  if (!searchParams.has("minPrice") && !searchParams.has("maxPrice")) {
+   setMinPrice(0);
+   setMaxPrice(500);
+  }
 
-  setMinPrice(minPriceParam);
-  setMaxPrice(maxPriceParam);
+  if (minPriceParam < maxPriceParam) {
+   setMinPrice(minPriceParam);
+   setMaxPrice(maxPriceParam);
+   setMinPriceSlider(minPriceParam);
+   setMaxPriceSlider(maxPriceParam);
+  }
  }, [searchParams, minPriceParam, maxPriceParam]);
 
  const handleFilterToggle = (filterType: keyof FilterStates) => {
@@ -67,10 +74,28 @@ const Search: React.FC = () => {
   setSearchParams(newSearchParams);
  };
 
- const handleInput = (e: ChangeResult) => {
+ const handleSliderInput = (e: ChangeResult) => {
+  setMinPrice(e.minValue);
+  setMaxPrice(e.maxValue);
   if (e.minValue <= e.maxValue) {
-    setMinPrice(e.minValue);
-    setMaxPrice(e.maxValue);
+   setMinPriceSlider(e.minValue);
+   setMaxPriceSlider(e.maxValue);
+  }
+ };
+
+ const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const value = parseInt(e.target.value);
+  setMinPrice(value);
+  if (value < maxPrice) {
+   setMinPriceSlider(value);
+  }
+ };
+
+ const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const value = parseInt(e.target.value);
+  setMaxPrice(value);
+  if (minPrice < value) {
+   setMaxPriceSlider(value);
   }
  };
 
@@ -115,11 +140,11 @@ const Search: React.FC = () => {
          min={0}
          max={500}
          step={5}
-         minValue={minPrice || 0}
-         maxValue={maxPrice || 500}
+         minValue={minPriceSlider || 0}
+         maxValue={maxPriceSlider || 500}
          ruler={false}
          label={false}
-         onInput={(e) => handleInput(e)}
+         onChange={(e) => handleSliderInput(e)}
          baseClassName="filters__filter--range-slider"
         />
        </div>
@@ -131,7 +156,7 @@ const Search: React.FC = () => {
           max={maxPrice || 500}
           type="number"
           value={minPrice !== null ? minPrice : ""}
-          onChange={(e) => setMinPrice(parseInt(e.target.value, 10))}
+          onChange={(e) => handleMinPriceChange(e)}
          />
         </div>
         <span>to</span>
@@ -142,7 +167,7 @@ const Search: React.FC = () => {
           max={500}
           type="number"
           value={maxPrice !== null ? maxPrice : ""}
-          onChange={(e) => setMaxPrice(parseInt(e.target.value, 10))}
+          onChange={(e) => handleMaxPriceChange(e)}
          />
         </div>
        </div>
