@@ -86,25 +86,31 @@ const Search: React.FC = () => {
  };
 
  const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const value = parseInt(e.target.value);
-  if (maxPrice < 20) {
-   setMinPrice(0);
-   setMinPriceSlider(0);
-  } else {
-   setMinPrice(value <= maxPrice - 20 ? Math.max(0, value) : maxPrice - 20);
-   setMinPriceSlider(
-    Math.min(
-     value <= maxPrice - 20 ? Math.max(0, value) : maxPrice - 20,
-     maxPrice
-    )
-   );
+  const value = parseInt(e.target.value, 10);
+  if (!isNaN(value)) {
+   if (maxPrice < 20) {
+    setMaxPrice(20);
+    setMaxPriceSlider(20);
+    setMinPrice(0);
+    setMinPriceSlider(0);
+   } else {
+    setMinPrice(value <= maxPrice - 20 ? Math.max(0, value) : maxPrice - 20);
+    setMinPriceSlider(
+     Math.min(
+      value <= maxPrice - 20 ? Math.max(0, value) : maxPrice - 20,
+      maxPrice
+     )
+    );
+   }
   }
  };
 
  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const value = parseInt(e.target.value);
-  setMaxPrice(Math.max(0, Math.min(value, 500)));
-  setMaxPriceSlider(Math.max(value, minPrice));
+  const value = parseInt(e.target.value, 10);
+  if (!isNaN(value)) {
+   setMaxPrice(Math.max(0, Math.min(value, 500)));
+   setMaxPriceSlider(Math.max(value, minPrice));
+  }
  };
 
  const filteredProducts = query
