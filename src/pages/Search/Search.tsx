@@ -63,15 +63,17 @@ const Search: React.FC = () => {
  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
-  const newSearchParams = new URLSearchParams(searchParams);
+  if (minPrice < maxPrice) {
+   const newSearchParams = new URLSearchParams(searchParams);
 
-  if (minPrice) newSearchParams.set("minPrice", minPrice.toString());
-  else newSearchParams.delete("minPrice");
+   if (minPrice) newSearchParams.set("minPrice", minPrice.toString());
+   else newSearchParams.delete("minPrice");
 
-  if (maxPrice) newSearchParams.set("maxPrice", maxPrice.toString());
-  else newSearchParams.delete("maxPrice");
+   if (maxPrice) newSearchParams.set("maxPrice", maxPrice.toString());
+   else newSearchParams.delete("maxPrice");
 
-  setSearchParams(newSearchParams);
+   setSearchParams(newSearchParams);
+  }
  };
 
  const handleSliderInput = (e: ChangeResult) => {
@@ -85,18 +87,24 @@ const Search: React.FC = () => {
 
  const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const value = parseInt(e.target.value);
-  setMinPrice(value);
-  if (value < maxPrice) {
-   setMinPriceSlider(value);
+  if (maxPrice < 20) {
+   setMinPrice(0);
+   setMinPriceSlider(0);
+  } else {
+   setMinPrice(value <= maxPrice - 20 ? Math.max(0, value) : maxPrice - 20);
+   setMinPriceSlider(
+    Math.min(
+     value <= maxPrice - 20 ? Math.max(0, value) : maxPrice - 20,
+     maxPrice
+    )
+   );
   }
  };
 
  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const value = parseInt(e.target.value);
-  setMaxPrice(value);
-  if (minPrice < value) {
-   setMaxPriceSlider(value);
-  }
+  setMaxPrice(Math.max(0, Math.min(value, 500)));
+  setMaxPriceSlider(Math.max(value, minPrice));
  };
 
  const filteredProducts = query
@@ -139,7 +147,7 @@ const Search: React.FC = () => {
         <MultiRangeSlider
          min={0}
          max={500}
-         step={5}
+         step={20}
          minValue={minPriceSlider || 0}
          maxValue={maxPriceSlider || 500}
          ruler={false}
@@ -149,22 +157,32 @@ const Search: React.FC = () => {
         />
        </div>
        <div className="filters__filter--values-container">
-        <div className="filters__filter--field">
+        <div
+         className={`filters__filter--field ${
+          minPrice > maxPrice && "incorrect"
+         }`}
+        >
          <span>$</span>
          <input
           min={0}
           max={maxPrice || 500}
+          maxLength={3}
           type="number"
           value={minPrice !== null ? minPrice : ""}
           onChange={(e) => handleMinPriceChange(e)}
          />
         </div>
         <span>to</span>
-        <div className="filters__filter--field">
+        <div
+         className={`filters__filter--field ${
+          minPrice > maxPrice && "incorrect"
+         }`}
+        >
          <span>$</span>
          <input
           min={minPrice || 0}
           max={500}
+          maxLength={3}
           type="number"
           value={maxPrice !== null ? maxPrice : ""}
           onChange={(e) => handleMaxPriceChange(e)}
