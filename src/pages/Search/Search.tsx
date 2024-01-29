@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import MultiRangeSlider, { ChangeResult } from "multi-range-slider-react";
-
+import { ChangeResult } from "multi-range-slider-react";
 import Tile from "../../components/Tile/Tile";
 import { selectProducts } from "../../utils/redux/productsSlice";
 import { Product } from "../../App";
 import "./styles.scss";
 import "./multirangeslider.scss";
+import PriceFilter from "../../components/PriceFilter/PriceFilter";
+import Filter from "../../components/Filter/Filter";
 
 const Search: React.FC = () => {
  const [searchParams, setSearchParams] = useSearchParams();
@@ -16,6 +16,9 @@ const Search: React.FC = () => {
  const minPriceParam = parseInt(searchParams.get("minPrice") || "", 10);
  const maxPriceParam = parseInt(searchParams.get("maxPrice") || "", 10);
  const categoriesParam = (searchParams.get("categories") || "").split(",");
+ const genderParam = (searchParams.get("gender") || "").split(",");
+ const productTypeParam = (searchParams.get("productType") || "").split(",");
+ const ageGroupParam: string = searchParams.get("ageGroup") || "";
  const products: Product[] = useSelector(selectProducts);
 
  const [minPrice, setMinPrice] = useState<number>(0);
@@ -23,15 +26,23 @@ const Search: React.FC = () => {
  const [minPriceSlider, setMinPriceSlider] = useState<number>(0);
  const [maxPriceSlider, setMaxPriceSlider] = useState<number>(500);
  const [categories, setCategories] = useState<string[]>([]);
+ const [gender, setGender] = useState<string[]>([]);
+ const [productType, setProductType] = useState<string[]>([]);
+ const [ageGroup, setAgeGroup] = useState<string>("adults");
 
  const [filterStates, setFilterStates] = useState({
   price: { visible: true },
-  categories: { visible: false }
+  categories: { visible: false },
+  gender: { visible: false },
+  productType: { visible: false },
+  ageGroup: { visible: false }
  });
 
  const allCategories = Array.from(new Set(products.flatMap((product) => product.categories)));
+ const allGenders = Array.from(new Set(products.flatMap((product) => product.gender)));
+ const allProductTypes = Array.from(new Set(products.flatMap((product) => product.product_type)));
+ const allAgeGroups = Array.from(new Set(products.flatMap((product) => product.age_group)));
 
- // Set initial price values based on search parameters
  useEffect(() => {
   if (!searchParams.has("minPrice") && !searchParams.has("maxPrice")) {
    setMinPrice(0);
@@ -46,16 +57,29 @@ const Search: React.FC = () => {
   }
  }, [searchParams, minPriceParam, maxPriceParam]);
 
- // Set initial category values based on search parameters
  useEffect(() => {
   if (searchParams.has("categories")) {
    setCategories((searchParams.get("categories") || "").split(","));
   } else {
    setCategories([]);
   }
+  if (searchParams.has("gender")) {
+   setGender((searchParams.get("gender") || "").split(","));
+  } else {
+   setGender([]);
+  }
+  if (searchParams.has("productType")) {
+   setProductType((searchParams.get("productType") || "").split(","));
+  } else {
+   setProductType([]);
+  }
+  if (searchParams.has("ageGroup")) {
+   setAgeGroup(searchParams.get("ageGroup") || "");
+  } else {
+   setAgeGroup("adults");
+  }
  }, [searchParams]);
 
- // Handle filter toggle
  const handleFilterToggle = (filterType: keyof typeof filterStates) => {
   setFilterStates((prevStates) => ({
    ...prevStates,
@@ -66,7 +90,6 @@ const Search: React.FC = () => {
   }));
  };
 
- // Handle form submission
  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
@@ -85,11 +108,28 @@ const Search: React.FC = () => {
     newSearchParams.delete("categories");
    }
 
+   if (gender.length > 0) {
+    newSearchParams.set("gender", gender.join(","));
+   } else {
+    newSearchParams.delete("gender");
+   }
+
+   if (productType.length > 0) {
+    newSearchParams.set("productType", productType.join(","));
+   } else {
+    newSearchParams.delete("productType");
+   }
+
+   if (ageGroup) {
+    newSearchParams.set("ageGroup", ageGroup);
+   } else {
+    newSearchParams.delete("ageGroup");
+   }
+
    setSearchParams(newSearchParams);
   }
  };
 
- // Handle slider input
  const handleSliderInput = (e: ChangeResult) => {
   setMinPrice(e.minValue);
   setMaxPrice(e.maxValue);
@@ -99,7 +139,6 @@ const Search: React.FC = () => {
   }
  };
 
- // Handle min price change
  const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const value = parseInt(e.target.value, 10);
   if (!isNaN(value)) {
@@ -117,7 +156,6 @@ const Search: React.FC = () => {
   }
  };
 
- // Handle max price change
  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const value = parseInt(e.target.value, 10);
   if (!isNaN(value)) {
@@ -126,7 +164,6 @@ const Search: React.FC = () => {
   }
  };
 
- // Handle category change
  const handleCategoryChange = (category: string) => {
   setCategories((prevCategories) => {
    if (prevCategories.includes(category)) {
@@ -137,17 +174,49 @@ const Search: React.FC = () => {
   });
  };
 
- // Filter products based on search query and applied filters
+ const handleAgeGroupChange = (selectedAgeGroup: string) => {
+  setAgeGroup(selectedAgeGroup);
+  setGender([]);
+ };
+
+ const handleGender = (gender: string) => {
+  setGender((prevGender) => {
+   if (prevGender.includes(gender)) {
+    return prevGender.filter((c) => c !== gender);
+   } else {
+    return [...prevGender, gender];
+   }
+  });
+ };
+
+ const handleProductTypeChange = (type: string) => {
+  setProductType((prevProductType) => {
+   if (prevProductType.includes(type)) {
+    return prevProductType.filter((t) => t !== type);
+   } else {
+    return [...prevProductType, type];
+   }
+  });
+ };
+
  const filteredProducts = query
- ? products.filter(
+  ? products.filter(
      (product) =>
-       product?.name.toLowerCase().includes(query.toLowerCase()) &&
-       (minPriceParam ? product?.price > minPriceParam : true) &&
-       (maxPriceParam ? product?.price < maxPriceParam : true) &&
-       ((categoriesParam.length === 0 || categoriesParam[0] === "") ||
-         product?.categories.some((cat) => categoriesParam.includes(cat)))
-   )
- : products;
+      product?.name.toLowerCase().includes(query.toLowerCase()) &&
+      (minPriceParam ? product?.price > minPriceParam : true) &&
+      (maxPriceParam ? product?.price < maxPriceParam : true) &&
+      (categoriesParam.length === 0 ||
+       categoriesParam[0] === "" ||
+       product?.categories.some((cat) => categoriesParam.includes(cat))) &&
+      (ageGroupParam ? product?.age_group.includes(ageGroupParam) : true) &&
+      (genderParam.length === 0 ||
+       genderParam[0] === "" ||
+       product?.gender.some((g) => genderParam.includes(g))) &&
+      (productTypeParam.length === 0 ||
+       productTypeParam[0] === "" ||
+       productTypeParam.includes(product?.product_type))
+    )
+  : products;
 
  return (
   <main className="search">
@@ -157,92 +226,140 @@ const Search: React.FC = () => {
      className="filters"
      onSubmit={handleSubmit}
     >
-     <div className={`filters__filter ${filterStates.price.visible ? "shown" : ""}`}>
-      <div className="filters__filter--header">
-       <span>Price</span>
-       <div
-        className={`filters__filter--show-icon ${filterStates.price.visible ? "rotated" : ""}`}
-        onClick={() => handleFilterToggle("price")}
-       >
-        <ChevronDownIcon />
-       </div>
-      </div>
-      <div className={`filters__filter--content ${filterStates.price.visible ? "shown" : ""}`}>
-       <div className="filters__filter--range-slider-container">
-        <MultiRangeSlider
-         min={0}
-         max={500}
-         step={20}
-         minValue={minPriceSlider || 0}
-         maxValue={maxPriceSlider || 500}
-         ruler={false}
-         label={false}
-         onChange={(e) => handleSliderInput(e)}
-         baseClassName="filters__filter--range-slider"
-        />
-       </div>
-       <div className="filters__filter--values-container">
-        <div className={`filters__filter--field ${minPrice > maxPrice && "incorrect"}`}>
-         <span>$</span>
+     <PriceFilter
+      min={0}
+      max={500}
+      step={20}
+      minValue={minPriceSlider || 0}
+      maxValue={maxPriceSlider || 500}
+      visible={filterStates.price.visible}
+      onFilterToggle={() => handleFilterToggle("price")}
+      onSliderInput={handleSliderInput}
+      onMinPriceChange={handleMinPriceChange}
+      onMaxPriceChange={handleMaxPriceChange}
+     />
+     <Filter
+      filterType="Age group"
+      visible={filterStates.ageGroup.visible}
+      onFilterToggle={() => handleFilterToggle("ageGroup")}
+     >
+      <ul className="filters__category-list">
+       {allAgeGroups.map((group) => (
+        <li
+         key={group}
+         className="filters__category-item"
+        >
          <input
-          min={0}
-          max={maxPrice || 500}
-          maxLength={3}
-          type="number"
-          value={minPrice !== null ? minPrice : ""}
-          onChange={(e) => handleMinPriceChange(e)}
+          type="radio"
+          id={group}
+          className="filters__category-checkbox"
+          checked={ageGroup.includes(group)}
+          onChange={() => handleAgeGroupChange(group)}
          />
-        </div>
-        <span>to</span>
-        <div className={`filters__filter--field ${minPrice > maxPrice && "incorrect"}`}>
-         <span>$</span>
-         <input
-          min={minPrice || 0}
-          max={500}
-          maxLength={3}
-          type="number"
-          value={maxPrice !== null ? maxPrice : ""}
-          onChange={(e) => handleMaxPriceChange(e)}
-         />
-        </div>
-       </div>
-      </div>
-     </div>
-     <div className={`filters__filter ${filterStates.categories.visible ? "shown" : ""}`}>
-      <div className="filters__filter--header">
-       <span>Categories</span>
-       <div
-        className={`filters__filter--show-icon ${filterStates.categories.visible ? "rotated" : ""}`}
-        onClick={() => handleFilterToggle("categories")}
-       >
-        <ChevronDownIcon />
-       </div>
-      </div>
-      <div className={`filters__filter--content ${filterStates.categories.visible ? "shown" : ""}`}>
-       <ul className="filters__category-list">
-        {allCategories.map((category) => (
+         <label
+          htmlFor={group}
+          className="filters__category-label"
+         >
+          {group.charAt(0).toUpperCase() + group.slice(1)}
+         </label>
+        </li>
+       ))}
+      </ul>
+     </Filter>
+     <Filter
+      filterType="Gender"
+      visible={filterStates.gender.visible}
+      onFilterToggle={() => handleFilterToggle("gender")}
+     >
+      <ul className="filters__category-list">
+       {allGenders.map((individualGender) => {
+        const isAdult = ageGroup === "adults";
+        const isKids = ageGroup === "kids";
+        if (isAdult && (individualGender === "boy" || individualGender === "girl")) {
+         return null;
+        }
+        if (isKids && (individualGender === "men" || individualGender === "women")) {
+         return null;
+        }
+        return (
          <li
-          key={category}
+          key={individualGender}
           className="filters__category-item"
          >
           <input
            type="checkbox"
-           id={category}
+           id={individualGender}
            className="filters__category-checkbox"
-           checked={categories.includes(category)}
-           onChange={() => handleCategoryChange(category)}
+           checked={gender.includes(individualGender)}
+           onChange={() => handleGender(individualGender)}
           />
           <label
-           htmlFor={category}
+           htmlFor={individualGender}
            className="filters__category-label"
           >
-           {category.charAt(0).toUpperCase() + category.slice(1)}
+           {individualGender.charAt(0).toUpperCase() + individualGender.slice(1)}
           </label>
          </li>
-        ))}
-       </ul>
-      </div>
-     </div>
+        );
+       })}
+      </ul>
+     </Filter>
+     <Filter
+      filterType="Product type"
+      visible={filterStates.productType.visible}
+      onFilterToggle={() => handleFilterToggle("productType")}
+     >
+      <ul className="filters__category-list">
+       {allProductTypes.map((individualProductType) => (
+        <li
+         key={individualProductType}
+         className="filters__category-item"
+        >
+         <input
+          type="checkbox"
+          id={individualProductType}
+          className="filters__category-checkbox"
+          checked={productType.includes(individualProductType)}
+          onChange={() => handleProductTypeChange(individualProductType)}
+         />
+         <label
+          htmlFor={individualProductType}
+          className="filters__category-label"
+         >
+          {individualProductType.charAt(0).toUpperCase() + individualProductType.slice(1)}
+         </label>
+        </li>
+       ))}
+      </ul>
+     </Filter>
+     <Filter
+      filterType="Categories"
+      visible={filterStates.categories.visible}
+      onFilterToggle={() => handleFilterToggle("categories")}
+     >
+      <ul className="filters__category-list">
+       {allCategories.map((category) => (
+        <li
+         key={category}
+         className="filters__category-item"
+        >
+         <input
+          type="checkbox"
+          id={category}
+          className="filters__category-checkbox"
+          checked={categories.includes(category)}
+          onChange={() => handleCategoryChange(category)}
+         />
+         <label
+          htmlFor={category}
+          className="filters__category-label"
+         >
+          {category.charAt(0).toUpperCase() + category.slice(1)}
+         </label>
+        </li>
+       ))}
+      </ul>
+     </Filter>
      <button className="filters__submit-button">Apply</button>
     </form>
    </div>
