@@ -17,7 +17,10 @@ import { useDispatch } from "react-redux";
 export interface Product {
  id: number;
  name: string;
+ gender: Array<string>;
+ product_type: string;
  categories: Array<string>;
+ age_group: string;
  price: number;
  date_added: string;
  available_sizes: Array<string>;
