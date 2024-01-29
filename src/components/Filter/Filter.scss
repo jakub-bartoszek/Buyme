@@ -1,0 +1,52 @@
+@import "../../styles/colors";
+@import "../../styles/shadows";
+@import "../../styles/breakpoints";
+
+.filters__filter {
+ display: flex;
+ flex-direction: column;
+}
+
+.filters__filter--header {
+ padding: 16px;
+ font-weight: 600;
+ display: flex;
+ justify-content: space-between;
+ box-shadow: $small-box-shadow;
+}
+
+.filters__filter--show-icon {
+ width: 20px;
+ transition: all 0.3s;
+ display: flex;
+ cursor: pointer;
+
+ &.rotated {
+  transform-origin: center;
+  transform: rotate(-180deg);
+ }
+}
+
+.filters__filter--content {
+ padding: 0 16px;
+ gap: 16px;
+ display: none;
+ flex-direction: column;
+ transition: all 0.3s;
+
+ &.shown {
+  display: flex;
+ }
+}
+
+.filters__category-list {
+ list-style: none;
+ padding: 16px 0;
+}
+
+.filters__category-item {
+ display: flex;
+ align-items: center;
+ padding: 0;
+ gap: 16px;
+}
