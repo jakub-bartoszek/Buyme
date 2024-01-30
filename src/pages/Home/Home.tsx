@@ -18,11 +18,11 @@ const Home: React.FC = () => {
    </header>
    {products.length > 0 ? (
     <main className="main">
-     <h2 className="section-title">Newest</h2>
      <section
       className="section"
       id="newest"
      >
+      <h2 className="section__title">Newest</h2>
       {products
        .filter((product) => product?.date_added.includes("2024"))
        .map((product) => (
@@ -32,11 +32,11 @@ const Home: React.FC = () => {
         />
        ))}
      </section>
-     <h2 className="section-title">Most popular</h2>
      <section
       className="section"
       id="most_popular"
      >
+      <h2 className="section__title">Most popular</h2>
       {products
        .filter((product) => product?.popularity > 80)
        .map((product) => (
@@ -46,11 +46,11 @@ const Home: React.FC = () => {
         />
        ))}
      </section>
-     <h2 className="section-title">Winter collection</h2>
      <section
       className="section"
       id="winter_collection"
      >
+      <h2 className="section__title">Winter collection</h2>
       {products
        .filter((product) => product?.categories?.includes("winter"))
        .map((product) => (
@@ -63,11 +63,11 @@ const Home: React.FC = () => {
     </main>
    ) : (
     <main className="main">
-     <h2 className="section-title">Loading...</h2>
      <section
       className="section"
       id="newest"
      >
+      <h2 className="section__title">Loading...</h2>
       {[...Array(21).keys()].map(() => (
        <Tile loading={true} />
       ))}
