@@ -1,6 +1,7 @@
 import MultiRangeSlider, { ChangeResult } from "multi-range-slider-react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import "./PriceFilter.scss";
+import "./multirangeslider.scss";
 
 interface PriceFilterProps {
  min: number;
@@ -35,7 +36,6 @@ const PriceFilter: React.FC<PriceFilterProps> = ({
      className={`filters__filter--show-icon ${visible ? "rotated" : ""}`}
      onClick={onFilterToggle}
     >
-     {/* Assuming you have a ChevronDownIcon component here */}
      <ChevronDownIcon />
     </div>
    </div>
