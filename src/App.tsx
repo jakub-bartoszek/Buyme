@@ -2,17 +2,16 @@ import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import "./styles/styles.scss";
 import Home from "./pages/Home/Home";
-import Shop from "./pages/Shop/Shop";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Cart from "./pages/Cart/Cart";
 import Favourites from "./pages/Favourites/Favourites";
-import Search from "./pages/Search/Search";
 import Footer from "./components/Footer/Footer";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import { useEffect } from "react";
 import { fetchProducts } from "./utils/redux/productsSlice";
 import { useDispatch } from "react-redux";
+import Shop from "./pages/Shop/Shop";
 
 export interface Product {
  id: number;
@@ -59,10 +58,6 @@ function App() {
       <Route
        path="/contact"
        element={<Contact />}
-      />
-      <Route
-       path="/search"
-       element={<Search />}
       />
       <Route
        path="/favourites"

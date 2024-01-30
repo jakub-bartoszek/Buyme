@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   if (searchQuery.trim()) {
-   navigate(`/search?q=${searchQuery.trim()}`);
+   navigate(`/shop?query=${searchQuery.trim()}`);
    setShowSearchInput(false);
    setSearchQuery("");
   }
