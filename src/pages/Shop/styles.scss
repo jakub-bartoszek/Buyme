@@ -45,6 +45,7 @@
  }
 
  .search-sort-container {
+  position: relative;
   padding: 16px;
   background-color: $pureWhite;
   width: 100%;
@@ -96,6 +97,47 @@
    svg {
     height: 100%;
     cursor: pointer;
+   }
+  }
+
+  &__sort-options {
+   position: absolute;
+   box-shadow: 0 9px 10px 0 rgba(0, 0, 0, 0.1);
+   top: 100%;
+   right: 0;
+   z-index: 2;
+   transition: all 0.3s;
+   transform-origin: top;
+   background-color: $pureWhite;
+   border-radius: 0 0 15px 15px;
+
+   &.hidden {
+    transform: scale(100%, 0%);
+   }
+  }
+
+  &__sort-option {
+   padding: 8px 16px;
+   display: flex;
+   justify-content: space-between;
+   gap: 72px;
+   cursor: pointer;
+  }
+
+  &__sort-option-icon {
+   width: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: all 0.3s;
+
+   &.rotated {
+    transform: rotate(180deg);
+   }
+
+   svg {
+    width: 100%;
+    height: 100%;
    }
   }
  }

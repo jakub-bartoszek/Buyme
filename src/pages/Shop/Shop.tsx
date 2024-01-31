@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ChangeResult } from "multi-range-slider-react";
@@ -8,7 +8,7 @@ import { Product } from "../../App";
 import "./styles.scss";
 import PriceFilter from "../../components/PriceFilter/PriceFilter";
 import Filter from "../../components/Filter/Filter";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { ArrowDownIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { ArrowsUpDownIcon } from "@heroicons/react/24/outline";
 
 const Shop: React.FC = () => {
@@ -20,6 +20,8 @@ const Shop: React.FC = () => {
  const genderParam = (searchParams.get("gender") || "").split(",");
  const productTypeParam = (searchParams.get("productType") || "").split(",");
  const ageGroupParam: string = searchParams.get("ageGroup") || "";
+ const sortOrderParam: string = searchParams.get("sortOrder") || "";
+ const sortByParam: string = searchParams.get("sortBy") || "";
  const products: Product[] = useSelector(selectProducts);
 
  const [searchQuery, setSearchQuery] = useState<string>("");
@@ -31,6 +33,9 @@ const Shop: React.FC = () => {
  const [gender, setGender] = useState<string[]>([]);
  const [productType, setProductType] = useState<string[]>([]);
  const [ageGroup, setAgeGroup] = useState<string>("adults");
+ const [sortingOptionsHidden, setSortingOptionsHidden] = useState(true);
+ const [sortOrder, setSortOrder] = useState("");
+ const [sortBy, setSortBy] = useState("");
 
  const [filterStates, setFilterStates] = useState({
   price: { visible: true },
@@ -60,8 +65,18 @@ const Shop: React.FC = () => {
  }, [searchParams, minPriceParam, maxPriceParam]);
 
  useEffect(() => {
+  if (searchParams.has("sortOrder")) {
+   setSortOrder(searchParams.get("sortOrder") || "");
+  } else {
+   setSortOrder("");
+  }
+  if (searchParams.has("sortBy")) {
+   setSortBy(searchParams.get("sortBy") || "");
+  } else {
+   setSortBy("");
+  }
   if (searchParams.has("query")) {
-   setSearchQuery(searchQuery);
+   setSearchQuery(searchParams.get("query") || "");
   } else {
    setSearchQuery("");
   }
@@ -86,6 +101,36 @@ const Shop: React.FC = () => {
    setAgeGroup("adults");
   }
  }, [searchParams]);
+
+ const sortProducts = (a: Product, b: Product) => {
+  switch (sortByParam) {
+   case "price":
+    return sortOrderParam === "asc" ? a.price - b.price : b.price - a.price;
+   case "popularity":
+    return sortOrderParam === "asc" ? a.popularity - b.popularity : b.popularity - a.popularity;
+   case "alphabetically":
+    return sortOrderParam === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+   default:
+    return 0;
+  }
+ };
+
+ const handleSortOptionClick = (selectedSortBy: "price" | "popularity" | "alphabetically") => {
+  const newSearchParams = new URLSearchParams(searchParams);
+
+  if (selectedSortBy === sortBy) {
+   const newOrder = sortOrder === "asc" ? "desc" : "asc";
+   setSortOrder(newOrder);
+   newSearchParams.set("sortOrder", newOrder);
+  } else {
+   setSortOrder("asc");
+   setSortBy(selectedSortBy);
+   newSearchParams.set("sortOrder", "asc");
+   newSearchParams.set("sortBy", selectedSortBy);
+  }
+
+  setSearchParams(newSearchParams);
+ };
 
  const handleFilterToggle = (filterType: keyof typeof filterStates) => {
   setFilterStates((prevStates) => ({
@@ -239,6 +284,8 @@ const Shop: React.FC = () => {
     productTypeParam[0] === "" ||
     productTypeParam.includes(product?.product_type))
  );
+
+ const sortedProducts = filteredProducts.slice().sort(sortProducts);
 
  return (
   <main className="search">
@@ -399,15 +446,65 @@ const Shop: React.FC = () => {
        onChange={handleQueryChange}
       />
      </div>
-     <div className="search-sort-container__sort-icon">
+     <div
+      className="search-sort-container__sort-icon"
+      onClick={() => setSortingOptionsHidden(!sortingOptionsHidden)}
+     >
       <ArrowsUpDownIcon />
+     </div>
+     <div className={`search-sort-container__sort-options ${sortingOptionsHidden && "hidden"} `}>
+      <div
+       className={`search-sort-container__sort-option ${
+        sortBy === "price" && "search-sort-container__sort-option-active"
+       }`}
+       onClick={() => handleSortOptionClick("price")}
+      >
+       <span className="search-sort-container__sort-option-name">Price</span>
+       <div
+        className={`search-sort-container__sort-option-icon ${
+         sortOrder === "asc" && sortBy === "price" && "rotated"
+        }`}
+       >
+        {sortBy === "price" && <ArrowDownIcon />}
+       </div>
+      </div>
+      <div
+       className={`search-sort-container__sort-option ${
+        sortBy === "popularity" && "search-sort-container__sort-option-active"
+       }`}
+       onClick={() => handleSortOptionClick("popularity")}
+      >
+       <span className="search-sort-container__sort-option-name">Popularity</span>
+       <div
+        className={`search-sort-container__sort-option-icon ${
+         sortOrder === "asc" && sortBy === "popularity" && "rotated"
+        }`}
+       >
+        {sortBy === "popularity" && <ArrowDownIcon />}
+       </div>
+      </div>
+      <div
+       className={`search-sort-container__sort-option ${
+        sortBy === "alphabetically" && "search-sort-container__sort-option-active"
+       }`}
+       onClick={() => handleSortOptionClick("alphabetically")}
+      >
+       <span className="search-sort-container__sort-option-name">Alphabetically</span>
+       <div
+        className={`search-sort-container__sort-option-icon ${
+         sortOrder === "asc" && sortBy === "alphabetically" && "rotated"
+        }`}
+       >
+        {sortBy === "alphabetically" && <ArrowDownIcon />}
+       </div>
+      </div>
      </div>
     </form>
     <section
      className="section"
      id="results"
     >
-     {filteredProducts.map((product) => (
+     {sortedProducts.map((product) => (
       <Tile
        key={product.id}
        product={product}
