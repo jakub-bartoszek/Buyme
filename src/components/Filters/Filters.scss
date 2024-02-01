@@ -1,0 +1,111 @@
+@import "../../styles/colors";
+@import "../../styles/shadows";
+@import "../../styles/breakpoints";
+
+.filters {
+ min-width: 280px;
+ display: flex;
+ flex-direction: column;
+ background-color: $pureWhite;
+ box-shadow: $small-box-shadow;
+
+ &__filter {
+  display: flex;
+  flex-direction: column;
+ }
+
+ &__filter--header {
+  padding: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: $small-box-shadow;
+ }
+
+ &__filter--show-icon {
+  width: 20px;
+  transition: all 0.3s;
+  display: flex;
+  cursor: pointer;
+
+  &.rotated {
+   transform-origin: center;
+   transform: rotate(-180deg);
+  }
+ }
+
+ &__filter--content {
+  padding: 0 16px;
+  gap: 16px;
+  display: none;
+  flex-direction: column;
+  transition: all 0.3s;
+
+  &.shown {
+   display: flex;
+  }
+ }
+
+ &__filter--range-slider-container {
+  margin-top: 32px;
+ }
+
+ &__filter--values-container {
+  width: 100%;
+  margin: 16px 0 16px 0;
+  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ &__filter--field {
+  display: flex;
+  gap: 16px;
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 5px;
+
+  &.incorrect {
+   border: 1px solid red;
+   box-shadow: 0 0 5px 0 rgba(255, 0, 0, 0.5);
+
+   &:focus-within {
+    outline: 1px solid red;
+   }
+  }
+
+  &:focus-within {
+   outline: 1px solid black;
+  }
+
+  input {
+   background-color: transparent;
+   width: 100%;
+   border: none;
+
+   &:focus {
+    outline: none;
+   }
+  }
+ }
+
+ &__submit-button {
+  background-color: $pureBlack;
+  color: $pureWhite;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 16px;
+  width: 100%;
+  align-self: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+   background-color: darken($pureBlack, 10%);
+  }
+ }
+}

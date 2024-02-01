@@ -1,0 +1,48 @@
+@import "../../styles/colors";
+@import "../../styles/shadows";
+@import "../../styles/breakpoints";
+
+.searchbar {
+ position: relative;
+ padding: 16px;
+ background-color: $pureWhite;
+ width: 100%;
+ box-shadow: $small-box-shadow;
+ margin-bottom: 16px;
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ justify-content: space-between;
+
+ &__input-wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  background-color: $pureWhite;
+  border: 1px solid $grey;
+  padding: 8px;
+  gap: 8px;
+  width: 100%;
+
+  &:focus-within {
+   outline: 1px solid $pureBlack;
+  }
+
+  input {
+   border: none;
+   background-color: transparent;
+   width: 100%;
+
+   &:focus {
+    outline: none;
+   }
+  }
+ }
+
+ &__search-icon {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+}

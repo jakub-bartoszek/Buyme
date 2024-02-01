@@ -8,7 +8,7 @@
  cursor: pointer;
  text-decoration: none;
  color: $black;
- height: min-content;
+ height: auto;
 
  &.loading {
   animation: loading 1s infinite;
