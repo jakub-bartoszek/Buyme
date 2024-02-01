@@ -1,5 +1,5 @@
 import { ArrowDownIcon, ArrowsUpDownIcon } from "@heroicons/react/24/outline";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./Sorting.scss";
 
@@ -9,6 +9,8 @@ const Sorting: React.FC = () => {
  const [sortOrder, setSortOrder] = useState("desc");
  const [sortBy, setSortBy] = useState("popularity");
  const [sortingOptionsHidden, setSortingOptionsHidden] = useState(true);
+
+ const sortingRef = useRef<HTMLDivElement>(null);
 
  useEffect(() => {
   if (searchParams.has("sort_order")) {
@@ -21,6 +23,12 @@ const Sorting: React.FC = () => {
   } else {
    setSortBy("popularity");
   }
+
+  document.addEventListener("click", handleOutsideClick);
+
+  return () => {
+   document.removeEventListener("click", handleOutsideClick);
+  };
  }, [searchParams]);
 
  const handleSortOptionClick = (selectedSortBy: "popularity" | "price" | "alphabetically") => {
@@ -40,8 +48,17 @@ const Sorting: React.FC = () => {
   setSearchParams(newSearchParams);
  };
 
+ const handleOutsideClick = (event: MouseEvent) => {
+  if (sortingRef.current && !sortingRef.current.contains(event.target as Node)) {
+   setSortingOptionsHidden(true);
+  }
+ };
+
  return (
-  <div className="sorting">
+  <div
+   className="sorting"
+   ref={sortingRef}
+  >
    <div
     className="sorting__sort-icon"
     onClick={() => setSortingOptionsHidden(!sortingOptionsHidden)}

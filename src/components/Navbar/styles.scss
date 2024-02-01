@@ -19,7 +19,7 @@ $navbar-logo-color: $black;
  top: 0;
  display: flex;
  justify-content: center;
- z-index: 2;
+ z-index: 3;
  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
  a {
@@ -115,5 +115,5 @@ $navbar-logo-color: $black;
  top: 0;
  left: 0px;
  transition: all 0.3s;
- z-index: 1;
+ z-index: 3;
 }
