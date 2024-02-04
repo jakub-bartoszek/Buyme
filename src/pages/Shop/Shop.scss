@@ -1,0 +1,30 @@
+@import "../../styles/colors";
+@import "../../styles/shadows";
+@import "../../styles/breakpoints";
+
+.search {
+ padding: 16px;
+ display: grid;
+ grid-template-columns: 1fr 3fr;
+ gap: 16px;
+
+ @media (max-width: $mobileHorizontal) {
+  grid-template-columns: 1fr;
+  padding: 8px;
+  gap: 0;
+ }
+
+ .query {
+  grid-column: 1 / 2 span;
+ }
+
+ .section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(162px, 1fr));
+  gap: 16px;
+
+  @media (max-width: $mobileVertical) {
+   gap: 8px;
+  }
+ }
+}

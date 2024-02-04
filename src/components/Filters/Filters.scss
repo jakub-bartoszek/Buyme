@@ -9,6 +9,10 @@
  background-color: $pureWhite;
  box-shadow: $small-box-shadow;
 
+ @media (max-width: $mobileHorizontal) {
+  display: none;
+ }
+
  &__filter {
   display: flex;
   flex-direction: column;
