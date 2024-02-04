@@ -14,6 +14,11 @@
  gap: 16px;
  justify-content: space-between;
 
+ @media (max-width: $mobileVertical) {
+  margin-bottom: 8px;
+  gap: 8px;
+ }
+
  &__input-wrapper {
   display: flex;
   align-items: center;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Product } from "../../App";
-import "./styles.scss";
+import "./Tile.scss";
 
 interface TileProps {
  product?: Product;

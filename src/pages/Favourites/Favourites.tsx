@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToFavourites, selectFavourites } from "../../utils/redux/favouritesSlice";
 import { Product } from "../../App";
 import { selectProducts } from "../../utils/redux/productsSlice";
-import "./styles.scss";
+import "./Favourites.scss";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 

@@ -1,4 +1,4 @@
-import "./styles.scss";
+import "./Footer.scss";
 import { FacebookIcon } from "../../assets/icons/facebook";
 import { InstagramIcon } from "../../assets/icons/instagram";
 import { TwitterIcon } from "../../assets/icons/twitter";

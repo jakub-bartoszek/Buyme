@@ -1,5 +1,5 @@
 import { Product } from "../../App";
-import "./styles.scss";
+import "./AlertWindow.scss";
 
 const AlertWindow = ({
  title,

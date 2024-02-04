@@ -7,7 +7,7 @@ import CartTile from "../../components/CartTile/CartTile";
 import AlertWindow from "../../components/AlertWindow/AlertWindow";
 import { changeAmount, removeItem, selectCart } from "../../utils/redux/cartSlice";
 import { selectProducts } from "../../utils/redux/productsSlice";
-import "./styles.scss";
+import "./Cart.scss";
 
 export interface CartItem {
  id: number;

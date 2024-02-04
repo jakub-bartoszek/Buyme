@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Tile from "../../components/Tile/Tile";
 import { selectProducts } from "../../utils/redux/productsSlice";
 import { Product } from "../../App";
-import "./styles.scss";
+import "./Shop.scss";
 import Filters from "../../components/Filters/Filters";
 import Searchbar from "../../components/Searchbar/Searchbar";
 

@@ -2,7 +2,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { Product } from "../../App";
 import { CartItem } from "../../pages/Cart/Cart";
-import "./styles.scss";
+import "./CartTile.scss";
 
 interface CartTileProps {
  product: Product;

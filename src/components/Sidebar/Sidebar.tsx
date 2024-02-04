@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "./styles.scss";
+import "./Sidebar.scss";
 
 const Sidebar: React.FC<{
  showSidebar: boolean;

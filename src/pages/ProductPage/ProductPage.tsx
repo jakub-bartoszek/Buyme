@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Rating from "../../components/Rating/Rating";
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import "./styles.scss";
+import "./ProductPage.scss";
 import { selectProducts } from "../../utils/redux/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Product } from "../../App";

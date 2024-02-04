@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.scss";
+import "./Home.scss";
 import Tile from "../../components/Tile/Tile";
 import { useSelector } from "react-redux";
 import { selectProducts } from "../../utils/redux/productsSlice";
