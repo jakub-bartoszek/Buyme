@@ -8,6 +8,7 @@
  grid-template-columns: 1.5fr 1fr;
  padding: 16px;
  gap: 16px;
+ max-width: 1400px;
 
  @media (max-width: $mobileHorizontal) {
   grid-template-columns: 1fr 1fr;

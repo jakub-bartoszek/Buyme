@@ -1,0 +1,134 @@
+@import "../../styles//breakpoints";
+
+@mixin arrowButtonStyles {
+ position: absolute;
+ display: flex;
+ padding: 16px;
+ background-color: rgba(255, 255, 255, 0.5);
+ cursor: pointer;
+ transition: all 0.3s;
+
+ &:hover {
+  background-color: white;
+ }
+
+ svg {
+  width: 30px;
+  height: 30px;
+ }
+}
+
+.home-section {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ overflow: hidden;
+ max-width: 1400px;
+
+ &__header {
+  font-size: 24px;
+  padding: 16px 8px;
+
+  @media (max-width: $mobileVertical) {
+   font-size: 16px;
+  }
+ }
+
+ &__banner {
+  display: grid;
+  grid-template-columns: 3fr min-content;
+
+  @media (max-width: $mobileHorizontal) {
+   grid-template-columns: 1fr;
+  }
+ }
+
+ &__image {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media (max-width: $mobileVertical) {
+   height: 248px;
+  }
+
+  img {
+   width: 100%;
+   object-fit: cover;
+   object-position: top;
+   height: 100%;
+  }
+ }
+
+ &__button {
+  justify-content: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 32px;
+
+  span {
+   white-space: nowrap;
+   font-size: 22px;
+  }
+ }
+
+ &__right-arrow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 100%;
+ }
+
+ &__products-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+ }
+
+ &__left-arrow-button {
+  left: 0;
+  @include arrowButtonStyles();
+ }
+
+ &__right-arrow-button {
+  right: 0;
+  @include arrowButtonStyles();
+ }
+
+ &__products {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  overflow-x: scroll;
+  margin: 16px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+ }
+
+ &__product-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 350px;
+  scroll-snap-align: start;
+
+  @media (max-width: $mobileHorizontal) {
+   width: 200px;
+  }
+ }
+
+ &__product-tile-image {
+  background-color: grey;
+  width: 100%;
+
+  img {
+   width: 100%;
+   height: 100%;
+  }
+ }
+}
