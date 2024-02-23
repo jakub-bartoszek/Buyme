@@ -11,14 +11,9 @@
   "available_sizes": ["S", "M", "L", "XL"],
   "description": "Comfortable striped t-shirt for a casual look.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/cf9e333ab2c7499ca35205512d510598/a3cfe165c2e64bf19148dbcdbbd734dc.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/380d23348f01458da243faac86cd8e19/2e3728dfa8964d27ab0c04f672d4843d.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/1ee53ca229a34eef9bec81f9f87ded5e/bbbe60152ac9473591c8016a3f092a85.jpg?imwidth=1800"
   ],
   "popularity": 75,
   "rating": 4.5,
@@ -36,7 +31,11 @@
   "available_sizes": ["XS", "S", "M", "L"],
   "description": "Classic denim jeans for a trendy style.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/a91c4bf6dde54352a4405732f94b26ac/dafb368812ed40fd908a48f352a0f4bf.jpg?imwidth=762&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/dfc8950150dd4db5919e1448a97531cc/6c9e9dfa02934350889946943d3663d8.jpg?imwidth=1800&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/5b3889e8a0664e0eb84cc260b0106b90/b9879a06fc66407ab7729c48077d0c5c.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/f404205e917b4ed3be6a2f1249c430f5/463e9b914bbd416abc3a539ee52619e2.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/6e2e105958fc4df7864dd37a8f16073f/c6165eec5011441aaf9628f6737be812.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/5e1cd67d05f942c5993379a5ebb22303/80c64a08df3345dcb026dfd84ade6e4e.jpg?imwidth=1800"
   ],
   "popularity": 68,
   "rating": 4.2,
@@ -54,7 +53,13 @@
   "available_sizes": ["M", "L", "XL"],
   "description": "Stylish leather jacket to stay warm in style.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/773e78d6f92e3c72839e433ef871491d/6e5daece2c624aa0ae4ff69531771b95.jpg?imwidth=762&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/f22b811b8ebc420c83d4df6faabe9877/05d5dc4f9a98424f87e83ddcfac029f8.jpg?imwidth=1800&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/3ea1cfcbbe7d458988c3dd70ba6f1fc5/b79f113dab8c452bb8a5d44748bffad7.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/71bdfe529d624f75b0432d9ce5741cff/ef156eaca5b34634b66df2aa312277b9.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/1b9bb5c234d9445c8c6f606519bed499/d321ee009a2c44dd96a97dc8d67e929a.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/fb41a01771554ef795280eb3d76a869e/4d7e0a361d654244823e9cd08a7998af.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/ba8a1f481ea34519ba8755a63d7d39fa/7e1445a91be041fa82060a30eee07d31.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/a905f210eaad4c03b946807cb22aa1ad/b0b7351e8ce242e3b7b79bcc5e6e5b7b.jpg?imwidth=1800"
   ],
   "popularity": 82,
   "rating": 4.8,
