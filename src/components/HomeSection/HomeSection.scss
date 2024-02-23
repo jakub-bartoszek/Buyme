@@ -1,4 +1,5 @@
 @import "../../styles//breakpoints";
+@import "../../styles//colors";
 
 @mixin arrowButtonStyles {
  position: absolute;
@@ -7,9 +8,14 @@
  background-color: rgba(255, 255, 255, 0.5);
  cursor: pointer;
  transition: all 0.3s;
+ box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
  &:hover {
-  background-color: white;
+  background-color: $pureWhite;
+ }
+
+ @media (max-width: $mobileHorizontal) {
+  display: none;
  }
 
  svg {
@@ -22,7 +28,6 @@
  display: flex;
  flex-direction: column;
  width: 100%;
- overflow: hidden;
  max-width: 1400px;
 
  &__header {
@@ -91,12 +96,12 @@
  }
 
  &__left-arrow-button {
-  left: 0;
+  left: 16px;
   @include arrowButtonStyles();
  }
 
  &__right-arrow-button {
-  right: 0;
+  right: 16px;
   @include arrowButtonStyles();
  }
 
@@ -108,6 +113,10 @@
   margin: 16px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+ }
+
+ &__products::-webkit-scrollbar {
+  display: none;
  }
 
  &__product-tile {
@@ -123,7 +132,7 @@
  }
 
  &__product-tile-image {
-  background-color: grey;
+  background-color: $grey;
   width: 100%;
 
   img {
