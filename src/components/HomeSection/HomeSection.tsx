@@ -1,17 +1,40 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Product } from "../../App";
 import "./HomeSection.scss";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
-const HomeTile = ({ product }: { product: Product }) => (
- <div className="home-section__product-tile">
-  <div className="home-section__product-tile-image">
-   <img src={product.images && product.images[0]}></img>
-  </div>
-  <p>{product.name}</p>
-  <p>{product.price}</p>
- </div>
-);
+const HomeTile = ({ product }: { product: Product }) => {
+ const [currentImage, setCurrentImage] = useState(product.images && product.images[1]);
+ let timeoutId: number | undefined;
+
+ const handleMouseOver = () => {
+  timeoutId = setTimeout(() => setCurrentImage(product.images && product.images[0]), 250);
+ };
+
+ const handleMouseOut = () => {
+  clearTimeout(timeoutId);
+  setCurrentImage(product.images && product.images[1]);
+ };
+
+ return (
+  <Link
+   to={`/product/${product.id}`}
+   className="home-section__product-tile"
+  >
+   <div className="home-section__product-tile-image-wrapper">
+    <img
+     className="home-section__product-tile-image"
+     src={currentImage}
+     onMouseOver={handleMouseOver}
+     onMouseOut={handleMouseOut}
+    />
+   </div>
+   <p>{product.name}</p>
+   <p>{product.price}$</p>
+  </Link>
+ );
+};
 
 const HomeSection = ({
  name,

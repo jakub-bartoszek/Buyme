@@ -1,6 +1,18 @@
 @import "../../styles//breakpoints";
 @import "../../styles//colors";
 
+@keyframes fadeIn {
+ 0% {
+  opacity: 100%;
+ }
+ 50% {
+  opacity: 0%;
+ }
+ 100% {
+  opacity: 100%;
+ }
+}
+
 @mixin arrowButtonStyles {
  position: absolute;
  display: flex;
@@ -9,6 +21,7 @@
  cursor: pointer;
  transition: all 0.3s;
  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+ z-index: 20;
 
  &:hover {
   background-color: $pureWhite;
@@ -111,6 +124,7 @@
   justify-content: space-between;
   overflow-x: scroll;
   margin: 16px;
+  gap: 16px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
  }
@@ -125,19 +139,25 @@
   justify-content: center;
   width: 350px;
   scroll-snap-align: start;
+  text-decoration: none;
+  color: $black;
 
   @media (max-width: $mobileHorizontal) {
    width: 200px;
   }
  }
 
- &__product-tile-image {
-  background-color: $grey;
+ &__product-tile-image-wrapper {
+  background-color: $pureWhite;
   width: 100%;
 
   img {
    width: 100%;
    height: 100%;
+
+   &:hover {
+    animation: fadeIn 0.5s ease-in-out;
+   }
   }
  }
 }
