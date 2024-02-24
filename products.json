@@ -11,14 +11,9 @@
   "available_sizes": ["S", "M", "L", "XL"],
   "description": "Comfortable striped t-shirt for a casual look.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot",
-   "https://img01.ztat.net/article/spp-media-p1/fc7045967a574e7eb6d5651e1ef3b2c3/5153a5ded06c44d18238f82b96b23b2e.jpg?imwidth=762&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/cf9e333ab2c7499ca35205512d510598/a3cfe165c2e64bf19148dbcdbbd734dc.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/380d23348f01458da243faac86cd8e19/2e3728dfa8964d27ab0c04f672d4843d.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/1ee53ca229a34eef9bec81f9f87ded5e/bbbe60152ac9473591c8016a3f092a85.jpg?imwidth=1800"
   ],
   "popularity": 75,
   "rating": 4.5,
@@ -36,7 +31,11 @@
   "available_sizes": ["XS", "S", "M", "L"],
   "description": "Classic denim jeans for a trendy style.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/a91c4bf6dde54352a4405732f94b26ac/dafb368812ed40fd908a48f352a0f4bf.jpg?imwidth=762&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/dfc8950150dd4db5919e1448a97531cc/6c9e9dfa02934350889946943d3663d8.jpg?imwidth=1800&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/5b3889e8a0664e0eb84cc260b0106b90/b9879a06fc66407ab7729c48077d0c5c.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/f404205e917b4ed3be6a2f1249c430f5/463e9b914bbd416abc3a539ee52619e2.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/6e2e105958fc4df7864dd37a8f16073f/c6165eec5011441aaf9628f6737be812.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/5e1cd67d05f942c5993379a5ebb22303/80c64a08df3345dcb026dfd84ade6e4e.jpg?imwidth=1800"
   ],
   "popularity": 68,
   "rating": 4.2,
@@ -54,7 +53,13 @@
   "available_sizes": ["M", "L", "XL"],
   "description": "Stylish leather jacket to stay warm in style.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/773e78d6f92e3c72839e433ef871491d/6e5daece2c624aa0ae4ff69531771b95.jpg?imwidth=762&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/f22b811b8ebc420c83d4df6faabe9877/05d5dc4f9a98424f87e83ddcfac029f8.jpg?imwidth=1800&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/3ea1cfcbbe7d458988c3dd70ba6f1fc5/b79f113dab8c452bb8a5d44748bffad7.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/71bdfe529d624f75b0432d9ce5741cff/ef156eaca5b34634b66df2aa312277b9.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/1b9bb5c234d9445c8c6f606519bed499/d321ee009a2c44dd96a97dc8d67e929a.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/fb41a01771554ef795280eb3d76a869e/4d7e0a361d654244823e9cd08a7998af.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/ba8a1f481ea34519ba8755a63d7d39fa/7e1445a91be041fa82060a30eee07d31.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/a905f210eaad4c03b946807cb22aa1ad/b0b7351e8ce242e3b7b79bcc5e6e5b7b.jpg?imwidth=1800"
   ],
   "popularity": 82,
   "rating": 4.8,
@@ -72,7 +77,10 @@
   "available_sizes": ["S", "M", "L"],
   "description": "Elegant floral dress for a chic and feminine look.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/fefef2fca7da4cf4946549270ff779a1/9b0939b8e6664131a218c5be387dd0af.jpg?imwidth=762&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/fefef2fca7da4cf4946549270ff779a1/9b0939b8e6664131a218c5be387dd0af.jpg?imwidth=1800&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/586aac4b475b4a23ab6e4419511b04ec/56c7ec0d59ef44aea4bab467771ea84f.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/1e938b926e9549d0979c0314b576b053/8110ba3a0aef441b9e6322fb011e5c0c.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/d4294edefd9f429bbeba79ef1c1e3c37/cf88ad613aef4a82996555ff994d01eb.jpg?imwidth=1800"
   ],
   "popularity": 90,
   "rating": 4.9,
@@ -90,7 +98,9 @@
   "available_sizes": ["7", "8", "9", "10"],
   "description": "Comfortable running shoes for your active lifestyle.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/71d52ce5f98d40d6aaf3e14f377b5fba/f1f8d270551b43128066e97ccaad61c2.jpg?imwidth=1800&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/1df98b5f768f4c34b70851429917d9c6/df3e7d3210644f369357306ebe8da0fe.jpg?imwidth=1800&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/c02b72dee5c74505bacf81dc7fe83b0a/8ed30aab8db04fb5833bf0393d687136.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/808fea52411f4b2bae05d35786bc133d/442bab18ce0a40039af3608e36238b22.jpg?imwidth=1800"
   ],
   "popularity": 88,
   "rating": 4.7,
@@ -108,7 +118,11 @@
   "available_sizes": ["S", "M", "L", "XL"],
   "description": "Casual hooded sweatshirt for a laid-back style.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/329c3b61f573409390afda733d8fc289/1e72f00b7ac04a4ba04c7cfc5f6f832a.jpg?imwidth=762&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/6c2a68e896114a498d3c6b82b819e797/adabf4e4e2f44afa9215493f69adf675.jpg?imwidth=1800&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/e5df6c85c74a4789aefecf6a970b2ea9/8afdeabc1d114a51a7700627c90e5e46.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/7a83a92624e04d4bb0d2775bab16edf1/e8c641cd338d4c74b57bb0ea870434aa.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/11a9d876e1ab48999b6da32a130e4523/0b1ecf8300cd42619cfbadae42624b81.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/a253eb593b3f4aabb6c29ae8dfde1e19/4feda49521ba4274838978b777e8fb25.jpg?imwidth=1800"
   ],
   "popularity": 72,
   "rating": 4.4,
@@ -126,7 +140,12 @@
   "available_sizes": ["XS", "S", "M"],
   "description": "Fashionable pleated skirt for a trendy outfit.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/068a6eb278c54385926893a7db2e5e5d/ade068aaf72545efb91e93b55588b2a4.jpg?imwidth=762"
+   "https://img01.ztat.net/article/spp-media-p1/929e284c8ae54a2e9600912e6d05b4f3/acb41ef9dfb0410fbb92f0d510d3b837.jpg?imwidth=1800&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/345e9544b2b74025b8ad0fca70a85171/01ddeadd83ff4b7a9a6e32e89e4e902a.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/624feb4cc00145b482a3e68dd1ba4f6f/491ad83f778b47ee99d64d9ec4609298.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/c0949e1a59c04ad3ae4735173b349429/469775fb59e348458f4aad87630ef7cd.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/73a4558b194949cf9cfeb78730aeb8fb/b1763087f3474daeb0a6fc9e308effb7.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/431ca61713bc4a72b14960657d867b00/e3f6f972cdb343d7a5313e25b4d63d5f.jpg?imwidth=1800"
   ],
   "popularity": 80,
   "rating": 4.6,
@@ -144,7 +163,11 @@
   "available_sizes": ["M", "L", "XL"],
   "description": "Classic formal suit for special occasions.",
   "images": [
-   "https://img01.ztat.net/article/spp-media-p1/58451a5aff7e4822bbb9fe971ef407fe/29475ff6d7a647759f2d2eeef5fa117c.jpg?imwidth=1800&filter=packshot"
+   "https://img01.ztat.net/article/spp-media-p1/6b9bcf800136461a8b3947489ab66798/64071ca4307a4746a28cfc33313ede71.jpg?imwidth=1800&filter=packshot",
+   "https://img01.ztat.net/article/spp-media-p1/d7676312278b4f5182054ae5d2f5fa1f/a04c51f81e4840478f3e91c3c2c35c8c.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/57f7b563df2d4085b6626c1146a225cf/c1a59e4894cc4e589320d25e24ace61a.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/a7c9c96ea80c4f7d85afcdf957f5c7d7/59c2c40b81614fa89ea71b0a6fc9a74b.jpg?imwidth=1800",
+   "https://img01.ztat.net/article/spp-media-p1/616dec5f5c0b4a5ea1068bac147adb64/a7e4148e1eeb469aa4a26f97d470d6e6.jpg?imwidth=1800"
   ],
   "popularity": 95,
   "rating": 5.0,
