@@ -5,16 +5,22 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const HomeTile = ({ product }: { product: Product }) => {
- const [currentImage, setCurrentImage] = useState(product.images && product.images[1]);
+ const [currentImage, setCurrentImage] = useState(
+  product.images && (product.images[1] ? product.images[1] : product.images[0])
+ );
  let timeoutId: number | undefined;
 
  const handleMouseOver = () => {
-  timeoutId = setTimeout(() => setCurrentImage(product.images && product.images[0]), 250);
+  if (product.images && product.images.length !== 1) {
+   timeoutId = setTimeout(() => setCurrentImage(product.images && product.images[0]), 250);
+  }
  };
 
  const handleMouseOut = () => {
   clearTimeout(timeoutId);
-  setCurrentImage(product.images && product.images[1]);
+  if (product.images && product.images.length > 1) {
+   setCurrentImage(product.images && product.images[1]);
+  }
  };
 
  return (
