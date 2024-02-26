@@ -6,18 +6,13 @@
  align-items: center;
 }
 
-$navbar-background: $white;
-$navbar-height: 60px;
-$navbar-content-width: 1400px;
-$navbar-max-width: 800px;
-$navbar-logo-color: $black;
-
 .navbar {
- background-color: $navbar-background;
- height: $navbar-height;
+ background-color: $white;
+ height: 60px;
  position: sticky;
  top: 0;
  display: flex;
+ align-items: center;
  justify-content: center;
  z-index: 3;
  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -32,11 +27,13 @@ $navbar-logo-color: $black;
   justify-content: space-between;
   padding: 8px;
   gap: 32px;
-  width: $navbar-content-width;
+  width: 1400px;
+  height: 100%;
  }
 
  &__logo-wrapper {
-  @extend %align-center;
+  display: flex;
+  align-items: center;
   gap: 8px;
  }
 
@@ -49,8 +46,11 @@ $navbar-logo-color: $black;
   }
  }
 
- &__logo {
-  color: $navbar-logo-color;
+ &__logo-text {
+  line-height: 0%;
+  font-family: "Noto Serif", serif;
+  color: $black;
+  font-size: 32px;
  }
 
  &__menu--form {
@@ -74,7 +74,7 @@ $navbar-logo-color: $black;
   }
 
   .active {
-   border-bottom: 1px solid black;
+   border-bottom: 1px solid $black;
   }
  }
 
@@ -90,15 +90,14 @@ $navbar-logo-color: $black;
   position: relative;
 
   .item-count {
+   @extend %align-center;
+   justify-content: center;
    background-color: red;
    color: $pureWhite;
    font-size: 10px;
    height: 14px;
    width: 14px;
-   display: flex;
-   justify-content: center;
    border-radius: 50%;
-   align-items: center;
    position: absolute;
    top: -5px;
    right: -5px;
@@ -109,7 +108,7 @@ $navbar-logo-color: $black;
 .navbar-shadow {
  width: 100%;
  height: 100vh;
- background-color: #00000050;
+ background-color: rgba(0, 0, 0, 0.3);
  backdrop-filter: blur(2px);
  position: fixed;
  top: 0;

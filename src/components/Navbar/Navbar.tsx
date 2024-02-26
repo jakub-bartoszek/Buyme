@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
        to="/"
        className="navbar__logo"
       >
-       <h1>BuyMe!</h1>
+       <h1 className="navbar__logo-text">BUYME</h1>
       </NavLink>
      </div>
      {showSearchInput ? (
@@ -101,9 +101,7 @@ const Navbar: React.FC = () => {
        to="/favourites"
       >
        <HeartIcon />
-       {favourites.length > 0 && (
-        <div className="item-count">{favourites.length}</div>
-       )}
+       {favourites.length > 0 && <div className="item-count">{favourites.length}</div>}
       </NavLink>
       <NavLink
        className="navbar__menu--button"
