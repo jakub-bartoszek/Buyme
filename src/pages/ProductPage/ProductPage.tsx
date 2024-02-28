@@ -19,9 +19,7 @@ const ProductPage: React.FC = () => {
  const navigate = useNavigate();
 
  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
- const [activeFsGalleryImageIndex, setActiveFsGalleryImageIndex] = useState<
-  number | null
- >(1);
+ const [activeFsGalleryImageIndex, setActiveFsGalleryImageIndex] = useState<number | null>(1);
  const [chosenSize, setChosenSize] = useState<string>("");
  const [amount, setAmount] = useState<number>(0);
  const [showGallery, setShowGallery] = useState<boolean>(false);
@@ -80,129 +78,40 @@ const ProductPage: React.FC = () => {
      amount={amount}
     />
    )}
-   <div className="product-gallery">
-    <div className="product-gallery__small-images">
-     {product.images &&
-      product.images.map((image, index) => (
-       <div
-        className={`product-gallery__small-image ${
-         index === activeImageIndex && "active"
-        }`}
-        key={index}
-       >
-        <img
-         src={image}
-         onClick={() => handleGalleryImageClick(index)}
-         alt={`Product Image ${index}`}
-        />
-       </div>
-      ))}
-    </div>
-    {activeImageIndex !== null && product.images && (
-     <div className="product-gallery__main-image-wrapper">
-      <div
-       className="product-gallery__main-image"
-       onClick={() => setShowGallery(true)}
-      >
-       <img
-        src={product.images[activeImageIndex]}
-        alt="Main Product Image"
-       />
-      </div>
-     </div>
-    )}
+   <div className="product__main-image">
+    {product.images && product.images[0] && <img src={product.images[0]} />}
    </div>
-   {showGallery && product.images && (
-    <div className="product-fullscreen-gallery">
-     <div className="product-fullscreen-gallery__main-image-wrapper">
-      <div className="product-fullscreen-gallery__main-image">
-       {activeFsGalleryImageIndex !== null && (
-        <>
-         <img
-          src={product.images[activeFsGalleryImageIndex]}
-          alt="Fullscreen Product"
-         />
-         <div className="product-fullscreen-gallery__close-button">
-          <XMarkIcon onClick={() => setShowGallery(false)} />
-         </div>
-        </>
-       )}
-      </div>
-     </div>
-     <div className="product-fullscreen-gallery__small-images">
-      {product.images.map((image, index) => (
-       <div
-        className={`product-fullscreen-gallery__small-image ${
-         index === activeFsGalleryImageIndex && "active"
-        }`}
-        key={index}
-       >
-        <img
-         src={image}
-         onClick={() => handleFsGalleryImageClick(index)}
-         alt={`Small Product Image ${index}`}
-        />
-       </div>
-      ))}
+   <div className="product__info">
+    <div className="product__name-wrapper">
+     <h2 className="product__name">{product.name}</h2>
+     <div className="product__favourite-button">
+      <HeartIcon />
      </div>
     </div>
-   )}
-   <div className="product-info">
-    <h2 className="product-info__name">{product.name}</h2>
-    <div className="product-info__rating">
-     <Rating rating={product.rating} />
-    </div>
-    <div className="product-info__price">{product.price} $</div>
-    <div className="product-info__sizes">
+    <p className="product__price">{product.price} $</p>
+    <div className="product__sizes">
      {product.available_sizes.map((size) => (
-      <button
-       key={size}
-       className={`product-info__size ${size === chosenSize ? "chosen" : ""}`}
-       onClick={() => setChosenSize(size)}
-      >
-       {size}
-      </button>
+      <button className="product__size">{size}</button>
      ))}
     </div>
-    <div className="product-info__amount">
-     <button
-      disabled={amount === 0}
-      className="product-info__amount--button"
-      onClick={() => amount > 0 && setAmount((amount) => amount - 1)}
-     >
-      <span>-</span>
-     </button>
-     <div className="product-info__amount--number">{amount}</div>
-     <button
-      disabled={amount === 10}
-      className="product-info__amount--button"
-      onClick={() => amount < 10 && setAmount((amount) => amount + 1)}
-     >
-      <span>+</span>
-     </button>
+    <div className="product__amount">
+     <button className="product__amount-button">-</button>
+     <input
+      type="number"
+      className="product__amount-number"
+     />
+     <button className="product__amount-button">+</button>
     </div>
-    <div className="product-info__buttons">
-     <button
-      disabled={chosenSize == null || amount === 0}
-      className="product-info__buy-button"
-      onClick={handleAddToCart}
-     >
-      ADD TO CART
-     </button>
-     <button
-      className="product-info__favourite-button"
-      onClick={() => dispatch(addToFavourites({ id: product.id }))}
-     >
-      <HeartIcon
-       className={`${
-        favourites.findIndex((product) => product.id === productId) !== -1 &&
-        "added"
-       }`}
-      />
-     </button>
-    </div>
+    <button className="product__buy-button">ADD TO CART</button>
    </div>
-   <div className="product-description">{product.description}</div>
+   <div className="product__gallery">
+    {product.images &&
+     product.images.slice(1).map((image) => (
+      <div className="product__gallery-image">
+       <img src={image} />
+      </div>
+     ))}
+   </div>
   </main>
  );
 };
