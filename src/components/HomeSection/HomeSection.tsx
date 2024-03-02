@@ -98,7 +98,10 @@ const HomeSection = ({
      className="home-section__products"
     >
      {products.map((product) => (
-      <HomeTile product={product} />
+      <HomeTile
+       key={product.id}
+       product={product}
+      />
      ))}
     </div>
    </div>
