@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Rating from "../../components/Rating/Rating";
 import "./ProductPage.scss";
@@ -9,8 +9,54 @@ import { addToCart } from "../../utils/redux/cartSlice";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { addToFavourites, selectFavourites } from "../../utils/redux/favouritesSlice";
 import AlertWindow from "../../components/AlertWindow/AlertWindow";
-import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ArrowRightIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
 import ImageGallery from "../../components/ImageGallery/ImageGallery";
+import HomeTile from "../../components/HomeTile/HomeTile";
+
+const SimilarProductSection = ({ product, products, category }) => {
+ const scrollRef = useRef<HTMLDivElement | null>(null);
+
+ const ArrowButtonClickHandler = (direction: string) => {
+  if (scrollRef.current) {
+   if (direction === "left") {
+    scrollRef.current.scrollLeft -= 800;
+   } else {
+    scrollRef.current.scrollLeft += 800;
+   }
+  }
+ };
+
+ return (
+  <div className="product__similar-products-wrapper">
+   <div
+    onClick={() => ArrowButtonClickHandler("left")}
+    className="product__left-arrow-button"
+   >
+    <ArrowLeftIcon />
+   </div>
+   <div
+    onClick={() => ArrowButtonClickHandler("right")}
+    className="product__right-arrow-button"
+   >
+    <ArrowRightIcon />
+   </div>
+   <div
+    ref={scrollRef}
+    className="product__similar-products-list"
+   >
+    {products
+     .filter((p) => p.categories.includes(category))
+     .filter((p) => p.name !== product.name)
+     .map((product) => (
+      <HomeTile
+       key={product.id}
+       product={product}
+      />
+     ))}
+   </div>
+  </div>
+ );
+};
 
 const ProductPage: React.FC = () => {
  const { id } = useParams();
@@ -18,15 +64,14 @@ const ProductPage: React.FC = () => {
  const products: Product[] = useSelector(selectProducts);
  const product = products.find((p) => p.id === productId);
  const navigate = useNavigate();
+ const favourites = useSelector(selectFavourites);
+ const dispatch = useDispatch();
 
  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(1);
  const [chosenSize, setChosenSize] = useState<string>("");
  const [amount, setAmount] = useState<number>(0);
  const [showGallery, setShowGallery] = useState<boolean>(false);
  const [showAlertWindow, setShowAlertWindow] = useState<boolean>(false);
-
- const favourites = useSelector(selectFavourites);
- const dispatch = useDispatch();
 
  useEffect(() => {
   if (product && product.images) {
@@ -35,7 +80,6 @@ const ProductPage: React.FC = () => {
  }, [product]);
 
  useEffect(() => {
-  console.log("scroll");
   window.scrollTo({
    top: 0
   });
@@ -177,6 +221,21 @@ const ProductPage: React.FC = () => {
       </div>
      ))}
    </div>
+   <div />
+   {product.categories.length > 0 && (
+    <div className="product__similar-products">
+     <h2 className="product__similar-products-header">You may also like</h2>
+     <div>
+      {product.categories.map((category) => (
+       <SimilarProductSection
+        product={product}
+        products={products}
+        category={category}
+       />
+      ))}
+     </div>
+    </div>
+   )}
   </main>
  );
 };
