@@ -28,12 +28,17 @@
  }
 
  @media (max-width: $mobileHorizontal) {
-  display: none;
+  padding: 6px;
  }
 
  svg {
   width: 30px;
   height: 30px;
+
+  @media (max-width: $mobileHorizontal) {
+   width: 30px;
+   height: 30px;
+  }
  }
 }
 
