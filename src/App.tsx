@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { fetchProducts } from "./utils/redux/productsSlice";
 import { useDispatch } from "react-redux";
 import Shop from "./pages/Shop/Shop";
+import Collection from "./pages/Collection/Collection";
 
 export interface Product {
  id: number;
@@ -70,6 +71,10 @@ function App() {
       <Route
        path="/product/:id"
        element={<ProductPage />}
+      />
+      <Route
+       path="/collection/:name"
+       element={<Collection />}
       />
       <Route
        path="/"
