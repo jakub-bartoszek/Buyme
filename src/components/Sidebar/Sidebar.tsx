@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
 import "./Sidebar.scss";
 
-const Sidebar: React.FC<{
+interface SidebarProps {
  showSidebar: boolean;
  setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ showSidebar, setShowSidebar }) => {
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ showSidebar, setShowSidebar }) => {
  return (
   <>
    {showSidebar && (

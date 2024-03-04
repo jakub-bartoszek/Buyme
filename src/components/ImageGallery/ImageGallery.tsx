@@ -2,16 +2,18 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Product } from "../../App";
 import "./ImageGallery.scss";
 
-const ImageGallery = ({
- product,
- activeImageIndex,
- setActiveImageIndex,
- setShowGallery
-}: {
+interface ImageGalleryProps {
  product: Product;
  activeImageIndex: number;
  setActiveImageIndex: React.Dispatch<React.SetStateAction<number | null>>;
  setShowGallery: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ImageGallery: React.FC<ImageGalleryProps> = ({
+ product,
+ activeImageIndex,
+ setActiveImageIndex,
+ setShowGallery
 }) => {
  const handleImageClick = (e: React.MouseEvent<HTMLImageElement, MouseEvent>, index: number) => {
   setActiveImageIndex(index);

@@ -137,33 +137,4 @@
  &__products::-webkit-scrollbar {
   display: none;
  }
-
- &__product-tile {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 350px;
-  scroll-snap-align: start;
-  text-decoration: none;
-  color: $black;
-
-  @media (max-width: $mobileHorizontal) {
-   width: 200px;
-  }
- }
-
- &__product-tile-image-wrapper {
-  background-color: $pureWhite;
-  width: 100%;
-  height: 100%;
-
-  img {
-   width: 100%;
-   height: 100%;
-
-   &:hover {
-    animation: fadeIn 0.5s ease-in-out;
-   }
-  }
- }
 }

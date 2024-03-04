@@ -1,16 +1,7 @@
 import { Product } from "../../App";
 import "./AlertWindow.scss";
 
-const AlertWindow = ({
- title,
- confirmFunction,
- cancelFunction,
- confirmText,
- cancelText,
- product,
- chosenSize,
- amount
-}: {
+interface AlertWindowProps {
  title: string;
  confirmFunction: () => void;
  cancelFunction: () => void;
@@ -19,6 +10,17 @@ const AlertWindow = ({
  product?: Product;
  chosenSize?: string;
  amount?: number;
+}
+
+const AlertWindow: React.FC<AlertWindowProps> = ({
+ title,
+ confirmFunction,
+ cancelFunction,
+ confirmText,
+ cancelText,
+ product,
+ chosenSize,
+ amount
 }) => (
  <div className="alert-window-shadow">
   <div className="alert-window">

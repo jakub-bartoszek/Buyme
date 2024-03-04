@@ -8,11 +8,7 @@ interface CartTileProps {
  product: Product;
  item: CartItem;
  openRemoveItemAlert: (id: number, isItemAlert: boolean) => void;
- onAmountChange: (
-  e: React.ChangeEvent<HTMLSelectElement>,
-  id: number,
-  name: string
- ) => void;
+ onAmountChange: (e: React.ChangeEvent<HTMLSelectElement>, id: number, name: string) => void;
  calculateItemTotal: (product: Product, item: CartItem) => number;
 }
 

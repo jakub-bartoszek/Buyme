@@ -1,6 +1,11 @@
 import Star from "./Star/Star";
 
-const Rating = ({ rating, max = 5 }: { rating: number; max?: number }) => {
+interface RatingProps {
+ rating: number;
+ max?: number;
+}
+
+const Rating: React.FC<RatingProps> = ({ rating, max = 5 }) => {
  return (
   <div className="flex items-center bg-white">
    {Array.from({ length: Math.floor(rating) }, (_, i) => (

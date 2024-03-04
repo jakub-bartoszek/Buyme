@@ -1,56 +1,16 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Product } from "../../App";
 import "./HomeSection.scss";
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useRef } from "react";
+import HomeTile from "../HomeTile/HomeTile";
 
-const HomeTile = ({ product }: { product: Product }) => {
- const [currentImage, setCurrentImage] = useState(
-  product.images && (product.images[1] ? product.images[1] : product.images[0])
- );
- let timeoutId: number | undefined;
-
- const handleMouseOver = () => {
-  if (product.images && product.images.length !== 1) {
-   timeoutId = setTimeout(() => setCurrentImage(product.images && product.images[0]), 250);
-  }
- };
-
- const handleMouseOut = () => {
-  clearTimeout(timeoutId);
-  if (product.images && product.images.length > 1) {
-   setCurrentImage(product.images && product.images[1]);
-  }
- };
-
- return (
-  <Link
-   to={`/product/${product.id}`}
-   className="home-section__product-tile"
-  >
-   <div className="home-section__product-tile-image-wrapper">
-    <img
-     className="home-section__product-tile-image"
-     src={currentImage}
-     onMouseOver={handleMouseOver}
-     onMouseOut={handleMouseOut}
-    />
-   </div>
-   <p>{product.name}</p>
-   <p>{product.price}$</p>
-  </Link>
- );
-};
-
-const HomeSection = ({
- name,
- products,
- image
-}: {
+interface HomeSectionProps {
  name: string;
  products: Product[];
  image: string;
-}) => {
+}
+
+const HomeSection: React.FC<HomeSectionProps> = ({ name, products, image }) => {
  const scrollRef = useRef<HTMLDivElement>(null);
 
  const ArrowButtonClickHandler = (direction: string) => {
