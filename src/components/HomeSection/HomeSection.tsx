@@ -3,6 +3,7 @@ import { Product } from "../../App";
 import "./HomeSection.scss";
 import { useRef } from "react";
 import HomeTile from "../HomeTile/HomeTile";
+import { Link } from "react-router-dom";
 
 interface HomeSectionProps {
  name: string;
@@ -28,17 +29,20 @@ const HomeSection: React.FC<HomeSectionProps> = ({ name, products, image }) => {
    id={name.replace(" ", "-")}
    className="home-section"
   >
-   <div className="home-section__header">{name.toUpperCase()}</div>
+   <h2 className="home-section__header">{name.toUpperCase()}</h2>
    <div className="home-section__banner">
     <div className="home-section__image">
      <img src={image} />
     </div>
-    <div className="home-section__button">
+    <Link
+     to={`/collection/${name}`}
+     className="home-section__link"
+    >
      <span>GO TO COLLECTION</span>
      <div className="home-section__right-arrow-icon">
       <ArrowRightIcon />
      </div>
-    </div>
+    </Link>
    </div>
    <div className="home-section__products-wrapper">
     <div

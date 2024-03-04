@@ -50,6 +50,7 @@
 
  &__header {
   font-size: 24px;
+  font-weight: 500;
   padding: 16px 8px;
 
   @media (max-width: $mobileVertical) {
@@ -85,7 +86,9 @@
   }
  }
 
- &__button {
+ &__link {
+  text-decoration: none;
+  color: $black;
   justify-content: center;
   cursor: pointer;
   display: flex;
@@ -96,6 +99,12 @@
 
   &:hover {
    padding: 64px;
+  }
+
+  @media (max-width: $mobileHorizontal) {
+   &:hover {
+    padding: 32px;
+   }
   }
 
   span {
