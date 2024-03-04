@@ -92,6 +92,11 @@
   align-items: center;
   gap: 8px;
   padding: 32px;
+  transition: all 0.3s;
+
+  &:hover {
+   padding: 64px;
+  }
 
   span {
    white-space: nowrap;
