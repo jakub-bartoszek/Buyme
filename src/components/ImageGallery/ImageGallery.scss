@@ -10,6 +10,7 @@
  height: calc(100% - 60px);
  background-color: rgba(0, 0, 0, 0.3);
  backdrop-filter: blur(2px);
+ z-index: 4;
 
  &__main-image-wrapper {
   padding: 16px;
