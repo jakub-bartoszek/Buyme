@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Rating from "../../components/Rating/Rating";
 import "./ProductPage.scss";
@@ -9,54 +9,10 @@ import { addToCart } from "../../utils/redux/cartSlice";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { addToFavourites, selectFavourites } from "../../utils/redux/favouritesSlice";
 import AlertWindow from "../../components/AlertWindow/AlertWindow";
-import { ArrowLeftIcon, ArrowRightIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import ImageGallery from "../../components/ImageGallery/ImageGallery";
-import HomeTile from "../../components/HomeTile/HomeTile";
-
-const SimilarProductSection = ({ product, products, category }) => {
- const scrollRef = useRef<HTMLDivElement | null>(null);
-
- const ArrowButtonClickHandler = (direction: string) => {
-  if (scrollRef.current) {
-   if (direction === "left") {
-    scrollRef.current.scrollLeft -= 800;
-   } else {
-    scrollRef.current.scrollLeft += 800;
-   }
-  }
- };
-
- return (
-  <div className="product__similar-products-wrapper">
-   <div
-    onClick={() => ArrowButtonClickHandler("left")}
-    className="product__left-arrow-button"
-   >
-    <ArrowLeftIcon />
-   </div>
-   <div
-    onClick={() => ArrowButtonClickHandler("right")}
-    className="product__right-arrow-button"
-   >
-    <ArrowRightIcon />
-   </div>
-   <div
-    ref={scrollRef}
-    className="product__similar-products-list"
-   >
-    {products
-     .filter((p) => p.categories.includes(category))
-     .filter((p) => p.name !== product.name)
-     .map((product) => (
-      <HomeTile
-       key={product.id}
-       product={product}
-      />
-     ))}
-   </div>
-  </div>
- );
-};
+import { nanoid } from "@reduxjs/toolkit";
+import SimilarProducts from "../../components/SimilarProducts/SimilarProducts";
 
 const ProductPage: React.FC = () => {
  const { id } = useParams();
@@ -227,10 +183,11 @@ const ProductPage: React.FC = () => {
      <h2 className="product__similar-products-header">You may also like</h2>
      <div>
       {product.categories.map((category) => (
-       <SimilarProductSection
+       <SimilarProducts
         product={product}
         products={products}
         category={category}
+        key={nanoid()}
        />
       ))}
      </div>
