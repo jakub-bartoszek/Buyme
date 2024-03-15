@@ -28,10 +28,8 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ product, products, ca
    const isScrollable = scrollRef.current.scrollWidth > scrollRef.current.clientWidth;
 
    if (isScrollable) {
-    console.log("is scrollable");
     setAreArrowsHidden(false);
    } else {
-    console.log("isnt scrollable");
     setAreArrowsHidden(true);
    }
   }
