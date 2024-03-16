@@ -2,6 +2,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import HomeTile from "../../components/HomeTile/HomeTile";
 import { useEffect, useRef, useState } from "react";
 import { Product } from "../../App";
+import "./SimilarProducts.scss";
 
 interface SimilarProductsProps {
  product: Product;
