@@ -1,11 +1,11 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addToFavourites, selectFavourites } from "../../utils/redux/favouritesSlice";
+import { useSelector } from "react-redux";
+import { selectFavourites } from "../../utils/redux/favouritesSlice";
 import { Product } from "../../App";
 import { selectProducts } from "../../utils/redux/productsSlice";
 import "./Favourites.scss";
 import { HeartIcon } from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
+import FavouriteTile from "../../components/FavouriteTile/FavouriteTile";
 
 export interface FavouriteItem {
  id: number;
@@ -14,7 +14,6 @@ export interface FavouriteItem {
 const Favourites: React.FC = () => {
  const favorites = useSelector(selectFavourites);
  const products: Product[] = useSelector(selectProducts);
- const dispatch = useDispatch();
 
  return (
   <div className="favourites">
@@ -24,37 +23,10 @@ const Favourites: React.FC = () => {
       products
        .filter((product) => product.id === item.id)
        .map((product) => (
-        <div
-         className="favourites-tile"
+        <FavouriteTile
          key={product.id}
-        >
-         <Link
-          to={`/product/${product.id}`}
-          className="favourites-tile__image-wrapper"
-         >
-          {product && product.images && (
-           <img
-            src={product.images[0]}
-            alt={product.name}
-           />
-          )}
-         </Link>
-         <div>
-          <Link
-           to={`/product/${product.id}`}
-           className="favourites-tile__name"
-          >
-           {product.name}
-          </Link>
-          <p className="favourites-tile__price">{product.price} $</p>
-         </div>
-         <button
-          className="favourites-tile__favourite-button"
-          onClick={() => dispatch(addToFavourites({ id: product.id }))}
-         >
-          <HeartIcon />
-         </button>
-        </div>
+         product={product}
+        />
        ))
      )}
     </>
