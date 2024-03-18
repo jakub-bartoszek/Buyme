@@ -1,0 +1,5 @@
+[
+ { "id": 1, "name": "newest", "image": "./images/newest-collection-banner.jpg" },
+ { "id": 2, "name": "most popular", "image": "./images/most-popular-collection-banner.jpg" },
+ { "id": 2, "name": "winter collection", "image": "./images/winter-collection-banner.jpg" }
+]
