@@ -128,24 +128,29 @@
  }
 
  &__left-arrow-button {
-  left: 16px;
+  left: 8px;
   @include arrowButtonStyles();
  }
 
  &__right-arrow-button {
-  right: 16px;
+  right: 8px;
   @include arrowButtonStyles();
  }
 
  &__products {
   display: grid;
+  grid-auto-columns: 350px;
   grid-auto-flow: column;
   justify-content: space-between;
   overflow-x: scroll;
-  margin: 16px;
-  gap: 16px;
+  margin: 8px;
+  gap: 8px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+
+  @media (max-width: $mobileHorizontal) {
+   grid-auto-columns: 200px;
+  }
  }
 
  &__products::-webkit-scrollbar {
