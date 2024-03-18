@@ -51,9 +51,11 @@
 
  &__similar-products-list {
   display: grid;
+  grid-auto-columns: 200px;
   grid-auto-flow: column;
   justify-content: space-between;
   overflow-x: scroll;
+  margin: 8px;
   gap: 8px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
