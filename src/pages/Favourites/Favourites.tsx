@@ -18,7 +18,7 @@ const Favourites: React.FC = () => {
  return (
   <div className="favourites">
    {favorites.length > 0 ? (
-    <>
+    <div className="favourites__products">
      {favorites.map((item: FavouriteItem) =>
       products
        .filter((product) => product.id === item.id)
@@ -29,7 +29,7 @@ const Favourites: React.FC = () => {
         />
        ))
      )}
-    </>
+    </div>
    ) : (
     <div className="no-favourites-message">
      <HeartIcon />
