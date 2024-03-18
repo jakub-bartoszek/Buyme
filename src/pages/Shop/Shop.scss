@@ -3,10 +3,10 @@
 @import "../../styles/breakpoints";
 
 .search {
- padding: 16px;
+ padding: 8px;
  display: grid;
  grid-template-columns: 1fr 3fr;
- gap: 16px;
+ gap: 8px;
  max-width: 1400px;
 
  @media (max-width: $mobileHorizontal) {
@@ -22,10 +22,6 @@
  .section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(162px, 1fr));
-  gap: 16px;
-
-  @media (max-width: $mobileVertical) {
-   gap: 8px;
-  }
+  gap: 8px;
  }
 }
