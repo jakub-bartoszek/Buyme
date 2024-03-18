@@ -5,10 +5,10 @@
 .favourites {
  width: 100%;
  height: 100%;
- padding: 16px;
- display: flex;
- flex-direction: column;
- gap: 16px;
+ padding: 8px;
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+ gap: 8px;
  max-width: 1400px;
 
  .no-favourites-message {
@@ -34,59 +34,6 @@
 
    @media (max-width: $mobileVertical) {
     height: 36px;
-   }
-  }
- }
-}
-
-.favourites-tile {
- background-color: $pureWhite;
- box-shadow: $small-box-shadow;
- display: flex;
- gap: 8px;
- padding: 8px;
- position: relative;
-
- &__image-wrapper {
-  width: 72px;
-
-  img {
-   width: 100%;
-   height: 100%;
-  }
- }
-
- &__name {
-  font-weight: 600;
-  font-size: 18px;
-  text-decoration: none;
-  color: $pureBlack;
- }
-
- &__price {
-  font-weight: 500;
- }
-
- &__favourite-button {
-  background-color: $pureWhite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  svg {
-   width: 24px;
-   height: 24px;
-   color: $pureBlack;
-   transition: all 0.3s;
-
-   &:hover {
-    stroke: $pureBlack;
-    color: $pureWhite;
    }
   }
  }
