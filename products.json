@@ -4,7 +4,7 @@
   "name": "Striped T-shirt",
   "gender": ["men"],
   "product_type": "t-shirt",
-  "categories": ["casual"],
+  "categories": ["casual", "sports"],
   "age_group": "adults",
   "price": 29.99,
   "date_added": "2024-01-04",
