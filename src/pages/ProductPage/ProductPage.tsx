@@ -39,7 +39,7 @@ const ProductPage: React.FC = () => {
   window.scrollTo({
    top: 0
   });
- }, []);
+ }, [product]);
 
  const handleGalleryImageClick = (index: number) => {
   setShowGallery(true);
