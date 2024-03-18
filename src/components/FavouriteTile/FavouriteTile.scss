@@ -1,0 +1,48 @@
+@import "../../styles//breakpoints";
+@import "../../styles//colors";
+
+.favourite-tile {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ text-decoration: none;
+ color: $black;
+
+ &__info {
+  display: flex;
+  justify-content: space-between;
+ }
+
+ &__image {
+  background-color: $pureWhite;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  img {
+   width: 100%;
+   height: 100%;
+  }
+ }
+
+ &__remove-button {
+  position: absolute;
+  width: 32px;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  border: none;
+  background-color: $white;
+  border-radius: 50px;
+  padding: 6px;
+  opacity: 70%;
+
+  &:hover {
+   opacity: 100%;
+  }
+
+  svg {
+   cursor: pointer;
+  }
+ }
+}
