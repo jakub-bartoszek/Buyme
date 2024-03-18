@@ -12,7 +12,8 @@ import { useEffect } from "react";
 import { fetchProducts } from "./utils/redux/productsSlice";
 import { useDispatch } from "react-redux";
 import Shop from "./pages/Shop/Shop";
-import Collection from "./pages/Collection/Collection";
+import Collection from "./pages/Collection/CollectionPage";
+import { fetchCollections } from "./utils/redux/collectionsSlice";
 
 export interface Product {
  id: number;
@@ -31,11 +32,18 @@ export interface Product {
  number_of_bought: number;
 }
 
+export interface Collection {
+ id: number;
+ name: string;
+ image: string;
+}
+
 function App() {
  const dispatch = useDispatch();
 
  useEffect(() => {
   dispatch(fetchProducts());
+  dispatch(fetchCollections());
  }, []);
 
  return (
