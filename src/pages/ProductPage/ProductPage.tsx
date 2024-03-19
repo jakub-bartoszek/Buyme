@@ -12,7 +12,7 @@ import AlertWindow from "../../components/AlertWindow/AlertWindow";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import ImageGallery from "../../components/ImageGallery/ImageGallery";
 import { nanoid } from "@reduxjs/toolkit";
-import SimilarProducts from "../../components/SimilarProducts/SimilarProducts";
+import ScrollableProductList from "../../components/ScrollableProductList/ScrollableProductList";
 
 const ProductPage: React.FC = () => {
  const { id } = useParams();
@@ -181,16 +181,14 @@ const ProductPage: React.FC = () => {
    {product.categories.length > 0 && (
     <div className="product__similar-products">
      <h2 className="product__similar-products-header">You may also like</h2>
-     <div>
       {product.categories.map((category) => (
-       <SimilarProducts
-        product={product}
+       <ScrollableProductList
         products={products}
         category={category}
+        product={product}
         key={nanoid()}
        />
       ))}
-     </div>
     </div>
    )}
   </main>

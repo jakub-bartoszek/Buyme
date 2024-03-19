@@ -1,12 +1,11 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Collection, Product } from "../../App";
 import "./HomeSection.scss";
-import { useRef } from "react";
-import HomeTile from "../HomeTile/HomeTile";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectProducts } from "../../utils/redux/productsSlice";
 import { selectCollections } from "../../utils/redux/collectionsSlice";
+import ScrollableProductList from "../ScrollableProductList/ScrollableProductList";
 
 interface HomeSectionProps {
  name: string;
@@ -18,8 +17,6 @@ const HomeSection: React.FC<HomeSectionProps> = ({ name, image }) => {
  const collections: Collection[] = useSelector(selectCollections);
  const collection = collections.find((c) => c.name === name);
  let filteredProducts: Product[] = [];
-
- const scrollRef = useRef<HTMLDivElement>(null);
 
  if (collection) {
   switch (collection.name) {
@@ -37,16 +34,6 @@ const HomeSection: React.FC<HomeSectionProps> = ({ name, image }) => {
     break;
   }
  }
-
- const ArrowButtonClickHandler = (direction: string) => {
-  if (scrollRef.current) {
-   if (direction === "left") {
-    scrollRef.current.scrollLeft -= 800;
-   } else {
-    scrollRef.current.scrollLeft += 800;
-   }
-  }
- };
 
  return (
   <section
@@ -68,31 +55,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ name, image }) => {
      </div>
     </Link>
    </div>
-   <div className="home-section__products-wrapper">
-    <div
-     onClick={() => ArrowButtonClickHandler("left")}
-     className="home-section__left-arrow-button"
-    >
-     <ArrowLeftIcon />
-    </div>
-    <div
-     onClick={() => ArrowButtonClickHandler("right")}
-     className="home-section__right-arrow-button"
-    >
-     <ArrowRightIcon />
-    </div>
-    <div
-     ref={scrollRef && scrollRef}
-     className="home-section__products"
-    >
-     {filteredProducts.map((product) => (
-      <HomeTile
-       key={product.id}
-       product={product}
-      />
-     ))}
-    </div>
-   </div>
+   <ScrollableProductList products={filteredProducts} />
   </section>
  );
 };
