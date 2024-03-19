@@ -21,7 +21,7 @@
  cursor: pointer;
  transition: all 0.3s;
  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
- z-index: 20;
+ z-index: 3;
 
  &:hover {
   background-color: $pureWhite;
@@ -119,41 +119,5 @@
   justify-content: center;
   width: 24px;
   height: 100%;
- }
-
- &__products-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
- }
-
- &__left-arrow-button {
-  left: 8px;
-  @include arrowButtonStyles();
- }
-
- &__right-arrow-button {
-  right: 8px;
-  @include arrowButtonStyles();
- }
-
- &__products {
-  display: grid;
-  grid-auto-columns: 350px;
-  grid-auto-flow: column;
-  justify-content: space-between;
-  overflow-x: scroll;
-  margin: 8px;
-  gap: 8px;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-
-  @media (max-width: $mobileHorizontal) {
-   grid-auto-columns: 200px;
-  }
- }
-
- &__products::-webkit-scrollbar {
-  display: none;
  }
 }
