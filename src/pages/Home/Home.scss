@@ -17,4 +17,13 @@
   background-size: cover;
   background-position: center 20%;
  }
+
+ &__loader-wrapper {
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
 }
