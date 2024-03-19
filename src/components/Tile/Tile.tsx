@@ -1,40 +1,48 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Product } from "../../App";
 import "./Tile.scss";
 
 interface TileProps {
- product?: Product;
- loading?: boolean;
+ product: Product;
 }
 
-const Tile: React.FC<TileProps> = ({ product, loading }) => {
- if (!product) {
-  return (
-   <div className={`tile ${loading && "loading"}`}>
-    <div className="tile__image-wrapper">
-     <div className="tile__image" />
-    </div>
-    <p className="tile__name"></p>
-    <p className="tile__price"></p>
-   </div>
-  );
- }
+const Tile: React.FC<TileProps> = ({ product }) => {
+ const [currentImage, setCurrentImage] = useState(
+  product.images && (product.images[1] ? product.images[1] : product.images[0])
+ );
+ let timeoutId: number | undefined;
+
+ const handleMouseOver = () => {
+  if (product.images && product.images.length !== 1) {
+   timeoutId = setTimeout(() => setCurrentImage(product.images && product.images[0]), 250);
+  }
+ };
+
+ const handleMouseOut = () => {
+  clearTimeout(timeoutId);
+  if (product.images && product.images.length > 1) {
+   setCurrentImage(product.images && product.images[1]);
+  }
+ };
 
  return (
   <Link
    to={`/product/${product.id}`}
-   className="tile"
+   className="home-section__product-tile"
   >
-   <div className="tile__image-wrapper">
-    {product.images && (
-     <img
-      className="tile__image"
-      src={product.images[0]}
-     />
-    )}
+   <div className="home-section__product-tile-image-wrapper">
+    <img
+     className="home-section__product-tile-image"
+     src={currentImage}
+     onMouseOver={handleMouseOver}
+     onMouseOut={handleMouseOut}
+    />
    </div>
-   <p className="tile__name">{product.name}</p>
-   <p className="tile__price">{product.price}$</p>
+   <div>
+    <p>{product.name}</p>
+    <p>{product.price}$</p>
+   </div>
   </Link>
  );
 };

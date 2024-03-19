@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import "./CollectionPage.scss";
-import HomeTile from "../../components/HomeTile/HomeTile";
 import { Collection, Product } from "../../App";
 import { useSelector } from "react-redux";
 import { selectProducts } from "../../utils/redux/productsSlice";
 import { selectCollections } from "../../utils/redux/collectionsSlice";
 import { useEffect } from "react";
+import Tile from "../../components/Tile/Tile";
 
 const CollectionPage = () => {
  const { name } = useParams();
@@ -45,7 +45,7 @@ const CollectionPage = () => {
    <div className="collection__products">
     {filteredProducts &&
      filteredProducts.map((product) => (
-      <HomeTile
+      <Tile
        key={product.id}
        product={product}
       />

@@ -1,0 +1,50 @@
+@import "../../styles/colors";
+
+.shop-tile {
+ background-color: $pureWhite;
+ padding: 8px;
+ box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+ transition: all 0.3s;
+ cursor: pointer;
+ text-decoration: none;
+ color: $black;
+ height: auto;
+
+ &.loading {
+  animation: loading 1s infinite;
+ }
+
+ &:hover {
+  transform: scale(102%);
+ }
+
+ &__image-wrapper {
+  width: 100%;
+  aspect-ratio: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ &__image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+ }
+
+ &__name {
+  font-weight: 500;
+ }
+}
+
+@keyframes loading {
+ 0% {
+  opacity: 0%;
+ }
+ 50% {
+  opacity: 100%;
+ }
+ 100% {
+  opacity: 0%;
+ }
+}
