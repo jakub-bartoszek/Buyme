@@ -5,7 +5,7 @@ import { Product } from "../../App";
 import "./Shop.scss";
 import Filters from "../../components/Filters/Filters";
 import Searchbar from "../../components/Searchbar/Searchbar";
-import ShopTile from "../../components/ShopTile/ShopTile";
+import Tile from "../../components/Tile/Tile";
 
 const Shop: React.FC = () => {
  const [searchParams] = useSearchParams();
@@ -67,7 +67,7 @@ const Shop: React.FC = () => {
      id="results"
     >
      {sortedProducts.map((product) => (
-      <ShopTile
+      <Tile
        key={product.id}
        product={product}
       />
