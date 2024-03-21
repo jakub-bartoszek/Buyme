@@ -1,6 +1,6 @@
 import { call, delay, put, takeLatest } from "redux-saga/effects";
 import { getProducts } from "./getProducts";
-import { fetchProducts, setProducts } from "../redux/productsSlice";
+import { fetchProducts, setProducts, setProductsStatus } from "../redux/productsSlice";
 import { Product } from "../../App";
 
 function* productsSagaHandler() {
@@ -8,8 +8,10 @@ function* productsSagaHandler() {
  try {
   const products: Product = yield call(getProducts);
   yield put(setProducts(products));
+  yield put(setProductsStatus("success"));
  } catch (e) {
   console.log(e);
+  yield put(setProductsStatus("error"));
  }
 }
 
