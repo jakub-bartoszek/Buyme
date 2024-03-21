@@ -1,5 +1,13 @@
 @import "../../styles/colors";
 
+.loader-wrapper {
+ width: 100%;
+ height: calc(100vh - 60px);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
 .loader {
  width: 48px;
  height: 48px;
