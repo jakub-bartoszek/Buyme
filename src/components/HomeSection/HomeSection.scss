@@ -61,6 +61,20 @@
  &__banner {
   display: grid;
   grid-template-columns: 3fr min-content;
+  transition: all 0.3s;
+  filter: grayscale(100);
+
+  &:hover {
+   filter: grayscale(0);
+
+   .home-section__link {
+    padding: 0 64px;
+
+    @media (max-width: $mobileHorizontal) {
+     padding: 32px;
+    }
+   }
+  }
 
   @media (max-width: $mobileHorizontal) {
    grid-template-columns: 1fr;
@@ -96,16 +110,6 @@
   gap: 8px;
   padding: 32px;
   transition: all 0.3s;
-
-  &:hover {
-   padding: 64px;
-  }
-
-  @media (max-width: $mobileHorizontal) {
-   &:hover {
-    padding: 32px;
-   }
-  }
 
   span {
    white-space: nowrap;
