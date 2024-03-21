@@ -9,11 +9,12 @@ import Favourites from "./pages/Favourites/Favourites";
 import Footer from "./components/Footer/Footer";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import { useEffect } from "react";
-import { fetchProducts } from "./utils/redux/productsSlice";
-import { useDispatch } from "react-redux";
+import { fetchProducts, selectProductsStatus } from "./utils/redux/productsSlice";
+import { useDispatch, useSelector } from "react-redux";
 import Shop from "./pages/Shop/Shop";
 import Collection from "./pages/Collection/CollectionPage";
 import { fetchCollections } from "./utils/redux/collectionsSlice";
+import Loader from "./components/Loader/Loader";
 
 export interface Product {
  id: number;
@@ -40,17 +41,21 @@ export interface Collection {
 
 function App() {
  const dispatch = useDispatch();
+ const status = useSelector(selectProductsStatus);
 
  useEffect(() => {
   dispatch(fetchProducts());
   dispatch(fetchCollections());
  }, []);
 
- return (
-  <>
-   <HashRouter>
-    <Navbar />
-    <div className="wrapper">
+ const renderContent = () => {
+  switch (status) {
+   case "loading":
+    return <Loader />;
+   case "error":
+    return <div>Error</div>;
+   case "success":
+    return (
      <Routes>
       <Route
        path="/home"
@@ -89,7 +94,17 @@ function App() {
        element={<Navigate to="/home" />}
       />
      </Routes>
-    </div>
+    );
+   default:
+    return null;
+  }
+ };
+
+ return (
+  <>
+   <HashRouter>
+    <Navbar />
+    <div className="wrapper">{renderContent()}</div>
     <Footer />
    </HashRouter>
   </>
