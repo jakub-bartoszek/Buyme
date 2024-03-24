@@ -1,25 +1,25 @@
-import "./Navbar.scss";
+import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { selectCart } from "../../utils/redux/cartSlice";
+import { selectFavourites } from "../../utils/redux/favouritesSlice";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import { useEffect, useRef, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectCart } from "../../utils/redux/cartSlice";
-import { selectFavourites } from "../../utils/redux/favouritesSlice";
 import Sidebar from "../Sidebar/Sidebar";
+import "./Navbar.scss";
 
 const Navbar: React.FC = () => {
  const [showSearchInput, setShowSearchInput] = useState<boolean>(false);
  const [showSidebar, setShowSidebar] = useState<boolean>(false);
+ const [searchQuery, setSearchQuery] = useState<string>("");
+ const navigate = useNavigate();
  const searchSwitchRef = useRef<HTMLDivElement>(null);
  const searchInputRef = useRef<HTMLInputElement>(null);
- const navigate = useNavigate();
  const cart = useSelector(selectCart);
  const favourites = useSelector(selectFavourites);
- const [searchQuery, setSearchQuery] = useState<string>("");
 
  const toggleSearchInput = () => {
   setShowSearchInput(!showSearchInput);
