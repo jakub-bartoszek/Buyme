@@ -29,11 +29,10 @@ const Tile: React.FC<TileProps> = ({ product }) => {
  return (
   <Link
    to={`/product/${product.id}`}
-   className="home-section__product-tile"
+   className="product-tile"
   >
-   <div className="home-section__product-tile-image-wrapper">
+   <div className="product-tile__image-wrapper">
     <img
-     className="home-section__product-tile-image"
      src={currentImage}
      onMouseOver={handleMouseOver}
      onMouseOut={handleMouseOut}
