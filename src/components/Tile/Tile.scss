@@ -1,27 +1,27 @@
 @import "../../styles//breakpoints";
 @import "../../styles//colors";
 
-.home-section__product-tile {
+.product-tile {
  display: flex;
  flex-direction: column;
  justify-content: center;
  text-decoration: none;
  color: $black;
-}
 
-.home-section__product-tile-image-wrapper {
- background-color: $pureWhite;
- display: flex;
- align-items: center;
- justify-content: center;
+ &__image-wrapper {
+  background-color: $pureWhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
- img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 
-  &:hover {
-   animation: fadeIn 0.5s ease-in-out;
+   &:hover {
+    animation: fadeIn 0.5s ease-in-out;
+   }
   }
  }
 }
