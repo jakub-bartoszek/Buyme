@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import "./Searchbar.scss";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Sorting from "../../components/Sorting/Sorting";
+import "./Searchbar.scss";
 
 const Searchbar: React.FC = () => {
  const [searchParams, setSearchParams] = useSearchParams();
-
  const [searchQuery, setSearchQuery] = useState<string>("");
 
  useEffect(() => {
@@ -33,22 +32,22 @@ const Searchbar: React.FC = () => {
  };
 
  return (
-    <form
-     className="searchbar"
-     onSubmit={handleQuerySubmit}
-    >
-     <div className="searchbar__input-wrapper">
-      <div className="searchbar__search-icon">
-       <MagnifyingGlassIcon />
-      </div>
-      <input
-       className="searchbar__input"
-       value={searchQuery}
-       onChange={handleQueryChange}
-      />
-     </div>
-     <Sorting />
-    </form>
+  <form
+   className="searchbar"
+   onSubmit={handleQuerySubmit}
+  >
+   <div className="searchbar__input-wrapper">
+    <div className="searchbar__search-icon">
+     <MagnifyingGlassIcon />
+    </div>
+    <input
+     className="searchbar__input"
+     value={searchQuery}
+     onChange={handleQueryChange}
+    />
+   </div>
+   <Sorting />
+  </form>
  );
 };
 
