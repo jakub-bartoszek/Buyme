@@ -15,7 +15,6 @@ const Sidebar: React.FC<SidebarProps> = ({ showSidebar, setShowSidebar }) => {
      onClick={() => setShowSidebar(false)}
     />
    )}
-
    <div className={`sidebar ${showSidebar && "shown"}`}>
     <NavLink
      to="/"
