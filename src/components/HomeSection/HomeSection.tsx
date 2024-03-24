@@ -1,11 +1,11 @@
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import { Collection, Product } from "../../App";
-import "./HomeSection.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Collection, Product } from "../../App";
 import { selectProducts } from "../../utils/redux/productsSlice";
 import { selectCollections } from "../../utils/redux/collectionsSlice";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import ScrollableProductList from "../ScrollableProductList/ScrollableProductList";
+import "./HomeSection.scss";
 
 interface HomeSectionProps {
  name: string;
