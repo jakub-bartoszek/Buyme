@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import MultiRangeSlider, { ChangeResult } from "multi-range-slider-react";
 import { Product } from "../../App";
+import Filter from "../../components/Filter/Filter";
 import "./multirangeslider.scss";
 import "./Filters.scss";
-import Filter from "../../components/Filter/Filter";
-import MultiRangeSlider, { ChangeResult } from "multi-range-slider-react";
 
 interface FiltersProps {
  products: Product[];
