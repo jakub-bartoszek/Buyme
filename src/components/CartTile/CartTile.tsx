@@ -1,6 +1,6 @@
-import { TrashIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { Product } from "../../App";
+import { TrashIcon } from "@heroicons/react/24/outline";
 import { CartItem } from "../../pages/Cart/Cart";
 import "./CartTile.scss";
 
