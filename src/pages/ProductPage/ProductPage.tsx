@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
-import Rating from "../../components/Rating/Rating";
-import "./ProductPage.scss";
-import { selectProducts } from "../../utils/redux/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Product } from "../../App";
-import { addToCart } from "../../utils/redux/cartSlice";
-import { HeartIcon } from "@heroicons/react/24/solid";
-import { addToFavourites, selectFavourites } from "../../utils/redux/favouritesSlice";
-import AlertWindow from "../../components/AlertWindow/AlertWindow";
-import { ShoppingBagIcon } from "@heroicons/react/24/outline";
-import ImageGallery from "../../components/ImageGallery/ImageGallery";
+import { useNavigate, useParams } from "react-router";
 import { nanoid } from "@reduxjs/toolkit";
+import { selectProducts } from "../../utils/redux/productsSlice";
+import { addToCart } from "../../utils/redux/cartSlice";
+import { addToFavourites, selectFavourites } from "../../utils/redux/favouritesSlice";
+import { Product } from "../../App";
+import { HeartIcon } from "@heroicons/react/24/solid";
+import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import Rating from "../../components/Rating/Rating";
+import AlertWindow from "../../components/AlertWindow/AlertWindow";
+import ImageGallery from "../../components/ImageGallery/ImageGallery";
 import ScrollableProductList from "../../components/ScrollableProductList/ScrollableProductList";
+import "./ProductPage.scss";
 
 const ProductPage: React.FC = () => {
  const { id } = useParams();
@@ -22,6 +22,9 @@ const ProductPage: React.FC = () => {
  const navigate = useNavigate();
  const favourites = useSelector(selectFavourites);
  const dispatch = useDispatch();
+ const similarProducts = products.filter(
+  (p) => p.categories.some((c) => product?.categories.includes(c)) && p.id !== productId
+ );
 
  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(1);
  const [chosenSize, setChosenSize] = useState<string>("");
@@ -30,15 +33,13 @@ const ProductPage: React.FC = () => {
  const [showAlertWindow, setShowAlertWindow] = useState<boolean>(false);
 
  useEffect(() => {
-  if (product && product.images) {
-   setActiveImageIndex(product.images.length > 0 ? 0 : null);
-  }
- }, [product]);
-
- useEffect(() => {
   window.scrollTo({
    top: 0
   });
+
+  if (product && product.images) {
+   setActiveImageIndex(product.images.length > 0 ? 0 : null);
+  }
  }, [product]);
 
  const handleGalleryImageClick = (index: number) => {
@@ -178,17 +179,17 @@ const ProductPage: React.FC = () => {
      ))}
    </div>
    <div />
-   {product.categories.length > 0 && (
+   {similarProducts.length > 0 && (
     <div className="product__similar-products">
      <h2 className="product__similar-products-header">You may also like</h2>
-      {product.categories.map((category) => (
-       <ScrollableProductList
-        products={products}
-        category={category}
-        product={product}
-        key={nanoid()}
-       />
-      ))}
+     {product.categories.map((category) => (
+      <ScrollableProductList
+       products={products}
+       category={category}
+       product={product}
+       key={nanoid()}
+      />
+     ))}
     </div>
    )}
   </main>
