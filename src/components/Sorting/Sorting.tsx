@@ -5,11 +5,9 @@ import "./Sorting.scss";
 
 const Sorting: React.FC = () => {
  const [searchParams, setSearchParams] = useSearchParams();
-
  const [sortOrder, setSortOrder] = useState("desc");
  const [sortBy, setSortBy] = useState("popularity");
  const [sortingOptionsHidden, setSortingOptionsHidden] = useState(true);
-
  const sortingRef = useRef<HTMLDivElement>(null);
 
  useEffect(() => {
