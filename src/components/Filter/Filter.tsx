@@ -1,14 +1,14 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import "./Filter.scss"
+import "./Filter.scss";
 
 interface FilterProps {
  filterType: string;
  visible: boolean;
- onFilterToggle: () => void;
  children: React.ReactNode;
+ onFilterToggle: () => void;
 }
 
-const Filter: React.FC<FilterProps> = ({ filterType, visible, onFilterToggle, children }) => {
+const Filter: React.FC<FilterProps> = ({ filterType, visible, children, onFilterToggle }) => {
  return (
   <div className={`filters__filter ${visible ? "shown" : ""}`}>
    <div className="filters__filter--header">
