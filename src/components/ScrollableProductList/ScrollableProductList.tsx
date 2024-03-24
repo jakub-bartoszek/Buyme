@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
-import "./ScrollableProductList.scss";
 import { Product } from "../../App";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Tile from "../Tile/Tile";
+import "./ScrollableProductList.scss";
 
 interface ScrollableProductListProps {
  products: Product[];
